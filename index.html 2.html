@@ -1,0 +1,888 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TAG Tickets – Tu Acceso Garantizado</title><script>try{document.documentElement.classList.toggle("tgd",localStorage.getItem("ep_theme")!=="light")}catch(e){document.documentElement.classList.add("tgd")}document.documentElement.classList.add("spl")</script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#efeff0;--card:#fff;--ink:#2b2b2e;--mute:#66666b;--line:#d9d9dc;--acc:#d9480f;--onacc:#fff;--hi:#ff7a1a;--ok:#0f8a5f;--bad:#c4322f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html.tgd{--bg:#0a0a0a;--card:#161616;--ink:#fff;--mute:#a6a6a6;--line:#2c2c2c;--acc:#ff7a1a;--onacc:#0a0a0a;--ok:#3fd49b;--bad:#ff7b78;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 "Bricolage Grotesque",system-ui,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+header{border-bottom:1px solid var(--line);background:var(--card)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 0}
+.logo{font-weight:800;font-size:26px;letter-spacing:-.03em}
+.logo i{display:inline-block;width:14px;height:14px;background:var(--hi);border-radius:50%;margin-left:4px}
+nav{display:flex;gap:4px}
+nav button{background:none;border:0;padding:8px 14px;border-radius:999px;cursor:pointer;font-weight:600;color:var(--mute)}
+nav button[aria-current="true"]{background:var(--ink);color:var(--bg)}
+h1{font-size:clamp(34px,6vw,60px);line-height:1;letter-spacing:-.04em;font-weight:800;margin:40px 0 10px;max-width:14ch}
+h2{font-size:22px;margin:32px 0 12px;letter-spacing:-.02em}
+.lead{color:var(--mute);max-width:56ch;margin:0 0 28px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.ev{display:flex;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.stub{flex:0 0 84px;padding:14px 8px;text-align:center;background:var(--hi);color:#16213e;border-right:2px dashed var(--ink);display:flex;flex-direction:column;justify-content:center}
+.stub b{font-size:32px;line-height:1;font-weight:800}
+.stub span{font-size:13px;font-weight:600}
+.evb{padding:14px 16px;flex:1;display:flex;flex-direction:column;gap:2px}
+.evb h3{margin:0;font-size:18px;line-height:1.2}
+.mute{color:var(--mute);font-size:14px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto;padding-top:12px;flex-wrap:wrap}
+.btn{background:var(--acc);color:var(--onacc);border:0;border-radius:10px;padding:10px 16px;font-weight:600;cursor:pointer}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--ink)}
+.btn.sm{padding:6px 12px;font-size:14px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.bar2{height:6px;background:var(--line);border-radius:9px;overflow:hidden;margin-top:6px}
+.bar2 i{display:block;height:100%;background:var(--acc)}
+dialog{border:0;border-radius:16px;padding:0;width:min(460px,94vw);max-height:92vh;background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(10,14,30,.6)}
+.dlg{padding:22px 22px 14px;display:block}
+.dh{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.x{border:0;background:none;font-size:30px;line-height:1;cursor:pointer;color:inherit;opacity:.6;padding:0 4px}
+.cam{position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:1/1;max-height:62vh;width:100%;margin:12px 0 6px}
+.cam video{width:100%;height:100%;object-fit:cover;display:block}
+.cam .frame{position:absolute;inset:17%;border:3px solid rgba(255,255,255,.95);border-radius:18px;box-shadow:0 0 0 999px rgba(0,0,0,.38);pointer-events:none}
+.ovl{position:fixed;inset:0;z-index:9999;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center;color:#fff}
+.ovl.g{background:#12804b}.ovl.r{background:#c0262d}
+.ovl .ot{font-size:clamp(28px,8vw,46px);font-weight:800;line-height:1.1}
+.ovl .od{font-size:19px;max-width:30ch;opacity:.96}
+.ovl .obtn{margin-top:12px;padding:16px 34px;font:inherit;font-size:20px;font-weight:700;border-radius:14px;border:0;background:#fff;color:#111;cursor:pointer;min-width:240px}
+.dcode{font-size:34px;font-weight:800;letter-spacing:.14em}
+.dres{padding:22px 16px;border-radius:16px;font-size:20px;font-weight:700;margin:14px 0;text-align:center;line-height:1.3}
+.dres.ok{background:#187a4a;color:#fff}.dres.bad{background:#b3261e;color:#fff}.dres.warn{background:#8a5a00;color:#fff}
+.dres.info{background:var(--card);border:1px solid var(--line);font-weight:600;font-size:16px}
+.dchip{border:1px dashed var(--line);background:none;color:inherit;border-radius:999px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+.carw{display:flex;align-items:center;gap:4px;margin:0 -4px 8px}
+.car{position:relative;flex:1;display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x proximity;padding:4px 4px 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.car::-webkit-scrollbar{display:none}
+.cd2{flex:none;width:58px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:1px;padding:8px 0 9px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:inherit;cursor:pointer;opacity:.55;position:relative;font:inherit}
+.cd2 b{font-size:20px;line-height:1.1}.cd2 small{font-size:11px;text-transform:uppercase;letter-spacing:.03em;opacity:.8}
+.cd2.has{opacity:1;border-color:var(--acc)}
+.cd2.has::after{content:'';position:absolute;top:6px;right:7px;width:7px;height:7px;border-radius:50%;background:var(--acc)}
+.cd2.all{width:76px}
+.cd2.sel{background:var(--acc);color:var(--onacc,#fff);border-color:var(--acc);opacity:1}.cd2.sel::after{background:var(--onacc,#fff)}
+.carb{flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:inherit;cursor:pointer;font-size:18px;line-height:1}
+@media(hover:none){.carb{display:none}}
+.paybar{position:sticky;bottom:0;background:var(--card);padding:10px 0 8px;margin-top:6px}
+.dlg h3{margin:0 0 2px;font-size:22px}
+label{display:block;font-size:14px;font-weight:600;margin:12px 0 4px}
+input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+.qty{display:flex;align-items:center;gap:14px;margin:6px 0}
+.qty button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:none;font-size:20px;cursor:pointer}
+.sum{margin:16px 0;border-top:1px dashed var(--line);padding-top:12px}
+.sum div{display:flex;justify-content:space-between;padding:2px 0}
+.sum .t{font-weight:800;font-size:20px;padding-top:8px}
+.note{font-size:13px;color:var(--mute);margin:8px 0 0}
+.tk{display:flex;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px;align-items:center}
+.tk svg{flex:0 0 96px;width:96px;height:96px;background:#fff;border-radius:8px;padding:4px}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:99px;background:var(--line);margin-right:4px}
+.tag.ok{background:var(--ok);color:var(--bg)}
+.tag.age{background:var(--ink);color:var(--bg)}
+.stats{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat b{display:block;font-size:26px;letter-spacing:-.02em}
+.stat.hl{background:var(--ink);color:var(--bg)}
+.stat.hl .mute{color:var(--bg);opacity:.75}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.f2{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{font-weight:600;color:var(--mute)}
+td.n,th.n{text-align:right}
+.empty{padding:28px;text-align:center;color:var(--mute);border:1px dashed var(--line);border-radius:14px}
+.msg{margin-top:10px;font-weight:600}
+.li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.calg{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cd{aspect-ratio:1;border:0;border-radius:8px;background:none;cursor:pointer;font-weight:600}
+.cd.has{background:var(--hi);color:#16213e;font-weight:800}
+.cd.sel{outline:3px solid var(--acc)}
+.chk{display:inline-flex;gap:6px;align-items:center;margin:4px 14px 0 0;font-weight:400}
+.chk input{width:auto}
+a{color:var(--acc)}
+.brand{display:flex;flex-direction:column;text-decoration:none;color:inherit;line-height:1}
+.brand .logo{font-size:24px;display:flex;align-items:center}
+.brand .logo em{font-style:normal;font-weight:600;margin-left:0;letter-spacing:-.02em}
+.brand .logo i{width:11px;height:11px;margin-left:3px}
+.brand small{font-size:11px;font-weight:600;color:var(--mute);letter-spacing:.01em;margin-top:3px}
+.bar{padding:12px 18px;row-gap:8px}
+nav{overflow-x:auto;white-space:nowrap;max-width:100%;scrollbar-width:none}nav::-webkit-scrollbar{display:none}
+nav button{white-space:nowrap;padding:8px 12px}
+@media(max-width:700px){nav{order:3;flex:1 1 100%}}
+.thb{order:2;margin-left:auto;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:18px;line-height:1;cursor:pointer;padding:0}
+nav{order:3}
+.evc{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .16s ease,box-shadow .16s ease}
+.evc:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(10,14,30,.14)}
+.evc:active{transform:scale(.985)}
+.cw{position:relative}
+.cover{aspect-ratio:16/9;background-size:cover;background-position:center;background-color:var(--line)}
+.cover.ph{display:flex;align-items:flex-end;padding:14px;background-image:linear-gradient(135deg,#1c1c1c,#c2410c);color:#fff}
+.cover.ph span{font-weight:800;font-size:22px;line-height:1.1;letter-spacing:-.03em;text-shadow:0 1px 8px rgba(0,0,0,.25)}
+.cover.big{aspect-ratio:16/8;max-height:380px;border-radius:18px}
+.dchip{position:absolute;top:10px;left:10px;background:var(--hi);color:#111;border-radius:12px;padding:6px 10px;text-align:center;line-height:1;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.dchip b{display:block;font-size:22px;font-weight:800}.dchip span{font-size:11px;font-weight:700;text-transform:uppercase}
+.info{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin:16px 0}
+.info>div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.info small{display:block;color:var(--mute);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.info b{display:block;font-size:17px;margin-top:2px}
+.buybar{position:sticky;bottom:0;margin:22px -18px 0;padding:12px 18px calc(12px + env(safe-area-inset-bottom,0px));background:var(--card);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:5}
+.buybar .btn{padding:13px 26px;font-size:17px}
+@keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes sheet{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+#app.in{animation:fi .22s ease both}
+dialog[open]{animation:sheet .22s ease both}
+@media(max-width:560px){dialog{margin:auto 0 0;width:100%;max-width:100%;border-radius:20px 20px 0 0;max-height:94vh}}
+@media(prefers-reduced-motion:reduce){#app.in,dialog[open]{animation:none}.evc{transition:none}}
+html{scroll-behavior:smooth}
+html.spl header .brand{visibility:hidden}
+#spl{position:fixed;inset:0;z-index:9999;background:var(--bg);transition:opacity .6s ease .15s}
+#spl.go{opacity:0;pointer-events:none}
+#spb{position:fixed;margin:0;transform-origin:0 0;will-change:transform;opacity:0}
+#spb.in{opacity:1;transition:opacity .5s ease}
+#spb.mv{transition:transform .8s cubic-bezier(.65,0,.25,1)}
+.evc{animation:fi .4s ease both}.evc:nth-child(2){animation-delay:.06s}.evc:nth-child(3){animation-delay:.12s}.evc:nth-child(4){animation-delay:.18s}.evc:nth-child(n+5){animation-delay:.22s}
+.btn,.thb,nav button,.cd2{transition:transform .12s ease,background-color .2s ease,color .2s ease,border-color .2s ease,opacity .2s ease}
+.btn:active,.thb:active,nav button:active,.cd2:active{transform:scale(.95)}
+dialog::backdrop{animation:bd .22s ease both}@keyframes bd{from{opacity:0}to{opacity:1}}
+.car{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.evc{animation:none}#spb.mv,#spl{transition-duration:.01s}}
+.pm{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}.pm .po{flex:1;min-width:100px;padding:11px 8px;border:2px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font-weight:600;cursor:pointer}.pm .po[aria-pressed="true"]{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc) inset}
+.btn.apay{background:#000;color:#fff;border:1px solid #fff4}
+html:not(.tgd) .btn.apay{border-color:#000}
+footer{padding:40px 0;color:var(--mute);font-size:13px}
+</style></head>
+<body>
+<header><div class="wrap bar">
+<a class="brand" href="#" onclick="location.hash='';view='events';CD='';render();scrollTo(0,0);return false" aria-label="TAG Tickets, inicio"><span class="logo">TAG<i></i><em>Tickets</em></span><small>Tu Acceso Garantizado</small></a>
+<button class="thb" onclick="thToggle()" aria-label="Cambiar entre modo oscuro y claro" title="Modo claro / oscuro">◐</button><nav aria-label="Secciones"><button data-v="events">Eventos</button><button data-v="tickets">Mis entradas</button><button data-v="orgz">Organizador</button><button data-v="org">Admin</button></nav></div></header>
+<main class="wrap" id="app"></main>
+<footer class="wrap">TAG Tickets · Tu Acceso Garantizado · Prototipo de demostración. Los pagos y la verificación de edad son simulados; los datos se guardan solo en este navegador.</footer>
+<dialog id="dlg"></dialog>
+<div id="spl" aria-hidden="true"></div>
+<div id="ovl" class="ovl" aria-live="assertive"></div>
+<script>
+const $=s=>document.querySelector(s);
+const CURS={UYU:{s:'$',r:1,n:'Peso uruguayo'},USD:{s:'US$',r:40,n:'Dólar estadounidense'},ARS:{s:'AR$',r:.04,n:'Peso argentino'},BRL:{s:'R$',r:7.5,n:'Real brasileño'},EUR:{s:'€',r:43,n:'Euro'},CLP:{s:'CLP$',r:.042,n:'Peso chileno'},MXN:{s:'MX$',r:2.3,n:'Peso mexicano'}};
+let CC='UYU';const setC=e=>{CC=(typeof e==='string'?e:(e&&e.cur))||'UYU';return ''};
+const rate=c=>((typeof S!=='undefined'&&S.rates||{})[c])||(CURS[c]||CURS.UYU).r;
+const money=(n,c)=>{c=c||CC;const k=CURS[c]||CURS.UYU,d=Number.isInteger(+n.toFixed(2))?0:2;return k.s+' '+(+n).toLocaleString('es-UY',{minimumFractionDigits:d,maximumFractionDigits:2})};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const MES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+const TD=(a)=>a.map((x,i)=>({n:'Tanda '+(i+1),price:x[0],cap:x[1],sold:x[2]}));
+let S={fee:10,payer:'buyer',rule:'soldout',me:'',events:[
+{id:1,name:'Noche de Candombe',place:'Teatro de Verano, Montevideo',date:'2026-12-12',minAge:0,tandas:TD([[700,200,200],[900,200,200],[1100,200,12]])},
+{id:2,name:'Fiesta Rooftop Año Nuevo',place:'Pocitos, Montevideo',date:'2026-12-31',minAge:18,tandas:TD([[1200,100,100],[1600,100,100],[2000,100,100]])},
+{id:3,name:'Festival Rock en la Rambla',place:'Rambla de Pocitos, Montevideo',date:'2027-01-09',minAge:16,tandas:TD([[1200,400,400],[1500,400,150],[1800,400,0]])}],
+tix:[{id:'EP-DEMO01',ev:2,t:0,face:1200,owner:{name:'Lucía Pérez',email:'lucia@mail.com',dob:'1998-05-02'},listed:true,ask:1200,used:false}],ledger:[]};
+try{const x=localStorage.getItem('easypass');if(x)S=JSON.parse(x)}catch(e){}
+S.orgs=S.orgs||[];if(S.om&&!S.orgs.some(o=>o.email.toLowerCase()===S.om.toLowerCase()))S.om='';S.users=S.users||[];S.events.forEach(e=>{if(e.idReq===undefined)e.idReq=e.minAge>=18});S.offers=S.offers||[];S.events.forEach(e=>{e.links=e.links||[];e.tandas.forEach(t=>{if(t.pub===undefined){const v=t.vis||(t.hid?'hidden':'public');t.pub=v==='public';delete t.vis;delete t.hid}t.lk=t.lk||[]})});if(!S.events.some(e=>e.mv7))S.events.push({id:4,mv7:true,name:'MVCC 7',place:'Montevideo Cricket Club, Montevideo',addr:'',date:'2027-02-13',time:'10:00',minAge:0,idReq:false,tandas:TD([[600,300,40],[800,300,0]])});S.events.forEach(e=>{if(e.goal===undefined)e.goal=({1:500,2:280,3:900,4:500}[e.id]||0)});S.events.forEach(e=>{e.time=e.time||({1:'21:00',2:'23:00',3:'18:00'}[e.id]||'22:00')});
+const save=()=>{try{localStorage.setItem('easypass',JSON.stringify(S))}catch(e){}};
+const RESALE=false; // reventa: actualización futura (el código sigue, solo está oculto)
+let view='events',B=null,T=null;
+const evOf=id=>S.events.find(e=>e.id===id);
+const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const untilTs=t=>t.until?new Date(t.until.length===10?t.until+'T23:59':t.until).getTime():Infinity;
+const isLive=e=>e.pub!==false&&(!e.pubFrom||Date.now()>=new Date(e.pubFrom).getTime());
+const fu=s=>{const [d,h]=s.split('T'),p=d.split('-');return p[2]+'/'+p[1]+(h?' '+h+' hs':'')};
+const isPub=t=>t.pub!==false||!!(t.pubFrom&&Date.now()>=new Date(t.pubFrom).getTime());
+const tv=t=>isPub(t)?'public':((t.lk||[]).length?'link':'hidden');
+const tvis=t=>isPub(t)||!!(LKID&&(t.lk||[]).includes(LKID));
+const curT=e=>today()>e.date?-1:e.tandas.findIndex(t=>tvis(t)&&t.sold<t.cap&&Date.now()<=untilTs(t));
+const soldOut=e=>curT(e)<0;
+const mk=()=>'EP-'+Math.random().toString(36).slice(2,8).toUpperCase();
+const F=e=>e.fee||{on:true,pct:12,min:35,payer:'buyer',ap:'both'};
+const calc=(p,e,k)=>{const c=F(e),ok=k==='resale'?c.ap!=='pri':c.ap!=='res',fee=c.on&&ok&&p>0?Math.round(Math.max(c.min/rate(e.cur||'UYU'),p*c.pct/100)*100)/100:0,b=c.payer==='buyer';return{fee,total:b?p+fee:p,net:b?p:p-fee}};
+const ageAt=(dob,d)=>{const b=new Date(dob),e=new Date(d);let a=e.getFullYear()-b.getFullYear(),m=e.getMonth()-b.getMonth();if(m<0||(m===0&&e.getDate()<b.getDate()))a--;return a};
+const chkAge=(e,dob)=>{if(!dob||isNaN(new Date(dob)))return 'Ingresá la fecha de nacimiento.';if(e.minAge&&ageAt(dob,e.date)<e.minAge)return 'Este evento es para mayores de '+e.minAge+'. Con esa fecha de nacimiento no podés comprar ni recibir la entrada.';return ''};
+const ageTag=e=>e.minAge?`<span class="tag age">+${e.minAge}</span>`:'<span class="tag">Todo público</span>';
+const err=m=>{$('#err').textContent=m};
+
+let HE=0,viaLink=false,LKID='';function rh(){const h=location.hash,m=h.match(/^#e-(\d+)$/),l=h.match(/^#l-(\d+)-([a-z0-9]+)$/);viaLink=false;LKID='';HE=0;if(m){HE=+m[1];const _e=evOf(HE);if(_e&&SBS&&(_e.ownerId===SBS.uid||SBS.role==='admin'))viaLink=true}else if(l){const e=evOf(+l[1]);if(e){const k=(e.links||[]).find(x=>x.on!==false&&x.token===l[2]);if(e.token===l[2]||k){HE=e.id;viaLink=true;if(k)LKID=k.id}}}}
+function render(){rh();expO();DOORM=location.hash==='#puerta';if(DOORM)view='door';else if(view==='door'&&!DR.org)view='events';{const nv=document.querySelector('nav'),ft=document.querySelector('footer');if(nv)nv.style.display=DOORM?'none':'';if(ft)ft.style.display=DOORM?'none':''}{const nb=document.querySelector('[data-v="tickets"]');if(nb)nb.textContent='Mis entradas'+(pend()?' ('+pend()+')':'')}document.querySelectorAll('[data-v="org"],[data-v="orgz"]').forEach(b=>b.style.display=(HE||(b.dataset.v==='org'&&!isAdm()))?'none':'');if((HE||(view==='org'&&!isAdm()&&!SBS))&&(view==='org'||view==='orgz'))view=HE?'events':view;
+ document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-current',b.dataset.v===view));
+ $('#app').innerHTML=DBL?'<div class="empty" style="margin-top:24px">Cargando…</div>':view==='events'?vEvents():view==='tickets'?vTickets()+(RESALE?offHtml():''):view==='resale'?vResale():view==='stats'?vStats():view==='door'?vDoor():view==='orgz'?vOrgz():vOrgX();if(view!=='door'||!doorAuth())camStop();else{const v=$('#cv');if(v&&CAM.stream&&v.srcObject!==CAM.stream){v.srcObject=CAM.stream;v.play().catch(()=>{})}}{const c=$('#car');if(c){if(CSL<0){const f=c.querySelector('.has');CSL=f?Math.max(0,f.offsetLeft-70):0}c.scrollLeft=CSL}}{const ap=$('#app');ap.classList.remove('in');void ap.offsetWidth;ap.classList.add('in')}
+}
+document.querySelector('nav').addEventListener('click',e=>{const b=e.target.closest('button');if(b){view=b.dataset.v;if(HE)location.hash='';render();scrollTo(0,0)}});
+
+const cover=(e,c='')=>e.img?`<div class="cover ${c}" style="background-image:url('${e.img}')" role="img" aria-label="Flyer de ${esc(e.name)}"></div>`:`<div class="cover ph ${c}" style="--h:${(e.id*67)%360}"><span>${esc(e.name)}</span></div>`;
+
+function thToggle(){const d=document.documentElement,n=d.classList.toggle("tgd");try{localStorage.setItem("ep_theme",n?"dark":"light")}catch(e){}}
+function vEventsOrig(){if(HE){const e=evOf(HE);if(e)return vEvent(e)}
+ return `${cal()}<h1 style="font-size:clamp(26px,6vw,44px);margin:6px 0 6px;max-width:none">Tu próxima entrada, en dos minutos.</h1><p class="lead" style="margin-bottom:18px">Elegí el evento, pagá y recibí tu entrada con QR en el correo. Sin cuenta, sin vueltas.</p>
+ <div class="grid">${S.events.filter(e=>HE?e.id===HE:e.pub!==false&&isLive(e)&&(!CD||e.date===CD)).sort((a,b)=>a.date.localeCompare(b.date)).map(e=>{const [y,m,d]=e.date.split('-'),i=curT(e),t=e.tandas[i],nx=e.tandas[i+1];
+ const vt=e.tandas.filter(tvis),tot=vt.reduce((a,t)=>a+t.cap,0),sold=vt.reduce((a,t)=>a+t.sold,0);
+ const ls=S.tix.filter(x=>x.ev===e.id&&x.listed&&!x.used).length,canRs=ls;
+ return `${setC(e)}<article class="evc" data-id="${e.id}"><div class="cw">${cover(e)}<div class="dchip"><b>${d}</b><span>${MES[+m-1]}</span></div></div>
+ <div class="evb"><h3><a href="#e-${e.id}" style="color:inherit;text-decoration:none">${esc(e.name)}</a></h3><span class="mute">${esc(e.place)} · ${e.time} hs</span><div>${ageTag(e)}</div>
+ <span class="mute">${i<0?(tot-sold<1?'Agotado':'Venta cerrada'):t.n+(t.until?' · hasta el '+fu(t.until):'')+(nx?' · después '+money(nx.price):'')+(tot-sold<=15?' · ¡últimas '+(tot-sold)+'!':'')}</span>
+ <div class="row"><b>${i<0?(tot-sold<1?'Agotado':'Cerrado'):money(t.price)}</b><span>
+ ${i>=0?`<button class="btn" onclick="openBuy(${e.id})">Comprar</button>`:''}</span></div></div></article>`}).join('')}</div>`;
+}
+
+function buyHtml(){
+ const e=B.ev,_c=setC(e),c=calc(B.price,e,B.rs?'resale':'pri'),b=F(e).payer==='buyer',q=B.qty,u=usr(),ro=u?'readonly':'',tot=c.total*q;
+ return `<form class="dlg" onsubmit="pay();return false" novalidate>
+ <div class="dh"><div><h3>${esc(e.name)}</h3><div class="mute">${e.tandas[B.t].n}${B.rs?' · reventa':''} · ${e.date} · ${e.time} hs</div><div class="mute">${esc(e.place)}${e.addr?', '+esc(e.addr):''} · <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.place+' '+(e.addr||''))}" target="_blank" rel="noopener">Cómo llegar</a></div></div><button type="button" class="x" onclick="$('#dlg').close()" aria-label="Cerrar">×</button></div>
+ ${B.rs?'':`<label>Cantidad</label><div class="qty"><button type="button" onclick="setQ(-1)" aria-label="Menos">−</button><b>${q}</b><button type="button" onclick="setQ(1)" aria-label="Más">+</button><span class="mute">máx. ${B.max}</span></div>`}
+ <label for="bn">Nombre y apellido</label><input id="bn" autocomplete="name" ${ro} ${B.n?'':'autofocus'} value="${esc(B.n||'')}">
+ <label for="be">Correo (acá te llega la entrada)</label><input id="be" type="email" inputmode="email" autocomplete="email" ${ro} value="${esc(B.e||'')}">
+ ${e.minAge?`<label for="bd">Fecha de nacimiento</label><input id="bd" type="date" autocomplete="bday" ${ro} value="${B.d||''}"><p class="note">Evento +${e.minAge}: validamos tu edad y te van a pedir cédula en la puerta.</p>`:''}
+ ${e.idReq?((u||{}).verified||B.vf?'<p class="note">Identidad verificada ✓</p>':`<div class="panel" style="margin-top:12px"><b>Verificación de identidad</b><p class="note">Este evento pide escaneo de cédula. Lo hace un proveedor externo y TAG no guarda tu documento. Se hace una sola vez.</p><button type="button" class="btn sm" onclick="verifyId()">Verificar identidad (simulado)</button></div>`):''}
+ ${B.rs?'':`<label>Medio de pago</label><div class="pm">${[['card','Tarjeta'],['apple','Apple Pay'],['mp','Mercado Pago']].map(([k,n])=>`<button type="button" class="po" aria-pressed="${(B.pm||'card')===k}" onclick="sv();B.pm='${k}';drawBuy()">${n}</button>`).join('')}</div>${(B.pm||'card')==='card'?`<div class="cardf"><p class="note" style="margin:8px 0 0">Demo: no uses una tarjeta real. Probá con 4242 4242 4242 4242, cualquier fecha futura y 123. Los datos no se guardan ni se envían.</p><label for="cn">Número de tarjeta</label><input id="cn" inputmode="numeric" autocomplete="off" placeholder="0000 0000 0000 0000" maxlength="23" value="${esc(B.cn||'')}" oninput="this.value=this.value.replace(/\\D/g,'').slice(0,19).replace(/(.{4})/g,'$1 ').trim()"><div class="f2"><div><label for="cx">Vence (MM/AA)</label><input id="cx" inputmode="numeric" autocomplete="off" placeholder="MM/AA" maxlength="5" value="${esc(B.cx||'')}" oninput="let d=this.value.replace(/\\D/g,'').slice(0,4);this.value=d.length>2?d.slice(0,2)+'/'+d.slice(2):d"></div><div><label for="cv">Código (CVC)</label><input id="cv" inputmode="numeric" autocomplete="off" placeholder="123" maxlength="4" value="${esc(B.cv||'')}"></div></div></div>`:B.pm==='apple'?'<p class="note">Confirmás con Face ID o Touch ID. Simulado en esta demo.</p>':'<p class="note">Pagás con tu cuenta o tus tarjetas guardadas en Mercado Pago. Simulado en esta demo.</p>'}`}
+ <div class="sum">${q>1||(b&&c.fee)?`<div><span>${q} × ${money(B.price)}</span><span>${money(B.price*q)}</span></div>`:''}
+ ${b&&c.fee?`<div><span>Cargo por servicio</span><span>${money(c.fee*q)}</span></div>`:''}
+ <div class="t"><span>Total</span><span>${money(tot)}</span></div></div>
+ <div id="err" class="msg" style="color:var(--bad)" role="alert"></div>
+ <div class="paybar"><button class="btn ${B.pm==='apple'?'apay':''}" style="width:100%">${B.pm==='apple'?'Pagar con Apple Pay · ':B.pm==='mp'?'Pagar con Mercado Pago · ':'Pagar '}${money(tot)}</button><p class="note">No hace falta cuenta: la entrada llega a tu correo. Pago simulado en esta demo.${CC!=='UYU'?` Precios en ${CC}.`:''}</p></div></form>`;
+}
+const drawBuy=()=>{$('#dlg').innerHTML=buyHtml()};
+const sv=()=>{if($('#cn')){B.cn=$('#cn').value;B.cx=$('#cx').value;B.cv=$('#cv').value}B.n=$('#bn').value;B.e=$('#be').value;B.d=($('#bd')||{}).value||B.d||''};
+function openBuy(id){const e=evOf(id),i=curT(e),t=e.tandas[i];B={ev:e,t:i,price:t.price,max:Math.min(8,t.cap-t.sold),qty:1,rs:null,...pf()};drawBuy();$('#dlg').showModal()}
+function openRs(code,oid){const x=S.tix.find(t=>t.id===code);B={ev:evOf(x.ev),t:x.t,price:oid?S.offers.find(o=>o.id===oid).price:x.ask,max:1,qty:1,rs:code,off:oid,...pf(),...(oid?bf(oid):{})};drawBuy();if(!$('#dlg').open)$('#dlg').showModal()}
+function setQ(d){sv();const n=B.qty+d;if(n>=1&&n<=B.max){B.qty=n;drawBuy()}}
+function pay(){
+ sv();const n=B.n.trim(),m=B.e.trim(),e=B.ev;
+ if(!n||!/^\S+@\S+\.\S+$/.test(m)){err('Completá tu nombre y un correo válido.');return}
+ const a=e.minAge?chkAge(e,B.d):'';if(a){err(a);return}
+ if(e.idReq&&!((usr()||{}).verified||B.vf)){err('Este evento pide verificar tu identidad antes de comprar.');return}
+ if(!B.rs&&(B.pm||'card')==='card'){const cn=(B.cn||'').replace(/\D/g,''),mm=(B.cx||'').split('/'),lu=d=>{let t=0,a=0;for(let i=d.length-1;i>=0;i--){let x=+d[i];if(a){x*=2;if(x>9)x-=9}t+=x;a^=1}return d.length>=13&&t%10===0},now=new Date(),ye=2000+ +mm[1],mo=+mm[0];if(!lu(cn)){err('Revisá el número de tarjeta.');return}if(!(mo>=1&&mo<=12)||!(ye>now.getFullYear()||(ye===now.getFullYear()&&mo>=now.getMonth()+1))){err('Revisá la fecha de vencimiento.');return}if(!/^\d{3,4}$/.test(B.cv||'')){err('Revisá el código de seguridad.');return}}
+ const c=calc(B.price,e,B.rs?'resale':'pri'),o={name:n,email:m,dob:B.d};
+ if(B.rs){const x=S.tix.find(t=>t.id===B.rs);x.owner=o;x.id=mk();B.out=[x];x.listed=false;delete x.ask;S.ledger.push({ev:e.id,k:'resale',total:c.total,fee:c.fee,net:c.net,cur:e.cur||'UYU',rate:rate(e.cur),ts:Date.now()})}
+ else{B.out=[];for(let i=0;i<B.qty;i++){const tk={id:mk(),ev:e.id,t:B.t,face:B.price,owner:o,listed:false,used:false,src:srcId(),ts:Date.now()};S.tix.push(tk);B.out.push(tk)}
+  e.tandas[B.t].sold+=B.qty;S.ledger.push({ev:e.id,k:'primary',total:c.total*B.qty,fee:c.fee*B.qty,net:c.net*B.qty,q:B.qty,src:srcId(),ts:Date.now(),t:B.t,cur:e.cur||'UYU',rate:rate(e.cur),pm:B.pm||'card'})}
+ if(B.rs)S.offers.forEach(o=>{if(o.tk===B.rs&&live(o))o.status=o.id===B.off?'paid':'closed'});try{if(!usr())localStorage.setItem('ep_guest',JSON.stringify({n,e:m,d:B.d}))}catch(_){}save();done(B.out,m);render();
+}
+function openList(id){
+ const e=evOf(id),l=S.tix.filter(x=>x.ev===id&&x.listed&&!x.used);
+ $('#dlg').innerHTML=`<div class="dlg"><h3>Reventa: ${esc(e.name)}</h3><p class="note">Entradas de otros asistentes, nunca por encima de su precio original. Cada una llega con QR nuevo a tu nombre.</p>
+ ${l.map(x=>`<div class="li"><span>${e.tandas[x.t].n} · ${money(calc(x.ask,e,'resale').total)}</span><button class="btn sm" onclick="openRs('${x.id}')">Comprar</button></div>`).join('')}
+ <button class="btn ghost" style="margin-top:14px" onclick="$('#dlg').close()">Cerrar</button></div>`;
+ $('#dlg').showModal();
+}
+
+// Generador de QR (byte, corrección M, versiones 1-3). Escrito para TAG; sin dependencias.
+const QR=(()=>{
+ const EXP=new Array(512),LOG=new Array(256);
+ {let x=1;for(let i=0;i<255;i++){EXP[i]=x;LOG[x]=i;x<<=1;if(x&256)x^=0x11d}for(let i=255;i<512;i++)EXP[i]=EXP[i-255]}
+ const mul=(a,b)=>a&&b?EXP[LOG[a]+LOG[b]]:0;
+ const V=[null,{n:21,d:16,e:10},{n:25,d:28,e:16,a:18},{n:29,d:44,e:26,a:22}];
+ function rs(data,ec){let g=[1];for(let i=0;i<ec;i++){const ng=new Array(g.length+1).fill(0);for(let j=0;j<g.length;j++){ng[j]^=g[j];ng[j+1]^=mul(g[j],EXP[i])}g=ng}
+  const res=new Array(ec).fill(0);for(const b of data){const f=b^res[0];res.shift();res.push(0);if(f)for(let i=0;i<ec;i++)res[i]^=mul(g[i+1],f)}return res}
+ function build(str){
+  const bytes=Array.from(new TextEncoder().encode(str));let v=0;
+  for(let i=1;i<=3;i++)if(bytes.length<=V[i].d-2){v=i;break}
+  if(!v)throw new Error('QR: texto demasiado largo');
+  const {n,d,e}=V[v],bits=[],put=(val,len)=>{for(let i=len-1;i>=0;i--)bits.push((val>>>i)&1)};
+  put(4,4);put(bytes.length,8);bytes.forEach(b=>put(b,8));
+  for(let i=0;i<4&&bits.length<d*8;i++)bits.push(0);while(bits.length%8)bits.push(0);
+  const cw=[];for(let i=0;i<bits.length;i+=8){let x=0;for(let j=0;j<8;j++)x=x<<1|bits[i+j];cw.push(x)}
+  for(let p=0;cw.length<d;p^=1)cw.push(p?0x11:0xec);
+  const all=cw.concat(rs(cw,e));
+  const M=Array.from({length:n},()=>new Array(n).fill(0)),F=Array.from({length:n},()=>new Array(n).fill(false));
+  const fm=(x,y,b)=>{M[y][x]=b?1:0;F[y][x]=true};
+  const finder=(cx,cy)=>{for(let dy=-1;dy<=7;dy++)for(let dx=-1;dx<=7;dx++){const x=cx+dx,y=cy+dy;if(x<0||y<0||x>=n||y>=n)continue;
+   const on=dx>=0&&dx<=6&&dy>=0&&dy<=6&&(dx===0||dx===6||dy===0||dy===6||(dx>=2&&dx<=4&&dy>=2&&dy<=4));fm(x,y,on)}};
+  finder(0,0);finder(n-7,0);finder(0,n-7);
+  for(let i=8;i<n-8;i++){fm(i,6,i%2===0);fm(6,i,i%2===0)}
+  if(V[v].a){const a=V[v].a;for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++)fm(a+dx,a+dy,Math.max(Math.abs(dx),Math.abs(dy))!==1)}
+  for(let i=0;i<9;i++){if(i!==6){F[8][i]=true;F[i][8]=true}}for(let i=0;i<8;i++){F[8][n-1-i]=true;F[n-1-i][8]=true}
+  fm(8,n-8,1);
+  const data=[];all.forEach(b=>{for(let j=7;j>=0;j--)data.push((b>>>j)&1)});
+  let k=0;
+  for(let right=n-1;right>=1;right-=2){if(right===6)right=5;
+   for(let vert=0;vert<n;vert++)for(let j=0;j<2;j++){const x=right-j,up=((right+1)&2)===0,y=up?n-1-vert:vert;
+    if(!F[y][x]&&k<data.length){M[y][x]=data[k++]}}}
+  const MASKS=[(x,y)=>(x+y)%2===0,(x,y)=>y%2===0,(x,y)=>x%3===0,(x,y)=>(x+y)%3===0,(x,y)=>(Math.floor(x/3)+Math.floor(y/2))%2===0,(x,y)=>x*y%2+x*y%3===0,(x,y)=>(x*y%2+x*y%3)%2===0,(x,y)=>((x+y)%2+x*y%3)%2===0];
+  const fmt=(T,mask)=>{const dd=mask;let rem=dd;for(let i=0;i<10;i++)rem=(rem<<1)^((rem>>>9)*0x537);const bits=(dd<<10|rem)^0x5412,gb=i=>(bits>>>i)&1;
+   for(let i=0;i<=5;i++)T.fm(8,i,gb(i));T.fm(8,7,gb(6));T.fm(8,8,gb(7));T.fm(7,8,gb(8));for(let i=9;i<15;i++)T.fm(14-i,8,gb(i));
+   for(let i=0;i<8;i++)T.fm(n-1-i,8,gb(i));for(let i=8;i<15;i++)T.fm(8,n-15+i,gb(i));T.fm(8,n-8,1)};
+  const pen=G=>{let p=0;
+   for(let y=0;y<n;y++)for(const get of [(i)=>G[y][i],(i)=>G[i][y]]){let run=1;for(let i=1;i<n;i++){if(get(i)===get(i-1))run++;else{if(run>=5)p+=3+run-5;run=1}}if(run>=5)p+=3+run-5;
+    for(let i=0;i+10<n;i++){let a=0;for(let j=0;j<11;j++)a=a<<1|get(i+j);if(a===0x5d0||a===0x05d)p+=40}}
+   for(let y=0;y<n-1;y++)for(let x=0;x<n-1;x++){const c=G[y][x];if(c===G[y][x+1]&&c===G[y+1][x]&&c===G[y+1][x+1])p+=3}
+   let dark=0;G.forEach(r=>r.forEach(c=>dark+=c));p+=(Math.ceil(Math.abs(dark*20-n*n*10)/(n*n))-1)*10;return p};
+  let best=null,bp=1e9;
+  for(let m=0;m<8;m++){const G=M.map(r=>r.slice());for(let y=0;y<n;y++)for(let x=0;x<n;x++)if(!F[y][x]&&MASKS[m](x,y))G[y][x]^=1;
+   fmt({fm:(x,y,b)=>{G[y][x]=b?1:0}},m);const s=pen(G);if(s<bp){bp=s;best=G}}
+  return best;
+ }
+ function svg(text,label){try{const G=build(text),n=G.length,m=4;let d='';
+  for(let y=0;y<n;y++)for(let x=0;x<n;x++)if(G[y][x])d+='M'+(x+m)+' '+(y+m)+'h1v1h-1z';
+  return '<svg viewBox="0 0 '+(n+2*m)+' '+(n+2*m)+'" role="img" aria-label="'+(label||'Código QR')+'" shape-rendering="crispEdges"><rect width="100%" height="100%" fill="#fff"/><path d="'+d+'" fill="#000"/></svg>'}catch(e){return ''}}
+ return {build,svg};
+})();
+
+
+function qr(code){return QR.svg(code,'Código QR '+code)}
+function vTickets(){
+ const mine=S.tix.filter(x=>S.me&&x.owner.email.toLowerCase()===S.me.toLowerCase()).reverse();
+ return `<h1>Mis entradas</h1><p class="lead">Mostrá el QR en la puerta. Si no podés ir, transferila desde acá.</p>
+ ${acct()}<p><button class="btn ghost sm" onclick="demoTix()">Cargar entradas de prueba (MVCC 7 y Rooftop)</button></p>`+
+ (mine.length?mine.map(x=>{const e=evOf(x.ev);return `<div class="tk">${qr(x.id)}<div><h3 style="margin:0">${esc(e.name)}</h3>
+ <div class="mute">${e.tandas[x.t].n} · ${e.date} ${e.time} hs · ${esc(e.place)} · a nombre de ${esc(x.owner.name)}</div>
+ <div style="margin:6px 0">${ageTag(e)}<span class="tag ${x.used||x.listed?'':'ok'}">${x.used?'Ya ingresó':x.listed?'En reventa por '+money(x.ask):'Válida'}</span><span class="tag">${x.id}</span></div>
+ ${x.used?'':`<button class="btn ghost sm" onclick="openTr('${x.id}')">Transferir</button> ${RESALE?(x.listed?`<button class="btn ghost sm" onclick="unlist('${x.id}')">Quitar de reventa</button>`:`<button class="btn ghost sm" onclick="openSell('${x.id}')">Revender</button>`):''}`}</div></div>`}).join(''):
+ `<div class="empty">No hay entradas para ese correo. Comprá una desde Eventos o ingresá el correo con el que compraste.</div>`);
+}
+function openTr(id){T=id;const x=S.tix.find(t=>t.id===id),e=evOf(x.ev);
+ $('#dlg').innerHTML=`<div class="dlg"><h3>Transferir entrada</h3><p class="note">Se emite un QR nuevo a nombre de quien la recibe y el tuyo deja de funcionar. Es gratis y mantiene su tanda original.</p>
+ <label for="tn">Nombre de quien la recibe</label><input id="tn"><label for="te">Correo</label><input id="te" type="email"><label for="td">Fecha de nacimiento${e.minAge?' (evento +'+e.minAge+')':''}</label><input id="td" type="date">
+ <div id="err" class="msg" style="color:var(--bad)"></div><div style="display:flex;gap:10px;margin-top:10px"><button class="btn ghost" onclick="$('#dlg').close()">Cancelar</button><button class="btn" style="flex:1" onclick="doTr()">Transferir</button></div></div>`;
+ $('#dlg').showModal()}
+function doTr(){
+ const x=S.tix.find(t=>t.id===T),e=evOf(x.ev),n=$('#tn').value.trim(),m=$('#te').value.trim(),d=$('#td').value;
+ if(!n||!/^\S+@\S+\.\S+$/.test(m)){err('Completá nombre y correo de quien la recibe.');return}
+ const a=chkAge(e,d);if(a){err(a.replace('podés comprar ni recibir','puede recibir'));return}
+ x.owner={name:n,email:m,dob:d};x.id=mk();x.listed=false;delete x.ask;save();$('#dlg').close();render();
+}
+function openSell(id){T=id;const x=S.tix.find(t=>t.id===id);
+ $('#dlg').innerHTML=`<div class="dlg"><h3>Revender entrada</h3><p class="note">Podés pedir hasta el precio original (${money(x.face)}), nunca más. La reventa respeta la tanda y no abre cupos nuevos.</p>
+ <label for="sp">Precio de venta ($)</label><input id="sp" type="number" min="0" max="${x.face}" value="${x.face}">
+ <div id="err" class="msg" style="color:var(--bad)"></div><div style="display:flex;gap:10px;margin-top:10px"><button class="btn ghost" onclick="$('#dlg').close()">Cancelar</button><button class="btn" style="flex:1" onclick="doSell()">Publicar</button></div></div>`;
+ $('#dlg').showModal()}
+function doSell(){const x=S.tix.find(t=>t.id===T),p=+$('#sp').value;
+ if(!(p>=0)||p>x.face){err('El precio no puede superar '+money(x.face)+'.');return}
+ x.listed=true;x.ask=p;save();$('#dlg').close();render()}
+function unlist(id){const x=S.tix.find(t=>t.id===id);x.listed=false;delete x.ask;save();render()}
+
+function vOrg(){
+ setC('UYU');const sum=(f,k)=>S.ledger.filter(l=>!k||l.k===k).reduce((a,l)=>a+l[f]*(l.rate||1),0);
+ return `<h1>Panel de organizadores</h1><p class="lead">Creá eventos con tandas, definí la comisión y las reglas de reventa.</p>
+ <div class="stats"><div class="stat"><span class="mute">Total cobrado</span><b>${money(sum('total'))}</b></div>
+ <div class="stat hl"><span class="mute">Comisión de TAG</span><b>${money(sum('fee'))}</b></div>
+ <div class="stat"><span class="mute">A liquidar (venta inicial)</span><b>${money(sum('net','primary'))}</b></div>
+ <div class="stat"><span class="mute">A liquidar (reventas)</span><b>${money(sum('net','resale'))}</b></div></div>
+ <h2>Reglas</h2><div class="panel f2">
+ <div><label for="fe">Comisión por entrada (%)</label><input id="fe" type="number" min="0" max="50" step="0.5" value="${S.fee}" onchange="S.fee=Math.max(0,Math.min(50,+this.value||0));save();render()"></div>
+ <div><label for="fp">Quién la paga</label><select id="fp" onchange="S.payer=this.value;save();render()"><option value="buyer" ${S.payer==='buyer'?'selected':''}>El comprador</option><option value="org" ${S.payer==='org'?'selected':''}>El vendedor</option></select></div>
+ <div><label for="fr">Reventa visible</label><select id="fr" onchange="S.rule=this.value;save();render()"><option value="soldout" ${S.rule==='soldout'?'selected':''}>Solo con todas las tandas agotadas</option><option value="always" ${S.rule==='always'?'selected':''}>Siempre</option></select></div></div>
+ <h2>Nuevo evento</h2><div class="panel"><div class="f2">
+ <div><label for="en">Nombre</label><input id="en"></div><div><label for="el">Lugar</label><input id="el"></div>
+ <div><label for="ed">Fecha</label><input id="ed" type="date"></div>
+ <div><label for="ea">Edad mínima</label><select id="ea"><option value="0">Todo público</option><option value="16">+16</option><option value="18">+18</option><option value="21">+21</option></select></div></div>
+ <label for="et">Tandas, una por línea: nombre, precio, cantidad</label><textarea id="et" rows="3">Tanda 1, 800, 100
+Tanda 2, 1000, 100
+Tanda 3, 1200, 100</textarea>
+ <button class="btn" style="margin-top:14px" onclick="addEv()">Publicar evento</button><div id="em" class="msg" style="color:var(--bad)"></div></div>
+ <h2>Control de acceso</h2><div class="panel"><label for="cc">Código de la entrada</label>
+ <div style="display:flex;gap:10px"><input id="cc" placeholder="EP-XXXXXX"><button class="btn" onclick="chk()">Validar</button></div><div id="cm" class="msg"></div></div>
+ <h2>Ventas por evento</h2><div class="panel scroll"><table><thead><tr><th>Evento</th><th class="n">Vendidas</th><th class="n">Cobrado</th><th class="n">Comisión</th><th class="n">Reventas</th></tr></thead><tbody>
+ ${S.events.map(e=>{setC(e);const l=S.ledger.filter(x=>x.ev===e.id),s=e.tandas.reduce((a,t)=>a+t.sold,0),c=e.tandas.reduce((a,t)=>a+t.cap,0);
+ return `<tr><td>${esc(e.name)}</td><td class="n">${s}/${c}</td><td class="n">${money(l.reduce((a,x)=>a+x.total,0))}</td><td class="n">${money(l.reduce((a,x)=>a+x.fee,0))}</td><td class="n">${l.filter(x=>x.k==='resale').length}</td></tr>`}).join('')}
+ </tbody></table></div><p class="note">Las cifras cuentan solo las compras hechas en esta demo.</p>`;
+}
+function addEv(){
+ const g=i=>$('#'+i).value.trim();
+ const ts=g('et').split('\n').map(l=>l.split(',').map(s=>s.trim())).filter(a=>a.length===3).map(a=>({n:a[0],price:+a[1],cap:+a[2],sold:0}));
+ if(!g('en')||!g('el')||!g('ed')||!ts.length||ts.some(t=>!(t.price>=0)||!(t.cap>0))){$('#em').textContent='Completá nombre, lugar, fecha y al menos una tanda con el formato indicado.';return}
+ S.events.push({id:Date.now(),name:g('en'),place:g('el'),date:g('ed'),minAge:+g('ea'),tandas:ts});save();view='events';render();
+}
+function chk(){
+ const v=$('#cc').value.trim().toUpperCase(),x=S.tix.find(t=>t.id===v),m=$('#cm');
+ if(!x){m.style.color='var(--bad)';m.textContent='Código no encontrado o reemplazado por una transferencia.';return}
+ if(x.used){m.style.color='var(--bad)';m.textContent='Esta entrada ya fue usada.';return}
+ if(x.listed){m.style.color='var(--bad)';m.textContent='Esta entrada está en reventa y no es válida hasta que se retire.';return}
+ const e=evOf(x.ev);x.used=true;save();m.style.color='var(--ok)';
+ m.textContent='Válida. A nombre de '+x.owner.name+'.'+(e.minAge?' Verificá cédula: evento +'+e.minAge+'.':'');
+}
+const apOpt=v=>[['both','Venta original y reventa'],['pri','Solo venta original'],['res','Solo reventa']].map(o=>`<option value="${o[0]}" ${o[0]===v?'selected':''}>${o[1]}</option>`).join('');
+function upd(id,k,v){const e=evOf(id);if(k==='pub')e.pub=v;else e.fee={...F(e),[k]:v};save();render()}
+function vOrg(){
+ setC('UYU');const sum=(f,k)=>S.ledger.filter(l=>!k||l.k===k).reduce((a,l)=>a+l[f]*(l.rate||1),0),base=location.href.split('#')[0];
+ return `<h1>Admin</h1><p class="lead">Vos creás cada evento y su link, con sus propios ajustes. El organizador solo recibe el link para compartir.</p>
+ <div class="stats"><div class="stat"><span class="mute">Total cobrado</span><b>${money(sum('total'))}</b></div>
+ <div class="stat hl"><span class="mute">Comisión de TAG</span><b>${money(sum('fee'))}</b></div>
+ <div class="stat"><span class="mute">A liquidar (venta original)</span><b>${money(sum('net','primary'))}</b></div>
+ <div class="stat"><span class="mute">A liquidar (reventas)</span><b>${money(sum('net','resale'))}</b></div></div>
+ <h2>Cotización del día</h2><div class="panel"><p class="note">Pesos uruguayos por 1 unidad de cada moneda. La comisión mínima ($35) se convierte con esta cotización: cada venta guarda la cotización que tenía en ese momento. En producción se actualiza sola desde una fuente oficial.</p><div class="f2">${Object.keys(CURS).filter(k=>k!=='UYU').map(k=>`<div><label for="rt-${k}">1 ${k} =</label><input id="rt-${k}" data-rt="${k}" type="number" step="any" min="0" value="${rate(k)}"></div>`).join('')}</div><button class="btn" style="margin-top:10px" onclick="ratesSave()">Guardar cotización</button><div id="rtm" class="msg"></div></div>
+ <h2>Eventos, links y comisión</h2>
+ ${S.events.map(e=>{const c=F(e);return `<div class="panel" style="margin-bottom:14px"><b>${esc(e.name)}</b> ${ageTag(e)} <button class="btn sm" style="float:right" onclick="editEv(${e.id})">Editar evento y tandas</button> <button class="btn ghost sm" style="float:right;margin-right:8px" onclick="prevTk(${e.id})">Ver entrada de ejemplo</button> <button class="btn sm" style="float:right;margin-right:8px" onclick="openStats(${e.id})">Estadísticas</button>
+ <label>Link general del evento (muestra solo las tandas públicas)</label><input readonly value="${base}#l-${e.id}-${e.token}" onclick="this.select()">
+ <div class="f2"><div><label>Comisión</label><select onchange="upd(${e.id},'on',this.value==='1')"><option value="1" ${c.on?'selected':''}>Se cobra</option><option value="0" ${c.on?'':'selected'}>Sin comisión</option></select></div>
+ <div><label>Porcentaje (%)</label><input type="number" min="0" step="0.5" value="${c.pct}" onchange="upd(${e.id},'pct',+this.value||0)"></div>
+ <div><label>Mínimo por entrada ($)</label><input type="number" min="0" value="${c.min}" onchange="upd(${e.id},'min',+this.value||0)"></div>
+ <div><label>La paga</label><select onchange="upd(${e.id},'payer',this.value)"><option value="buyer" ${c.payer==='buyer'?'selected':''}>El comprador</option><option value="org" ${c.payer==='org'?'selected':''}>El vendedor</option></select></div>
+ <div><label>Se cobra en</label><select onchange="upd(${e.id},'ap',this.value)">${apOpt(c.ap)}</select></div>
+ <div><label>Cartelera</label><select onchange="upd(${e.id},'pub',this.value==='1')"><option value="1" ${e.pub!==false?'selected':''}>Pública</option><option value="0" ${e.pub===false?'selected':''}>Solo por link</option></select></div></div></div>`}).join('')}
+ <h2>Reventa</h2><div class="panel"><label for="fr">Cuándo se muestra</label><select id="fr" onchange="S.rule=this.value;save();render()"><option value="soldout" ${S.rule==='soldout'?'selected':''}>Solo con todas las tandas agotadas</option><option value="always" ${S.rule==='always'?'selected':''}>Siempre</option></select></div>
+ <h2>Nuevo evento</h2><div class="panel"><div class="f2">
+ <div><label for="en">Nombre</label><input id="en"></div><div><label for="el">Lugar</label><input id="el"></div>
+ <div><label for="ed">Fecha</label><input id="ed" type="date"></div>
+ <div><label for="ea">Edad mínima</label><select id="ea"><option value="0">Todo público</option><option value="16">+16</option><option value="18">+18</option><option value="21">+21</option></select></div></div>
+ <div class="f2"><div><label for="eh">Hora de inicio</label><input id="eh" type="time" value="22:00"></div><div><label for="ex">Dirección</label><input id="ex"></div></div>
+ <label for="et">Tandas, una por línea: nombre, precio, cantidad, fecha de inicio (opcional)</label><textarea id="et" rows="3">Tanda 1, 800, 100
+Tanda 2, 1000, 100, 2026-12-01
+Tanda 3, 1200, 100</textarea>
+ <p class="note">Cada tanda se activa cuando se agota la anterior o cuando llega su fecha de inicio, lo que ocurra primero.</p>
+ <button class="btn" style="margin-top:10px" onclick="addEv()">Crear evento y link</button><div id="em" class="msg" style="color:var(--bad)"></div></div>
+ <h2>Control de acceso</h2><div class="panel"><label for="cc">Código de la entrada</label>
+ <div style="display:flex;gap:10px"><input id="cc" placeholder="EP-XXXXXX"><button class="btn" onclick="chk()">Validar</button></div><div id="cm" class="msg"></div></div>
+ <h2>Ventas por evento</h2><div class="panel scroll"><table><thead><tr><th>Evento</th><th class="n">Vendidas</th><th class="n">Cobrado</th><th class="n">Comisión</th><th class="n">Reventas</th></tr></thead><tbody>
+ ${S.events.map(e=>{setC(e);const l=S.ledger.filter(x=>x.ev===e.id),s=e.tandas.reduce((a,t)=>a+t.sold,0),c=e.tandas.reduce((a,t)=>a+t.cap,0);
+ return `<tr><td>${esc(e.name)}</td><td class="n">${s}/${c}</td><td class="n">${money(l.reduce((a,x)=>a+x.total,0))}</td><td class="n">${money(l.reduce((a,x)=>a+x.fee,0))}</td><td class="n">${l.filter(x=>x.k==='resale').length}</td></tr>`}).join('')}
+ </tbody></table></div><p class="note">Las cifras cuentan solo las compras hechas en esta demo. En esta versión el panel no tiene contraseña.</p>`;
+}
+function addEv(){
+ const g=i=>$('#'+i).value.trim();
+ const ts=g('et').split('\n').map(l=>l.split(',').map(s=>s.trim())).filter(a=>a.length>=3).map(a=>({n:a[0],price:+a[1],cap:+a[2],sold:0,from:a[3]||''}));
+ if(!g('en')||!g('el')||!g('ed')||!ts.length||ts.some(t=>!(t.price>=0)||!(t.cap>0))){$('#em').textContent='Completá nombre, lugar, fecha y al menos una tanda con el formato indicado.';return}
+ S.events.push({id:Date.now(),name:g('en'),place:g('el'),date:g('ed'),minAge:+g('ea'),time:g('eh')||'22:00',addr:g('ex'),tandas:ts});save();render();
+}
+const MN=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+let CD='',CM=(S.events.map(e=>e.date).sort()[0]||today()).slice(0,7);
+const DW=['dom','lun','mar','mié','jue','vie','sáb'];
+let CSL=-1;
+function cal(){
+ const live=S.events.filter(e=>e.pub!==false&&isLive(e)&&e.date>=today()),has=k=>live.some(e=>e.date===k);
+ const a=new Date(today()+'T12:00'),last=live.reduce((m,e)=>e.date>m?e.date:m,today()),end=new Date(last+'T12:00'),lim=new Date(a);
+ end.setDate(end.getDate()+2);lim.setDate(lim.getDate()+150);if(end>lim)end.setTime(lim.getTime());
+ let c=`<button class="cd2 all${CD?'':' sel'}" onclick="pickD('')" aria-label="Ver todos los eventos"><b>Todos</b><small>${live.length} ${live.length===1?'evento':'eventos'}</small></button>`;
+ for(const d=new Date(a);d<=end;d.setDate(d.getDate()+1)){const k=ld(d.getTime());
+  c+=`<button class="cd2${has(k)?' has':''}${CD===k?' sel':''}" onclick="pickD('${k}')" aria-label="${d.getDate()} de ${MN[d.getMonth()]}${has(k)?', hay eventos':''}"><small>${DW[d.getDay()]}</small><b>${d.getDate()}</b><small>${MES[d.getMonth()]}</small></button>`}
+ const n=CD?S.events.filter(e=>e.date===CD&&e.pub!==false&&isLive(e)).length:0;
+ return `<div class="carw"><button class="carb" onclick="carMv(-1)" aria-label="Días anteriores">‹</button><div class="car" id="car" onscroll="CSL=this.scrollLeft">${c}</div><button class="carb" onclick="carMv(1)" aria-label="Días siguientes">›</button></div>${CD?`<p class="note" style="margin:0 0 14px">${fu(CD)}: ${n?n+(n===1?' evento':' eventos'):'no hay eventos este día'}. <button class="btn ghost sm" onclick="pickD('')">Ver todos</button></p>`:''}`;
+}
+function carMv(d){const c=$('#car');if(c)c.scrollBy({left:d*280,behavior:'smooth'})}
+function pickD(k){CD=CD===k?'':k;render()}
+function mv(n){const [y,m]=CM.split('-').map(Number),d=new Date(y,m-1+n,1);CM=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');render()}
+const usr=()=>S.users.find(u=>u.email.toLowerCase()===(S.me||'').toLowerCase());
+const pf=()=>{const u=usr();if(u)return{n:u.name,e:u.email,d:u.dob};try{const g=JSON.parse(localStorage.getItem('ep_guest')||'null');if(g)return{n:g.n,e:g.e,d:g.d}}catch(_){}return{}};
+function acct(){const u=usr();if(u)return `<p>Hola, <b>${esc(u.name)}</b> · <button class="btn ghost sm" onclick="logout()">Salir</button></p>`;
+ return `<div class="panel" style="max-width:420px;margin-bottom:18px"><b>Ingresá o creá tu cuenta</b><label for="an">Nombre (para crear cuenta)</label><input id="an" autocomplete="name"><label for="ae">Correo</label><input id="ae" type="email" autocomplete="email"><label for="ad">Fecha de nacimiento (para crear cuenta)</label><input id="ad" type="date"><div id="am" class="msg" style="color:var(--bad)"></div><div style="display:flex;gap:10px;margin-top:10px"><button class="btn" onclick="login()">Ingresar</button><button class="btn ghost" onclick="signup()">Crear cuenta</button></div><p class="note">Demo sin contraseña. En producción: clave, código por correo o Google.</p></div>`}
+function login(){const m=$('#ae').value.trim().toLowerCase(),u=S.users.find(x=>x.email.toLowerCase()===m);if(!u){$('#am').textContent='No existe una cuenta con ese correo. Creala con el botón de al lado.';return}S.me=u.email;save();render();afterAuth()}
+function signup(){const n=$('#an').value.trim(),m=$('#ae').value.trim(),d=$('#ad').value;
+ if(!n||!/^\S+@\S+\.\S+$/.test(m)||!d||isNaN(new Date(d))){$('#am').textContent='Para crear la cuenta completá nombre, correo y fecha de nacimiento.';return}
+ if(S.users.some(u=>u.email.toLowerCase()===m.toLowerCase())){$('#am').textContent='Ese correo ya tiene cuenta. Tocá Ingresar.';return}
+ S.users.push({name:n,email:m,dob:d});S.me=m;save();render();afterAuth()}
+function logout(){S.me='';save();render()}
+let AFTER=null;
+function gate(fn){AFTER=fn;$('#dlg').innerHTML='<div class="dlg"><h3>Creá tu cuenta para comprar</h3><p class="note">Tus entradas quedan guardadas en tu cuenta.</p>'+acct()+'<button class="btn ghost" style="margin-top:10px" onclick="AFTER=null;$(\'#dlg\').close()">Cancelar</button></div>';if(!$('#dlg').open)$('#dlg').showModal()}
+function afterAuth(){const f=AFTER;AFTER=null;if(f){$('#dlg').close();f()}}
+function verifyId(){sv();const u=usr();if(u){u.verified=true;save()}else B.vf=true;drawBuy()}
+function vEvent(e){setC(e);if(!isLive(e)&&!viaLink)return `<p><a href="#" onclick="location.hash='';return false">← Todos los eventos</a></p><h1 style="max-width:none">${esc(e.name)}</h1><p class="lead">${e.pub===false?'Este evento es privado: solo se accede con su link.':'Este evento se publica el '+fu(e.pubFrom)+'.'}</p>`;
+ const [y,m,d]=e.date.split('-'),i=curT(e),left=e.tandas.reduce((a,t)=>a+(tvis(t)?t.cap-t.sold:0),0),ls=S.tix.filter(x=>x.ev===e.id&&x.listed&&!x.used).length;
+ const st=(t,k)=>t.sold>=t.cap?'Agotada':i<0?'Cerrada':k===i?'En venta':k<i?'Cerrada':'Próxima';
+ return `<p style="margin-bottom:10px"><a href="#" onclick="location.hash='';return false">← Todos los eventos</a></p>${cover(e,'big')}<h1 style="max-width:none;margin-top:18px">${esc(e.name)}</h1>
+ <div class="info"><div><small>Fecha y hora</small><b>${d} de ${MN[+m-1]} de ${y}</b><span class="mute">${e.time} hs</span></div><div><small>Lugar</small><b>${esc(e.place)}</b><span class="mute">${e.addr?esc(e.addr)+' · ':''}<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.place+' '+(e.addr||''))}" target="_blank" rel="noopener">Cómo llegar</a></span></div></div>
+ <div>${ageTag(e)}${e.idReq?'<span class="tag">Pide verificación de identidad</span>':''}</div>
+ ${e.desc?`<h2>Sobre el evento</h2><p style="white-space:pre-line;max-width:60ch">${esc(e.desc)}</p>`:''}<h2>Entradas</h2><div class="panel">${e.tandas.map((t,k)=>!tvis(t)?'':`<div class="li"><span><b>${esc(t.n)}</b>${t.until?' · hasta el '+fu(t.until):''}</span><span>${money(t.price)} <span class="tag ${st(t,k)==='En venta'?'ok':''}">${st(t,k)}</span>${tv(t)==='link'&&!(t.pubFrom&&Date.now()>=new Date(t.pubFrom).getTime())?'<span class="tag">Solo por link</span>':''}</span></div>`).join('')}
+ ${i>=0&&left<=15?`<p class="msg">¡Últimas ${left} entradas!</p>`:''}
+ </div><div class="buybar">${i>=0?`<span><span class="mute">${e.tandas[i].n}</span><br><b style="font-size:20px">${money(e.tandas[i].price)}</b></span><button class="btn" onclick="openBuy(${e.id})">Comprar</button>`:`<b>${left<1?'Agotado':'Venta cerrada'}</b>`}</div>`;
+}
+const CUR_OPTS=Object.entries(CURS).map(([k,q])=>`<option value="${k}">${k} · ${q.n}</option>`).join('');
+const NEWFORM=`<h2>Nuevo evento</h2><div class="panel"><div class="f2">
+<div><label for="en">Nombre</label><input id="en"></div><div><label for="el">Lugar</label><input id="el"></div><div><label for="ex">Dirección</label><input id="ex"></div>
+<div><label for="ed">Fecha</label><input id="ed" type="date"></div><div><label for="eh">Hora de inicio</label><input id="eh" type="time" value="22:00"></div>
+<div><label for="ea">Edad mínima</label><select id="ea"><option value="0">Todo público</option><option value="16">+16</option><option value="18">+18</option><option value="21">+21</option></select></div>
+<div><label for="ei">Escaneo de cédula</label><select id="ei"><option value="0">No lo pide</option><option value="1">Sí, verificar identidad</option></select></div>
+<div><label for="ec">Comisión</label><select id="ec"><option value="1">Se cobra</option><option value="0">Sin comisión</option></select></div>
+<div><label for="ep">Porcentaje (%)</label><input id="ep" type="number" value="12" min="0" step="0.5"></div><div><label for="em2">Mínimo por entrada ($)</label><input id="em2" type="number" value="35" min="0"></div>
+<div style="grid-column:1/-1"><label for="ef">Foto o flyer del evento</label><input id="ef" type="file" accept="image/*" onchange="nfImg(this)"><div id="efp" class="cover" hidden style="width:160px;margin-top:8px;border-radius:10px"></div></div>
+<div><label for="ecur">Moneda de los precios</label><select id="ecur">${CUR_OPTS}</select></div>
+<div><label for="ev">Cartelera</label><select id="ev"><option value="1">Pública</option><option value="0">Solo por link</option></select></div></div>
+<label for="et">Tandas, una por línea: nombre, precio, cantidad, hasta (fecha, opcional)</label><textarea id="et" rows="4">Tanda 1, 800, 100, 2026-12-01
+Tanda 2, 1000, 100, 2026-12-15
+Tanda 3, 1200, 100</textarea>
+<p class="note">Cada tanda vende hasta su fecha o hasta agotarse, lo que pase primero, y después pasa a la siguiente. Las entradas se pueden comprar hasta el día del evento.</p>
+<button class="btn" style="margin-top:10px" onclick="addEv()">Crear evento y link</button><div id="em" class="msg" style="color:var(--bad)"></div></div>`;
+const CA=`<h2>Control de acceso (puerta)</h2><p class="mute">Cuando alguien llega al evento, el portero escanea su QR o escribe el código de la entrada acá. El sistema dice si es válida, si ya se usó o si fue reemplazada por una transferencia.</p>`;
+function vOrgX(){return vOrg().replace(/<h2>Reventa<\/h2>[\s\S]*?<h2>Control de acceso<\/h2>/,()=>NEWFORM+CA)}
+function addEv(){
+ const g=i=>$('#'+i).value.trim();
+ const ts=g('et').split('\n').map(l=>l.split(',').map(s=>s.trim())).filter(a=>a.length>=3).map(a=>({n:a[0],price:+a[1],cap:+a[2],sold:0,until:a[3]||''}));
+ if(!g('en')||!g('el')||!g('ed')||!ts.length||ts.some(t=>!(t.price>=0)||!(t.cap>0))){$('#em').textContent='Completá nombre, lugar, fecha y al menos una tanda con el formato indicado.';return}
+ S.events.push({id:Date.now(),name:g('en'),place:g('el'),addr:g('ex'),date:g('ed'),time:g('eh')||'22:00',minAge:+g('ea'),idReq:g('ei')==='1',pub:g('ev')==='1',fee:{on:g('ec')==='1',pct:+g('ep')||0,min:+g('em2')||0,payer:'buyer',ap:'both'},img:NFI,cur:g('ecur')||'UYU',tandas:ts});NFI='';
+ save();render();
+}
+function done(l,m){const e=B.ev;S.me=m;save();
+ $('#dlg').innerHTML=`<div class="dlg"><h3>¡Compra lista!</h3><p class="note">Enviamos ${l.length>1?'tus entradas':'tu entrada'} a <b>${esc(m)}</b> (en la demo el envío es simulado).</p>${l.map(x=>`<div class="tk">${qr(x.id)}<div><b>${esc(e.name)}</b><div class="mute">${x.id} · ${e.date} ${e.time} hs</div></div></div>`).join('')}${usr()?'':'<p class="note">Recomendado: creá una cuenta con este correo y vas a ver tus entradas siempre en Mis entradas.</p>'}<div style="display:flex;gap:10px"><button class="btn ghost" onclick="$('#dlg').close()">Cerrar</button><button class="btn" style="flex:1" onclick="$('#dlg').close();view='tickets';render()">Ver mis entradas</button></div></div>`}
+let RF=0;
+function vResale(){
+ const l=S.tix.filter(x=>x.listed&&!x.used&&evOf(x.ev)&&today()<=evOf(x.ev).date&&(!RF||x.ev===RF)).sort((a,b)=>evOf(a.ev).date.localeCompare(evOf(b.ev).date));
+ const evs=S.events.filter(e=>S.tix.some(x=>x.ev===e.id&&x.listed&&!x.used));
+ return `<h1>Reventa</h1><p class="lead">Entradas de otros asistentes, nunca por encima de su precio original. Al comprar, la entrada pasa a tu nombre con un QR nuevo.</p>
+ <label for="rf">Evento</label><select id="rf" style="max-width:340px;margin-bottom:18px" onchange="RF=+this.value;render()"><option value="0">Todos los eventos</option>${evs.map(e=>`<option value="${e.id}" ${RF===e.id?'selected':''}>${esc(e.name)}</option>`).join('')}</select>
+ ${l.length?`<div class="grid">${l.map(x=>{const e=evOf(x.ev),p=e.date.split('-'),own=S.me&&x.owner.email.toLowerCase()===S.me.toLowerCase();return `<article class="ev"><div class="stub"><b>${p[2]}</b><span>${MES[+p[1]-1]}</span></div><div class="evb"><h3>${esc(e.name)}</h3><span class="mute">${esc(e.place)} · ${e.time} hs</span><div>${ageTag(e)}<span class="tag">${esc(e.tandas[x.t].n)}</span></div><div class="row"><b>${money(calc(x.ask,e,'resale').total)}</b>${own?'<span class="mute">Es tu entrada</span>':`<span><button class="btn ghost sm" onclick="openOffer('${x.id}')">Ofertar</button> <button class="btn" onclick="openRs('${x.id}')">Comprar</button></span>`}</div></div></article>`}).join('')}</div>`:'<div class="empty">Todavía no hay entradas en reventa. Si no podés ir a un evento, publicá la tuya desde Mis entradas.</div>'}`;
+}
+const OS={open:'En negociación',accepted:'Aceptada, falta el pago',rejected:'Rechazada',expired:'Vencida',paid:'Pagada',closed:'Cerrada'};
+const fx=t=>new Date(t).toLocaleString('es-UY',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
+const tkOf=o=>S.tix.find(t=>t.id===o.tk);
+const sel=o=>{const t=tkOf(o);return t?t.owner.email.toLowerCase():''};
+const live=o=>o.status==='open'||o.status==='accepted';
+function expO(){let c=0;S.events.forEach(e=>{if(!e.token){e.token=Math.random().toString(36).slice(2,10);c=1}});if(c)save();S.offers.forEach(o=>{if(live(o)){const t=tkOf(o);if(!t||!t.listed)o.status='closed';else if(Date.now()>o.exp)o.status='expired'}})}
+function pend(){const m=(S.me||'').toLowerCase();return m?S.offers.filter(o=>live(o)&&((o.turn==='seller'&&sel(o)===m)||(o.turn==='buyer'&&o.buyer.email.toLowerCase()===m))).length:0}
+function openOffer(code){
+ if(!usr()){gate(()=>openOffer(code));return}
+ const x=S.tix.find(t=>t.id===code),e=evOf(x.ev);
+ $('#dlg').innerHTML=`<div class="dlg"><h3>Hacer una oferta</h3><div class="mute">${esc(e.name)} · ${esc(e.tandas[x.t].n)}</div><p class="note">El vendedor pide ${money(x.ask)} y tu oferta no puede superarlo. Tiene 24 horas para aceptar, rechazar o contraofertar. Si acuerdan, pagás el precio acordado acá y la entrada pasa a tu nombre con un QR nuevo.</p><label for="op">Tu oferta ($)</label><input id="op" type="number" min="1" max="${x.ask}" value="${Math.round(x.ask*.9)}"><div id="err" class="msg" style="color:var(--bad)"></div><div style="display:flex;gap:10px;margin-top:10px"><button class="btn ghost" onclick="$('#dlg').close()">Cancelar</button><button class="btn" style="flex:1" onclick="sendOffer('${code}')">Enviar oferta</button></div></div>`;
+ if(!$('#dlg').open)$('#dlg').showModal()}
+function sendOffer(code){const x=S.tix.find(t=>t.id===code),e=evOf(x.ev),u=usr(),p=+$('#op').value;
+ if(x.owner.email.toLowerCase()===u.email.toLowerCase()){err('Es tu propia entrada.');return}
+ const a=chkAge(e,u.dob);if(a){err(a);return}
+ if(!(p>0)||p>x.ask){err('La oferta debe ser mayor a 0 y no superar '+money(x.ask)+'.');return}
+ if(S.offers.some(o=>o.tk===code&&live(o)&&o.buyer.email===u.email)){err('Ya tenés una oferta abierta por esta entrada.');return}
+ S.offers.push({id:mk(),tk:code,ev:x.ev,buyer:{name:u.name,email:u.email,dob:u.dob},price:p,turn:'seller',status:'open',exp:Date.now()+864e5});save();$('#dlg').close();view='tickets';render()}
+function offAct(id,a){const o=S.offers.find(x=>x.id===id),byBuyer=o.turn==='buyer';
+ if(a==='reject')o.status='rejected';
+ if(a==='accept'){o.status='accepted';o.turn='buyer';o.exp=Date.now()+864e5;if(byBuyer){save();render();openRs(o.tk,o.id);return}}
+ save();render()}
+function openCtr(id){const o=S.offers.find(x=>x.id===id),x=tkOf(o);
+ $('#dlg').innerHTML=`<div class="dlg"><h3>Contraoferta</h3><p class="note">Precio actual: ${money(o.price)}. Máximo ${money(x.ask)}. La otra parte tiene 24 horas para responder.</p><label for="cp">Tu precio ($)</label><input id="cp" type="number" min="1" max="${x.ask}" value="${o.price}"><div id="err" class="msg" style="color:var(--bad)"></div><div style="display:flex;gap:10px;margin-top:10px"><button class="btn ghost" onclick="$('#dlg').close()">Cancelar</button><button class="btn" style="flex:1" onclick="doCtr('${id}')">Enviar</button></div></div>`;$('#dlg').showModal()}
+function doCtr(id){const o=S.offers.find(x=>x.id===id),x=tkOf(o),p=+$('#cp').value;if(!(p>0)||p>x.ask){err('El precio debe estar entre 1 y '+money(x.ask)+'.');return}
+ o.price=p;o.turn=o.turn==='seller'?'buyer':'seller';o.exp=Date.now()+864e5;save();$('#dlg').close();render()}
+function offRow(o,asSeller){const e=evOf(o.ev),mine=asSeller?o.turn==='seller':o.turn==='buyer';let b='';
+ if(live(o)){
+  if(o.status==='accepted')b=asSeller?'<span class="mute">Esperando el pago del comprador</span>':`<button class="btn sm" onclick="openRs('${o.tk}','${o.id}')">Pagar ${money(o.price)}</button> <button class="btn ghost sm" onclick="offAct('${o.id}','reject')">Cancelar</button>`;
+  else if(mine)b=`<button class="btn sm" onclick="offAct('${o.id}','accept')">Aceptar ${money(o.price)}</button> <button class="btn ghost sm" onclick="openCtr('${o.id}')">Contraofertar</button> <button class="btn ghost sm" onclick="offAct('${o.id}','reject')">Rechazar</button>`;
+  else b='<span class="mute">Esperando respuesta de la otra parte</span>'}
+ return `<div class="li" style="align-items:flex-start;flex-wrap:wrap"><div><b>${e?esc(e.name):'Entrada'}</b> · ${money(o.price)}<div class="mute">${asSeller?'Comprador: '+esc(o.buyer.name):'Oferta enviada'} · ${OS[o.status]}${live(o)?' · responder antes de '+fx(o.exp):''}</div></div><div>${b}</div></div>`}
+function offHtml(){const m=(S.me||'').toLowerCase();if(!m)return '';
+ const rec=S.offers.filter(o=>sel(o)===m),sent=S.offers.filter(o=>o.buyer.email.toLowerCase()===m);
+ return `<h2>Ofertas recibidas</h2><div class="panel">${rec.length?rec.map(o=>offRow(o,true)).join(''):'<span class="mute">Todavía no recibiste ofertas por tus entradas en reventa.</span>'}</div><h2>Mis ofertas</h2><div class="panel">${sent.length?sent.map(o=>offRow(o,false)).join(''):'<span class="mute">Todavía no hiciste ofertas. Podés hacerlas desde la pestaña Reventa.</span>'}</div>`}
+function demoTix(){let u=usr();if(!u){u=S.users.find(x=>x.email==='demo@easypass.test');if(!u){u={name:'Usuario demo',email:'demo@easypass.test',dob:'1995-05-05'};S.users.push(u)}S.me=u.email}
+ const o={name:u.name,email:u.email,dob:u.dob};
+ S.events.filter(e=>e.mv7||e.id===2).forEach(e=>{const i=Math.max(0,curT(e));S.tix.push({id:mk(),ev:e.id,t:i,face:e.tandas[i].price,owner:o,listed:false,used:false})});
+ save();render()}
+let EV=null;
+function editEv(id){const e=evOf(id);EV={id,t:JSON.parse(JSON.stringify(e.tandas)),L:JSON.parse(JSON.stringify(e.links||[])),admin:view==='org',del:false};edDraw()}
+function edDraw(){const e=evOf(EV.id),v=EV.f||(EV.f={n:e.name,l:e.place,x:e.addr||'',d:e.date,h:e.time,a:e.minAge,i:e.idReq?1:0,p:e.pub===false?0:1,pf:e.pubFrom||'',o:e.owner||'',dsc:e.desc||'',gl:e.goal||'',img:e.img||'',cu:e.cur||'UYU'});
+ $('#dlg').innerHTML=`<div class="dlg"><h3>Editar evento</h3><div class="f2">
+ <div><label for="x1">Nombre</label><input id="x1" value="${esc(v.n)}"></div><div><label for="x2">Lugar</label><input id="x2" value="${esc(v.l)}"></div><div><label for="x3">Dirección</label><input id="x3" value="${esc(v.x)}"></div>
+ <div><label for="x4">Fecha</label><input id="x4" type="date" value="${v.d}"></div><div><label for="x5">Hora</label><input id="x5" type="time" value="${v.h}"></div>
+ <div><label for="x6">Edad mínima</label><select id="x6">${[0,16,18,21].map(n=>`<option value="${n}" ${+v.a===n?'selected':''}>${n?'+'+n:'Todo público'}</option>`).join('')}</select></div>
+ <div><label for="x7">Escaneo de cédula</label><select id="x7"><option value="0">No lo pide</option><option value="1" ${v.i?'selected':''}>Sí</option></select></div>
+ <div><label for="x8">Visibilidad del evento</label><select id="x8"><option value="1">Pública</option><option value="0" ${v.p?'':'selected'}>Solo por link (siempre)</option></select></div>
+ <div><label for="x9">Solo por link hasta (después entra a la cartelera pública)</label><input id="x9" type="datetime-local" value="${v.pf}"></div><div><label for="x14">Moneda de los precios</label><select id="x14" ${EV.t.some(t=>t.sold)?'disabled':''}>${Object.entries(CURS).map(([k,v])=>`<option value="${k}" ${EV.f.cu===k?'selected':''}>${k} · ${v.n}</option>`).join('')}</select>${EV.t.some(t=>t.sold)?'<p class="note">No se puede cambiar: ya hay entradas vendidas.</p>':''}</div><div><label for="x12">Meta de ventas (entradas)</label><input id="x12" type="number" min="0" placeholder="Ej: 500" value="${v.gl||''}"></div></div>
+ <label for="x13">Foto o flyer del evento</label><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">${v.img?`<div class="cover" style="width:120px;border-radius:10px;background-image:url('${v.img}')"></div>`:''}<input id="x13" type="file" accept="image/*" onchange="evImg(this)" style="flex:1;min-width:180px">${v.img?`<button type="button" class="btn ghost sm" onclick="edRead();EV.f.img='';edDraw()">Quitar</button>`:''}</div>
+ <label for="x11">Descripción del evento</label><textarea id="x11" rows="4" placeholder="Line-up, dress code, reglas, información útil…">${esc(v.dsc)}</textarea>
+ <p class="note" style="margin-top:14px">Los links especiales por grupo (amigos, prensa, promotores) llegan en la próxima etapa.</p>
+ <h3 style="margin-top:18px;font-size:18px">Tandas</h3><p class="note">Se venden en este orden. Cada una cierra a su fecha y hora, o al agotarse.</p>
+ ${EV.t.map((t,i)=>`<div class="panel" style="margin:8px 0;padding:12px"><div class="f2"><div><label>Nombre</label><input data-i="${i}" data-k="n" value="${esc(t.n)}"></div><div><label>Precio ($)</label><input data-i="${i}" data-k="price" type="number" min="0" step="any" value="${t.price}"></div><div><label>Cantidad</label><input data-i="${i}" data-k="cap" type="number" min="${t.sold||1}" value="${t.cap}"></div><div><label>Hasta (fecha y hora)</label><input data-i="${i}" data-k="until" type="datetime-local" value="${t.until?(t.until.length===10?t.until+'T23:59':t.until):''}"></div></div>
+ <div class="row"><div style="flex-basis:100%"><label>Quién puede ver y comprar esta tanda</label><div><label class="chk"><input type="checkbox" data-i="${i}" data-k="pub" ${t.pub!==false?'checked':''}> Todos (pública)</label>${EV.L.map(l=>`<label class="chk"><input type="checkbox" data-i="${i}" data-k="lk" data-l="${l.id}" ${(t.lk||[]).includes(l.id)?'checked':''}> Link ${esc(l.name)}</label>`).join('')}</div></div><div><label>Pasa a pública el (opcional)</label><input data-i="${i}" data-k="pubFrom" type="datetime-local" value="${t.pubFrom||''}"></div><span class="mute">Vendidas: ${t.sold}</span><span><button class="btn ghost sm" ${i?'':'disabled'} onclick="edMv(${i})" aria-label="Subir">↑</button> <button class="btn ghost sm" ${t.sold?'disabled':''} onclick="edDel(${i})">Quitar</button></span></div></div>`).join('')}
+ <button class="btn ghost sm" onclick="edAdd()">+ Agregar tanda</button><div id="err" class="msg" style="color:var(--bad)"></div>
+ <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap"><button class="btn ghost" onclick="$('#dlg').close()">Cancelar</button><button class="btn ghost" style="color:var(--bad)" onclick="edRm()">${EV.del?'¿Seguro? Se borran también sus entradas':'Eliminar evento'}</button><button class="btn" style="flex:1" onclick="edSave()">Guardar cambios</button></div></div>`;
+ if(!$('#dlg').open)$('#dlg').showModal()}
+let NFI='';function imgRs(f,cb){const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,1000/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);cb(c.toDataURL('image/jpeg',.78))};im.src=r.result};r.readAsDataURL(f)}
+function nfImg(inp){if(!inp.files[0])return;imgRs(inp.files[0],u=>{NFI=u;$('#efp').style.backgroundImage="url('"+u+"')";$('#efp').hidden=false})}
+function evImg(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,1000/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);edRead();EV.f.img=c.toDataURL('image/jpeg',.78);edDraw()};im.src=r.result};r.readAsDataURL(f)}
+function edRead(){const g=i=>$('#'+i).value;Object.assign(EV.f,{n:g('x1'),l:g('x2'),x:g('x3'),d:g('x4'),h:g('x5'),a:+g('x6'),i:g('x7')==='1'?1:0,p:g('x8')==='1'?1:0,pf:g('x9'),o:$('#x10')?g('x10').trim():EV.f.o,dsc:g('x11'),gl:g('x12'),cu:g('x14')});
+ EV.t.forEach(t=>t.lk=[]);document.querySelectorAll('#dlg [data-i]').forEach(el=>{const t=EV.t[+el.dataset.i],k=el.dataset.k;if(k==='pub')t.pub=el.checked;else if(k==='lk'){if(el.checked)t.lk.push(el.dataset.l)}else t[k]=(k==='price'||k==='cap')?+el.value:el.value});EV.L.forEach((l,j)=>{const n=document.querySelector('[data-ln="'+j+'"]'),a=document.querySelector('[data-la="'+j+'"]');if(n)l.name=n.value;if(a)l.on=a.checked})}
+function edAdd(){edRead();EV.t.push({n:'Tanda '+(EV.t.length+1),price:0,cap:100,sold:0,until:''});edDraw()}
+function edDel(i){edRead();EV.t.splice(i,1);edDraw()}
+function edMv(i){edRead();[EV.t[i-1],EV.t[i]]=[EV.t[i],EV.t[i-1]];edDraw()}
+function edRm(){edRead();if(!EV.admin&&S.tix.some(x=>x.ev===EV.id)){err('Ya hay entradas vendidas: pedile a TAG que elimine el evento.');return}if(!EV.del){EV.del=true;edDraw();return}S.events=S.events.filter(e=>e.id!==EV.id);S.tix=S.tix.filter(x=>x.ev!==EV.id);save();$('#dlg').close();render()}
+function edSave(){edRead();const v=EV.f;if(!v.n.trim()||!v.l.trim()||!v.d||!EV.t.length||EV.t.some(t=>!String(t.n).trim()||!(t.price>=0)||!(t.cap>=Math.max(1,t.sold)))){err('Revisá nombre, lugar, fecha y cada tanda (precio y cantidad, que no sea menor a lo ya vendido).');return}
+ Object.assign(evOf(EV.id),{name:v.n.trim(),place:v.l.trim(),addr:v.x.trim(),date:v.d,time:v.h||'22:00',minAge:v.a,idReq:!!v.i,pub:!!v.p,pubFrom:v.pf,owner:v.o,desc:v.dsc.trim(),img:v.img||'',cur:v.cu||'UYU',goal:Math.max(0,+v.gl||0),tandas:EV.t,links:EV.L});save();$('#dlg').close();render()}
+const bf=id=>{const o=S.offers.find(x=>x.id===id);return {n:o.buyer.name,e:o.buyer.email,d:o.buyer.dob}};
+function acct(){const u=usr();
+ if(u)return `<p>Hola, <b>${esc(u.name)}</b> · <button class="btn ghost sm" onclick="logout()">Salir</button></p>`;
+ if(S.me)return `<p>Viendo las entradas de <b>${esc(S.me)}</b> · <button class="btn ghost sm" onclick="logout()">Salir</button></p><div class="panel" style="max-width:420px;margin-bottom:18px"><b>Crear cuenta (recomendado)</b><p class="note">Con una cuenta entrás siempre sin buscar tu correo.</p><label for="an">Nombre</label><input id="an"><label for="ad">Fecha de nacimiento</label><input id="ad" type="date"><input id="ae" type="hidden" value="${esc(S.me)}"><div id="am" class="msg" style="color:var(--bad)"></div><button class="btn sm" style="margin-top:10px" onclick="signup()">Crear cuenta</button></div>`;
+ return `<div class="panel" style="max-width:420px;margin-bottom:18px"><b>Ver mis entradas</b><p class="note">No hace falta cuenta: ingresá el correo con el que compraste u ofertaste.</p><label for="ae">Correo</label><input id="ae" type="email" autocomplete="email"><div id="am" class="msg" style="color:var(--bad)"></div><button class="btn" style="margin-top:10px" onclick="viewMail()">Ver mis entradas</button></div>`}
+function viewMail(){const m=$('#ae').value.trim();if(!/^\S+@\S+\.\S+$/.test(m)){$('#am').textContent='Ingresá un correo válido.';return}S.me=m;save();render()}
+function openOffer(code){const x=S.tix.find(t=>t.id===code),e=evOf(x.ev),u=usr(),ro=u?'readonly':'';
+ $('#dlg').innerHTML=`<div class="dlg"><h3>Hacer una oferta</h3><div class="mute">${esc(e.name)} · ${esc(e.tandas[x.t].n)}</div><p class="note">El vendedor pide ${money(x.ask)} y tu oferta no puede superarlo. Tiene 24 horas para aceptar, rechazar o contraofertar. Si acuerdan, pagás el precio acordado acá y la entrada pasa a tu nombre con un QR nuevo. No hace falta cuenta.</p><label for="on">Nombre completo</label><input id="on" ${ro} value="${esc(u?u.name:'')}"><label for="oe">Correo (acá te avisamos)</label><input id="oe" type="email" ${ro} value="${esc(u?u.email:S.me||'')}"><label for="od">Fecha de nacimiento</label><input id="od" type="date" ${ro} value="${u?u.dob:''}"><label for="op">Tu oferta ($)</label><input id="op" type="number" min="1" max="${x.ask}" value="${Math.round(x.ask*.9)}"><div id="err" class="msg" style="color:var(--bad)"></div><div style="display:flex;gap:10px;margin-top:10px"><button class="btn ghost" onclick="$('#dlg').close()">Cancelar</button><button class="btn" style="flex:1" onclick="sendOffer('${code}')">Enviar oferta</button></div></div>`;
+ if(!$('#dlg').open)$('#dlg').showModal()}
+function sendOffer(code){const x=S.tix.find(t=>t.id===code),e=evOf(x.ev),n=$('#on').value.trim(),m=$('#oe').value.trim(),d=$('#od').value,p=+$('#op').value;
+ if(!n||!/^\S+@\S+\.\S+$/.test(m)){err('Completá tu nombre y un correo válido.');return}
+ if(x.owner.email.toLowerCase()===m.toLowerCase()){err('Es tu propia entrada.');return}
+ const a=chkAge(e,d);if(a){err(a);return}
+ if(!(p>0)||p>x.ask){err('La oferta debe ser mayor a 0 y no superar '+money(x.ask)+'.');return}
+ if(S.offers.some(o=>o.tk===code&&live(o)&&o.buyer.email.toLowerCase()===m.toLowerCase())){err('Ya tenés una oferta abierta por esta entrada.');return}
+ S.offers.push({id:mk(),tk:code,ev:x.ev,buyer:{name:n,email:m,dob:d},price:p,turn:'seller',status:'open',exp:Date.now()+864e5});
+ S.me=m;save();$('#dlg').close();view='tickets';render()}
+function demoTix(){const u=usr();if(!S.me)S.me='demo@easypass.test';const o=u?{name:u.name,email:u.email,dob:u.dob}:{name:'Asistente demo',email:S.me,dob:'1995-05-05'};
+ S.events.filter(e=>e.mv7||e.id===2).forEach(e=>{const i=Math.max(0,curT(e));S.tix.push({id:mk(),ev:e.id,t:i,face:e.tandas[i].price,owner:o,listed:false,used:false})});save();render()}
+function prevTk(id){const e=evOf(id),i=Math.max(0,curT(e)),c='EP-DEMO99';
+ $('#dlg').innerHTML=`<div class="dlg"><h3>Así se ve la entrada</h3><div class="tk" style="flex-direction:column;text-align:center"><div><b style="font-size:20px">${esc(e.name)}</b><div class="mute">${e.date} · ${e.time} hs</div><div class="mute">${esc(e.place)}${e.addr?', '+esc(e.addr):''}</div></div>${qr(c)}<div>${ageTag(e)}<span class="tag">${esc(e.tandas[i].n)}</span><span class="tag">${c}</span></div><div class="mute">A nombre de Nombre Apellido</div></div><button class="btn ghost" onclick="$('#dlg').close()">Cerrar</button></div>`;$('#dlg').showModal()}
+function edLAdd(){edRead();EV.L.push({id:mk(),name:'Link '+(EV.L.length+1),token:Math.random().toString(36).slice(2,10),on:true});edDraw()}
+function edLDel(j){edRead();const id=EV.L[j].id;EV.L.splice(j,1);EV.t.forEach(t=>t.lk=(t.lk||[]).filter(x=>x!==id));edDraw()}
+const hp=x=>{let h=5381;for(const c of String(x))h=((h<<5)+h+c.charCodeAt(0))>>>0;return h.toString(36)};
+function ozAuth(mode){const n=($('#on').value||'').trim(),m=$('#oz').value.trim().toLowerCase(),pw=$('#op').value,am=$('#am');
+ if(!/^\S+@\S+\.\S+$/.test(m)){am.textContent='Ingresá un correo válido.';return}
+ if(mode==='up'&&pw.length<6){am.textContent='La contraseña debe tener al menos 6 caracteres.';return}
+ const o=S.orgs.find(x=>x.email.toLowerCase()===m);
+ if(mode==='up'){if(!n){am.textContent='Poné tu nombre o el de tu productora para crear la cuenta.';return}
+  if(o){am.textContent='Ese correo ya tiene cuenta de organizador. Tocá Ingresar.';return}
+  S.orgs.push({name:n,email:m,pw:hp(pw)});S.om=m;save();render();return}
+ if(!o||o.pw!==hp(pw)){am.textContent='Correo o contraseña incorrectos. Si todavía no tenés cuenta, tocá Crear cuenta.';return}
+ S.om=o.email;save();render()}
+function ozNew(){if(!S.om)return;const e={id:Date.now(),token:Math.random().toString(36).slice(2,10),name:'Nuevo evento',place:'',addr:'',date:today(),time:'22:00',minAge:0,idReq:false,pub:false,owner:S.om,links:[],fee:{on:true,pct:12,min:35,payer:'buyer',ap:'both'},tandas:[{n:'Tanda 1',price:500,cap:100,sold:0,pub:true,lk:[]}]};S.events.push(e);save();editEv(e.id)}
+function vOrgz(){
+ if(!S.om)return `<h1>Organizadores</h1><p class="lead">Para crear y administrar tus eventos necesitás una cuenta de organizador.</p><div class="panel" style="max-width:420px"><label for="on">Nombre o productora (solo para crear la cuenta)</label><input id="on" autocomplete="organization"><label for="oz">Correo</label><input id="oz" type="email" autocomplete="email"><label for="op">Contraseña (mínimo 6 caracteres)</label><input id="op" type="password" autocomplete="current-password"><div id="am" class="msg" style="color:var(--bad)" role="alert"></div><div style="display:flex;gap:10px;margin-top:10px"><button class="btn" onclick="ozAuth('in')">Ingresar</button><button class="btn ghost" onclick="ozAuth('up')">Crear cuenta</button></div><p class="note">Demo: la contraseña queda solo en este navegador. En producción: cuenta real con verificación de correo y aprobación de TAG.</p></div>`;
+ const mine=S.events.filter(e=>(e.owner||'').toLowerCase()===S.om.toLowerCase());
+ return `<h1>Mis eventos</h1><p class="lead">Sesión: ${esc(S.om)} · <button class="btn ghost sm" onclick="S.om='';save();render()">Salir</button></p><button class="btn" onclick="ozNew()">+ Crear evento</button>
+ ${mine.map(e=>{setC(e);const c=F(e),l=S.ledger.filter(x=>x.ev===e.id&&x.k==='primary'),s=e.tandas.reduce((a,t)=>a+t.sold,0),cp=e.tandas.reduce((a,t)=>a+t.cap,0);
+ return `<div class="panel" style="margin-top:14px">${e.img?`<div class="cover" style="max-width:260px;border-radius:10px;margin-bottom:10px;background-image:url('${e.img}')"></div>`:''}<b>${esc(e.name)}</b> ${ageTag(e)} <span class="mute">${e.date} · ${e.time} hs</span>
+ <div class="stats" style="margin:12px 0"><div class="stat"><span class="mute">Entradas vendidas</span><b>${s}/${cp}</b></div><div class="stat"><span class="mute">A liquidar</span><b>${money(l.reduce((a,x)=>a+x.net,0))}</b></div></div>
+ <p class="note">Comisión de TAG: ${c.on?c.pct+'% (mínimo '+money(c.min)+' por entrada)':'sin comisión'}. La define TAG.</p>
+ <label>Link general del evento</label><input readonly onclick="this.select()" value="${location.href.split('#')[0]}#l-${e.id}-${e.token}">
+ <label>Código de puerta (para quien escanea)</label>${e.doorCode&&e.doorOn!==false?`<div class="panel" style="padding:12px;margin:0"><div class="dcode">${e.doorCode}</div><p class="note">El personal abre este link, escribe el código y ya puede escanear. No necesita cuenta. Si lo generás de nuevo, el anterior deja de servir.</p><input readonly onclick="this.select()" value="${location.href.split('#')[0]}#puerta" aria-label="Link para el personal de puerta"><div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"><button class="btn ghost sm" onclick="doorNew(${e.id})">Generar código nuevo</button><button class="btn ghost sm" onclick="doorOff(${e.id})">Desactivar</button></div></div>`:`<div><button class="btn ghost sm" onclick="doorNew(${e.id})">Crear código de puerta</button>${e.doorCode?' <span class="mute">Desactivado</span>':''}</div>`}
+<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn sm" onclick="editEv(${e.id})">Editar evento, tandas y links</button><button class="btn ghost sm" onclick="prevTk(${e.id})">Ver entrada de ejemplo</button><button class="btn ghost sm" onclick="openStats(${e.id})">Estadísticas</button><button class="btn ghost sm" onclick="openDoor(${e.id})">Puerta (escaneo)</button></div></div>`}).join('')||'<div class="empty" style="margin-top:14px">Todavía no tenés eventos. Creá el primero.</div>'}`}
+let SE=0,SV='org';
+function openStats(id){SE=id;SV=view;view='stats';render()}
+function ratesSave(){S.rates=S.rates||{};document.querySelectorAll('[data-rt]').forEach(i=>{const v=+i.value;if(v>0)S.rates[i.dataset.rt]=v});save();$('#rtm').textContent='Cotización guardada.'}
+const srcId=()=>LKID||(viaLink?'general':'cartelera');
+const ld=ts=>{const d=new Date(ts);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+function lkStat(id){setC(evOf(EV.id));const P=S.ledger.filter(x=>x.ev===EV.id&&x.k==='primary'&&x.src===id);return 'Vendió '+P.reduce((a,x)=>a+(x.q||0),0)+' entradas · '+money(P.reduce((a,x)=>a+x.total,0))}
+const bars=a=>{const m=Math.max(1,...a.map(x=>x[1]));return a.map(x=>`<div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span class="mute" style="width:92px;flex:none">${esc(x[0])}</span><div style="flex:1;background:var(--line);height:10px;border-radius:6px"><i style="display:block;height:100%;width:${x[1]/m*100}%;background:var(--acc);border-radius:6px"></i></div><b style="width:44px;text-align:right">${x[2]!==undefined?x[2]:x[1]}</b></div>`).join('')||'<span class="mute">Sin datos todavía.</span>'};
+function vStats(){const e=evOf(SE);if(!e)return '<div class="empty">Evento no encontrado.</div>';setC(e);
+ const L=S.ledger.filter(x=>x.ev===e.id),P=L.filter(x=>x.k==='primary'),tix=S.tix.filter(x=>x.ev===e.id),sc=(S.scans||[]).filter(x=>x.ev===e.id),ok=sc.filter(x=>x.r==='ok'),dup=sc.filter(x=>x.r==='dup').length,bad=sc.length-ok.length;
+ const sold=e.tandas.reduce((a,t)=>a+t.sold,0),cap=e.tandas.reduce((a,t)=>a+t.cap,0),sm=(a,f)=>a.reduce((s,x)=>s+(x[f]||0),0),gross=sm(L,'total'),pct=(a,b)=>b?Math.round(a/b*100)+'%':'-';
+ const gl=e.goal||0,gd=sold-gl,gtxt=!gl?'Definila en Editar evento':gd>=0?(gd?'Superaste la meta por '+gd+' entradas':'Llegaste justo a la meta'):'Faltaron '+(-gd)+' para la meta';
+ const nm=id=>id==='cartelera'?'Cartelera pública':id==='general'?'Link general':((e.links||[]).find(l=>l.id===id)||{name:'Sin origen'}).name;
+ const by={};P.forEach(x=>{const k=x.src||'sin',b=by[k]=by[k]||{q:0,m:0,a:0};b.q+=x.q||0;b.m+=x.total});tix.forEach(x=>{if(x.used){const k=x.src||'sin',b=by[k]=by[k]||{q:0,m:0,a:0};b.a++}});
+ const rows=Object.entries(by).sort((a,b)=>b[1].q-a[1].q),tq=rows.reduce((a,r)=>a+r[1].q,0);
+ const h0=+(e.time||'22:00').split(':')[0],hr={};ok.forEach(x=>{const h=new Date(x.ts).getHours();hr[h]=(hr[h]||0)+1});
+ const hk=Object.keys(hr).map(Number).sort((a,b)=>((a-h0+24)%24)-((b-h0+24)%24)),pk=hk.reduce((a,h)=>hr[h]>(hr[a]||0)?h:a,hk[0]);
+ const tm=t=>new Date(t).toLocaleTimeString('es-UY',{hour:'2-digit',minute:'2-digit'}),ts=ok.map(x=>x.ts).sort((a,b)=>a-b);
+ const dy={};P.forEach(x=>{if(x.ts){const k=ld(x.ts);dy[k]=(dy[k]||0)+(x.q||0)}});const dk=Object.keys(dy).sort().slice(-10),last=P.filter(x=>x.ts&&ld(x.ts)===e.date).reduce((a,x)=>a+(x.q||0),0),ant=P.filter(x=>x.ts&&ld(x.ts)!==e.date).reduce((a,x)=>a+(x.q||0),0);
+ return `<p><a href="#" onclick="view=SV;render();return false">← Volver</a></p><h1 style="max-width:none">Estadísticas</h1><p class="lead">${esc(e.name)} · ${e.date} ${e.time} hs</p>
+ <div class="stats"><div class="stat"><span class="mute">Entradas vendidas</span><b>${sold}/${cap}</b><span class="mute">${pct(sold,cap)} del aforo</span></div><div class="stat"><span class="mute">Meta de ventas</span><b>${gl?sold+'/'+gl:'Sin meta'}</b><span class="mute" style="${gl&&gd>=0?'color:var(--ok,#1a7f4b);font-weight:700':''}">${gtxt}${gl?' ('+pct(sold,gl)+')':''}</span></div><div class="stat hl"><span class="mute">Asistieron (QR validados)</span><b>${ok.length}</b><span class="mute">${pct(ok.length,sold)} de lo vendido</span></div><div class="stat"><span class="mute">Total cobrado</span><b>${money(gross)}</b></div><div class="stat"><span class="mute">Comisión de TAG</span><b>${money(sm(L,'fee'))}</b></div><div class="stat"><span class="mute">A liquidar</span><b>${money(sm(P,'net'))}</b></div><div class="stat"><span class="mute">Rechazos en puerta</span><b>${bad}</b><span class="mute">${dup} duplicados</span></div></div>
+ <h2>Ventas por link y RRPP</h2><div class="panel scroll"><table><thead><tr><th>Origen</th><th class="n">Entradas</th><th class="n">Cobrado</th><th class="n">% ventas</th><th class="n">Asistieron</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(r[0]==='sin'?'Sin origen':nm(r[0]))}</td><td class="n">${r[1].q}</td><td class="n">${money(r[1].m)}</td><td class="n">${pct(r[1].q,tq)}</td><td class="n">${r[1].a} (${pct(r[1].a,r[1].q)})</td></tr>`).join('')||'<tr><td colspan="5" class="mute">Todavía no hay ventas con origen registrado.</td></tr>'}</tbody></table></div>
+ <h2>Ingreso en puerta por hora</h2><div class="panel">${ts.length?`<p>Primer ingreso ${tm(ts[0])} hs · último ${tm(ts[ts.length-1])} hs · hora pico ${String(pk).padStart(2,'0')}:00 con ${hr[pk]} entradas</p>`:''}${bars(hk.map(h=>[String(h).padStart(2,'0')+':00',hr[h]]))}<p class="note">${dup} intentos con entradas ya usadas y ${bad-dup} con códigos inválidos o en reventa.</p></div>
+ <h2>Ventas por tanda</h2><div class="panel">${bars(e.tandas.map(t=>[t.n,t.sold,t.sold+'/'+t.cap]))}</div>
+ <h2>Cuándo se vendió</h2><div class="panel"><p>Anticipadas: <b>${ant}</b> (${pct(ant,ant+last)}) · Último momento (día del evento): <b>${last}</b> (${pct(last,ant+last)})</p>${bars(dk.map(k=>[k.slice(5),dy[k]]))}</div>
+ <p style="margin-top:18px"><button class="btn ghost sm" onclick="demoStats(${e.id})">Generar datos de ejemplo para este evento</button></p>`}
+function demoStats(id){const e=evOf(id);S.scans=S.scans||[];const srcs=['cartelera','general',...(e.links||[]).map(l=>l.id)],ev=new Date(e.date+'T'+(e.time||'22:00')).getTime();
+ for(let k=0;k<40;k++){const t=Math.floor(Math.random()*e.tandas.length),q=1+Math.floor(Math.random()*3),src=srcs[Math.floor(Math.random()*srcs.length)],tn=e.tandas[t],c=calc(tn.price,e,'pri'),ts=Math.random()<.2?ev-Math.random()*6*36e5:ev-(1+Math.random()*11)*864e5,own={name:'Demo '+k,email:'demo'+k+'@mail.com',dob:'1995-01-01'};
+  for(let i=0;i<q;i++){const used=Math.random()<.78,tk={id:mk(),ev:id,t,face:tn.price,owner:own,listed:false,used,src,ts};if(used)S.scans.push({tk:tk.id,ev:id,ts:ev+(Math.random()+Math.random())/2*5*36e5,r:'ok'});S.tix.push(tk)}
+  tn.sold=Math.min(tn.cap,tn.sold+q);S.ledger.push({ev:id,k:'primary',total:c.total*q,fee:c.fee*q,net:c.net*q,q,src,ts,t})}
+ for(let k=0;k<4;k++)S.scans.push({tk:'EP-DUP'+k,ev:id,ts:ev+Math.random()*5*36e5,r:'dup'});
+ save();render()}
+
+// ---------- PUERTA: escaneo con cámara, código de puerta y modo sin conexión ----------
+let DR={ev:0,sim:false,msg:null,res:null,org:false,auth:'',cam:false,cerr:'',ign:0},DOORM=false,CAM={stream:null,t:0,det:null,on:false,busy:false};
+try{const a=JSON.parse(localStorage.getItem('ep_door_auth')||'null');if(a){DR.ev=a.ev;DR.auth=a.code}}catch(_){}
+const doorAuth=()=>{if(DR.org)return !!evOf(DR.ev);const e=evOf(DR.ev);return !!(DR.auth&&e&&e.doorOn!==false&&e.doorCode&&e.doorCode===DR.auth)};
+const dOn=()=>!DR.sim&&navigator.onLine!==false;
+const dGet=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(_){return d}};
+const dSet=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(_){}};
+const dQ=()=>dGet('ep_door_q',[]),dSnap=id=>dGet('ep_door_snap_'+id,null);
+const hhmm=t=>new Date(t).toLocaleTimeString('es-UY',{hour:'2-digit',minute:'2-digit',hour12:false});
+function openDoor(id){DR.ev=id;DR.org=true;DR.msg=null;DR.res=null;SV=view;view='door';render()}
+function doorBack(){DR.org=false;camStop();view=SV;render()}
+function gateOut(){DR.auth='';DR.org=false;DR.msg=null;try{localStorage.removeItem('ep_door_auth')}catch(_){}camStop();if(!DOORM)view='orgz';render()}
+function doorIn(){const v=($('#dk').value||'').replace(/\D/g,''),e=S.events.find(x=>x.doorOn!==false&&x.doorCode&&x.doorCode===v);
+ if(!e){$('#dm').textContent='Código incorrecto o desactivado. Pedile uno nuevo al organizador.';return}
+ DR.ev=e.id;DR.auth=e.doorCode;DR.msg=null;dSet('ep_door_auth',{ev:e.id,code:e.doorCode});render()}
+function doorNew(id){const e=evOf(id);let c;do{c=String(Math.floor(100000+Math.random()*900000))}while(S.events.some(x=>x.doorCode===c));e.doorCode=c;e.doorOn=true;save();render()}
+function doorOff(id){evOf(id).doorOn=false;save();render()}
+// --- cámara ---
+function camStop(){CAM.on=false;clearTimeout(CAM.t);if(CAM.stream){CAM.stream.getTracks().forEach(t=>t.stop());CAM.stream=null}DR.cam=false}
+function loadJsQR(){if(window.jsQR)return Promise.resolve();return new Promise((ok,no)=>{const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js';s.onload=ok;s.onerror=()=>no(new Error('jsqr'));document.head.appendChild(s)})}
+function camMsg(e){const n=(e&&e.name)||'',m=(e&&e.message)||'';
+ if(!window.isSecureContext)return 'La cámara solo funciona con HTTPS. Abrí TAG desde su dirección segura.';
+ if(n==='NotAllowedError'||n==='SecurityError')return 'No diste permiso a la cámara. Habilitalo en el navegador, o escribí el código a mano.';
+ if(n==='NotFoundError'||n==='OverconstrainedError'||m==='nocam')return 'Este dispositivo no tiene cámara disponible. Escribí el código a mano.';
+ if(n==='NotReadableError')return 'La cámara está siendo usada por otra aplicación. Cerrala e intentá de nuevo.';
+ if(m==='jsqr')return 'No se pudo cargar el lector de QR (sin internet). Escribí el código a mano o conectate.';
+ return 'No se pudo abrir la cámara. Intentá de nuevo o escribí el código a mano.'}
+async function camStart(){camStop();DR.cerr='';
+ try{if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)throw new Error('nocam');
+  CAM.stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:720}},audio:false});
+  CAM.on=true;CAM.det=null;
+  if('BarcodeDetector' in window){try{CAM.det=new BarcodeDetector({formats:['qr_code']})}catch(_){CAM.det=null}}
+  if(!CAM.det)await loadJsQR();
+  DR.cam=true;render();camLoop()
+ }catch(e){camStop();DR.cerr=camMsg(e);render()}}
+function camLoop(){clearTimeout(CAM.t);if(!CAM.on)return;CAM.t=setTimeout(async()=>{
+ try{const v=$('#cv');if(v&&v.readyState>=2&&!DR.res&&Date.now()>=DR.ign&&!CAM.busy){CAM.busy=true;let val='';
+  if(CAM.det){const c=await CAM.det.detect(v);if(c&&c[0])val=c[0].rawValue}
+  else if(window.jsQR){const w=v.videoWidth,h=v.videoHeight,k=Math.min(1,640/Math.max(w,h)),cw=Math.round(w*k),ch=Math.round(h*k),cv=CAM.cv||(CAM.cv=document.createElement('canvas'));
+   cv.width=cw;cv.height=ch;const cx=cv.getContext('2d',{willReadFrequently:true});cx.drawImage(v,0,0,cw,ch);const r=jsQR(cx.getImageData(0,0,cw,ch).data,cw,ch,{inversionAttempts:'dontInvert'});if(r)val=r.data}
+  CAM.busy=false;if(val)dScan(val,'cam')}}catch(e){CAM.busy=false}
+ camLoop()},110)}
+// --- resultado a pantalla completa ---
+const IC_OK='<svg viewBox="0 0 100 100" width="160" height="160" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="none" stroke="#fff" stroke-width="6"/><path d="M28 52l16 16 30-34" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const IC_NO='<svg viewBox="0 0 100 100" width="160" height="160" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="none" stroke="#fff" stroke-width="6"/><path d="M32 32l36 36M68 32L32 68" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round"/></svg>';
+function res(ok,t,d){DR.res={ok,t,d};showRes()}
+function showRes(){const R=DR.res,o=$('#ovl');clearTimeout(DR.tm);
+ if(!R){o.style.display='none';o.innerHTML='';return}
+ o.className='ovl '+(R.ok?'g':'r');o.style.display='flex';o.setAttribute('role','alert');
+ o.innerHTML=(R.ok?IC_OK:IC_NO)+`<div class="ot">${esc(R.t)}</div>${R.d?`<div class="od">${esc(R.d)}</div>`:''}<button class="obtn" onclick="resClose()" autofocus>${R.ok?'Siguiente':'Reintentar'}</button>`;
+ if(R.ok)DR.tm=setTimeout(resClose,1600)}
+function resClose(){DR.res=null;DR.ign=Date.now()+1200;showRes()}
+// --- validación ---
+function dScan(code,src){
+ const v=String(code||($('#dc')||{}).value||'').trim().toUpperCase();if(!v)return;
+ if(DR.res||(src==='cam'&&Date.now()<DR.ign))return;
+ if(!doorAuth()){gateOut();return}
+ const id=DR.ev,e=evOf(id);S.scans=S.scans||[];DR.msg=null;
+ if(!/^EP-[A-Z0-9]{6}$/.test(v)){render();res(false,'QR no reconocido','Ese código no es una entrada de TAG.');return}
+ let r,t,d;
+ if(dOn()){
+  const x=S.tix.find(q=>q.id===v);
+  if(!x){r='invalid';t='Entrada no encontrada';d='Este código no existe en TAG o fue reemplazado.'}
+  else if(x.ev!==id){r='invalid';t='Es de otro evento';d='Esta entrada es para: '+((evOf(x.ev)||{}).name||'otro evento')+'.'}
+  else if(x.used){const f=S.scans.filter(q=>q.tk===v&&q.r==='ok').pop();r='dup';t='Ya ingresó';d='Esta entrada ya se usó'+(f?' a las '+hhmm(f.ts):'')+'. Puede ser una copia del QR.'}
+  else if(x.listed){r='listed';t='Entrada anulada';d='Esta entrada fue puesta en reventa o reemplazada.'}
+  else{x.used=true;r='ok';t=x.owner.name;d=((e.tandas[x.t]||{}).n||'')+(e.minAge?' · Pedí cédula (+'+e.minAge+')':'')}
+  S.scans.push({tk:v,ev:id,ts:Date.now(),r});save();
+ }else{
+  const sn=dSnap(id);
+  if(!sn){render();res(false,'Sin lista descargada','No hay conexión. Conectate y tocá "Descargar lista" antes del evento.');return}
+  const it=sn.list[v];
+  if(!it){r='invalid';t='Entrada no encontrada';d='No está en la lista de este evento (modo sin conexión).'}
+  else if(it.u){r='dup';t='Ya ingresó';d='Esta entrada ya se usó'+(it.at?' a las '+hhmm(it.at):'')+'. Puede ser una copia del QR.'}
+  else{it.u=1;it.at=Date.now();r='ok';t=it.n;d=it.t+(e.minAge?' · Pedí cédula (+'+e.minAge+')':'')+' · sin conexión';dSet('ep_door_snap_'+id,sn)}
+  const q=dQ();q.push({tk:v,ev:id,ts:Date.now(),r});dSet('ep_door_q',q);
+ }
+ render();res(r==='ok',t,d)}
+// --- sin conexión ---
+function dSim(){DR.sim=!DR.sim;DR.msg=null;if(dOn()&&dQ().length)dSync();else render()}
+function dSnapNow(){if(!dOn()){DR.msg={k:'bad',t:'Necesitás conexión para descargar la lista.'};render();return}
+ const id=DR.ev,e=evOf(id),list={};
+ S.tix.filter(x=>x.ev===id&&!x.listed).forEach(x=>{list[x.id]={n:x.owner.name,t:(e.tandas[x.t]||{}).n||'',u:x.used?1:0}});
+ dSet('ep_door_snap_'+id,{ts:Date.now(),list});DR.msg={k:'info',t:'Lista descargada: '+Object.keys(list).length+' entradas. Ya podés trabajar sin señal.'};render()}
+function dSync(){if(!dOn())return;const q=dQ();if(!q.length){render();return}
+ let ok=0,cf=0;S.scans=S.scans||[];
+ q.forEach(s=>{if(s.r==='ok'){const x=S.tix.find(t=>t.id===s.tk);
+   if(x&&!x.used){x.used=true;S.scans.push({tk:s.tk,ev:s.ev,ts:s.ts,r:'ok',off:1});ok++}
+   else{S.scans.push({tk:s.tk,ev:s.ev,ts:s.ts,r:'dup',off:1});cf++}}
+  else S.scans.push({tk:s.tk,ev:s.ev,ts:s.ts,r:s.r,off:1})});
+ dSet('ep_door_q',[]);save();
+ DR.msg={k:cf?'warn':'info',t:'Sincronizado: '+ok+' ingresos confirmados'+(cf?' y '+cf+' conflicto(s): entradas que ya habían ingresado por otra puerta mientras estabas sin señal.':'.')};render()}
+function dOther(){const x=S.tix.find(t=>t.ev===DR.ev&&!t.used&&!t.listed);if(!x)return;x.used=true;S.scans=S.scans||[];S.scans.push({tk:x.id,ev:DR.ev,ts:Date.now(),r:'ok'});save();DR.msg={k:'info',t:'Demo: la entrada '+x.id+' ingresó por otra puerta (con conexión). Tu celular todavía no lo sabe.'};render()}
+addEventListener('online',()=>{if(view==='door'&&dQ().length)dSync();else if(view==='door')render()});
+addEventListener('offline',()=>{if(view==='door')render()});
+function vDoor(){
+ if(!doorAuth())return `<h1 style="font-size:clamp(26px,6vw,40px);margin:10px 0 6px;max-width:none">Puerta</h1><p class="lead">Ingresá el código de puerta que te dio el organizador para habilitar el escaneo.</p>
+ <form class="panel" style="max-width:380px" onsubmit="doorIn();return false"><label for="dk">Código de puerta</label><input id="dk" inputmode="numeric" maxlength="6" placeholder="000000" autocomplete="off" style="font-size:26px;letter-spacing:.2em;text-align:center"><div id="dm" class="msg" style="color:var(--bad)" role="alert"></div><button class="btn" style="width:100%;margin-top:10px">Entrar</button></form>`;
+ const e=evOf(DR.ev),on=dOn(),sn=dSnap(DR.ev),q=dQ().filter(s=>s.ev===DR.ev),M=DR.msg,valid=S.tix.filter(x=>x.ev===DR.ev&&!x.used&&!x.listed).slice(0,4),
+ ing=(S.scans||[]).filter(x=>x.ev===DR.ev&&x.r==='ok').length+q.filter(s=>s.r==='ok').length;
+ return `${DR.org?'<p><a href="#" onclick="doorBack();return false">← Volver</a></p>':''}
+ <div class="row" style="align-items:flex-start;gap:10px"><div><h1 style="font-size:clamp(26px,6vw,40px);margin:6px 0;max-width:none">Puerta</h1><p class="lead" style="margin-bottom:10px">${esc(e.name)} · ${e.date} · ${e.time} hs</p></div><button class="btn ghost sm" onclick="gateOut()">Salir</button></div>
+ ${DR.cam?`<div class="cam"><video id="cv" playsinline muted autoplay></video><div class="frame"></div></div><p class="note" style="text-align:center;margin:0 0 8px">Apuntá al QR de la entrada</p><button class="btn ghost sm" onclick="camStop();render()">Apagar cámara</button>`
+ :`<div class="panel" style="text-align:center"><button class="btn" style="width:100%;padding:18px;font-size:19px" onclick="camStart()">Activar cámara y escanear</button>${DR.cerr?`<p class="msg" style="color:var(--bad)" role="alert">${esc(DR.cerr)}</p>`:''}</div>`}
+ <details style="margin:12px 0" ${DR.cerr?'open':''}><summary>Escribir el código a mano</summary><form style="display:flex;gap:10px;margin-top:8px" onsubmit="dScan();return false"><input id="dc" placeholder="EP-XXXXXX" autocapitalize="characters" autocomplete="off" aria-label="Código de la entrada"><button class="btn">Validar</button></form></details>
+ ${M?`<div class="dres ${M.k}" role="status">${esc(M.t)}</div>`:''}
+ <div class="stats" style="margin:12px 0"><div class="stat"><span class="mute">Ingresaron</span><b>${ing}</b></div><div class="stat"><span class="mute">Por sincronizar</span><b>${q.length}</b></div></div>
+ ${q.length?`<button class="btn" style="width:100%" onclick="dSync()" ${on?'':'disabled'}>${on?'Sincronizar ahora':'Sincronizá cuando vuelva la señal'}</button>`:''}
+ <div class="panel" style="margin-top:14px"><div class="row"><span class="tag ${on?'ok':''}" style="font-size:14px">${on?'● En línea':'● Sin conexión · modo local'}</span><label class="chk"><input type="checkbox" ${DR.sim?'checked':''} onchange="dSim()"> Simular sin señal (demo)</label></div>
+ <p class="note" style="margin-top:10px">${sn?'Lista descargada a las '+hhmm(sn.ts)+' · '+Object.keys(sn.list).length+' entradas.':'Todavía no descargaste la lista para trabajar sin señal.'} <button class="btn ghost sm" onclick="dSnapNow()" ${on?'':'disabled'}>${sn?'Actualizar lista':'Descargar lista'}</button></p>
+ <p class="note">Sin señal, cada celular valida con la lista que descargó: dos puertas distintas podrían dejar pasar la misma entrada hasta que sincronicen. Al reconectar, TAG detecta esos casos y te avisa.</p></div>
+ <div class="panel" style="margin-top:14px"><b>Prueba rápida (demo)</b><p class="note">Entradas válidas de este evento, tocá una para simular el escaneo:</p><div style="display:flex;gap:8px;flex-wrap:wrap">${valid.map(x=>`<button class="dchip" onclick="dScan('${x.id}')">${x.id}</button>`).join('')||'<span class="mute">No hay entradas vendidas. Comprá una desde Eventos, o cargá las de prueba en Mis entradas.</span>'}</div>
+ ${valid.length?`<p class="note" style="margin-top:10px"><button class="dchip" onclick="dOther()">Demo: otra puerta deja entrar la primera</button></p>`:''}</div>`}
+function chk(){const v=$('#cc').value.trim().toUpperCase(),x=S.tix.find(t=>t.id===v),m=$('#cm');S.scans=S.scans||[];
+ const lg=(r,ev)=>{S.scans.push({tk:v,ev:ev||0,ts:Date.now(),r});save()};
+ if(!x){m.style.color='var(--bad)';m.textContent='Código no encontrado o reemplazado por una transferencia.';lg('invalid');return}
+ if(x.used){m.style.color='var(--bad)';m.textContent='Esta entrada ya fue usada.';lg('dup',x.ev);return}
+ if(x.listed){m.style.color='var(--bad)';m.textContent='Esta entrada está en reventa y no es válida hasta que se retire.';lg('listed',x.ev);return}
+ const e=evOf(x.ev);x.used=true;lg('ok',x.ev);m.style.color='var(--ok)';m.textContent='Válida. A nombre de '+x.owner.name+'.'+(e.minAge?' Verificá cédula: evento +'+e.minAge+'.':'')}
+$('#app').addEventListener('click',ev=>{const a=ev.target.closest('.ev,.evc');if(a&&!ev.target.closest('button,a'))location.hash='#e-'+a.dataset.id});
+// ================= CONEXIÓN CON SUPABASE =================
+const SB_URL='https://yactptxkxswxbmvtpbva.supabase.co',SB_KEY='sb_publishable_VFqoNqkHAZrVckZJTnRWyQ_7b6ZEQVt';
+let SBS=null;try{SBS=JSON.parse(localStorage.getItem('tag_sb'))}catch(e){}
+let DBL=true,DBERR='',PROFS=[];
+const sbSave=()=>{try{SBS?localStorage.setItem('tag_sb',JSON.stringify(SBS)):localStorage.removeItem('tag_sb')}catch(e){}};
+const isOrg=()=>!!SBS&&(SBS.role==='organizer'||SBS.role==='admin'),isAdm=()=>!!SBS&&SBS.role==='admin';
+const nid=u=>parseInt(String(u).replace(/-/g,'').slice(0,8),16);
+const tzp=ts=>new Date(ts).toLocaleString('sv-SE',{timeZone:'America/Montevideo',hour12:false}).slice(0,16).replace(' ','T');
+const toTs=s=>s?(s.length===10?s+'T23:59':s)+':00-03:00':null;
+function sbMsg(x){const m=String((x&&(x.error_description||x.msg||x.message))||x||'');const c=x&&(x.error_code||x.code);
+ if(/invalid login/i.test(m))return 'Correo o contraseña incorrectos.';if(/not confirmed/i.test(m))return 'Falta confirmar tu correo: revisá tu bandeja de entrada (y el spam).';
+ if(/already registered/i.test(m)||c==='user_already_exists')return 'Ese correo ya tiene cuenta. Tocá Ingresar.';if(/rate limit/i.test(m)||c==='over_email_send_rate_limit')return 'Se enviaron demasiados correos seguidos. Esperá un rato y probá de nuevo.';
+ if(/password/i.test(m)&&/(short|least|weak)/i.test(m))return 'La contraseña es muy corta o débil.';if(c==='42501'||/permission denied|row-level security/i.test(m))return 'No tenés permiso para hacer esto.';
+ if(c==='23503')return 'No se puede borrar: ya tiene entradas vendidas.';if(c==='23514')return 'Revisá los números: la cantidad no puede ser menor a lo ya vendido.';
+ if(/failed to fetch|networkerror|load failed/i.test(m))return 'No hay conexión. Revisá tu internet y probá de nuevo.';return m||'Algo salió mal. Probá de nuevo.'}
+function sbSet(j,extra){SBS={...(SBS||{}),token:j.access_token,refresh:j.refresh_token,exp:Date.now()+(j.expires_in||3600)*1000,uid:j.user.id,email:j.user.email,...(extra||{})};sbSave();S.om=SBS.email}
+async function sbToken(){if(!SBS)return '';if(Date.now()>SBS.exp-60000){try{const r=await fetch(SB_URL+'/auth/v1/token?grant_type=refresh_token',{method:'POST',headers:{apikey:SB_KEY,'Content-Type':'application/json'},body:JSON.stringify({refresh_token:SBS.refresh})});const j=await r.json();if(!r.ok)throw 0;sbSet(j)}catch(e){SBS=null;S.om='';sbSave();return ''}}return SBS.token}
+async function sbReq(path,o={}){const t=await sbToken(),h={apikey:SB_KEY,'Content-Type':'application/json'};if(t)h.Authorization='Bearer '+t;if(o.prefer)h.Prefer=o.prefer;
+ const r=await fetch(SB_URL+path,{method:o.method||'GET',headers:h,body:o.body===undefined?undefined:JSON.stringify(o.body)});const tx=await r.text();let j=null;try{j=tx?JSON.parse(tx):null}catch(e){}
+ if(!r.ok){const e=new Error((j&&(j.message||j.error_description||j.msg))||('Error '+r.status));e.code=j&&j.code;e.status=r.status;throw e}return j}
+async function sbAuth(kind,email,pw,name){const r=await fetch(SB_URL+(kind==='up'?'/auth/v1/signup':'/auth/v1/token?grant_type=password'),{method:'POST',headers:{apikey:SB_KEY,'Content-Type':'application/json'},body:JSON.stringify(kind==='up'?{email,password:pw,data:{name}}:{email,password:pw})});
+ const j=await r.json().catch(()=>({}));if(!r.ok){const e=new Error(sbMsg(j));throw e}return j}
+async function sbProfile(){const r=await sbReq('/rest/v1/profiles?id=eq.'+SBS.uid+'&select=role,name,org_name');const p=r[0]||{};SBS.role=p.role||'buyer';SBS.name=p.org_name||p.name||'';sbSave()}
+function sbOut(){const t=SBS&&SBS.token;SBS=null;S.om='';sbSave();if(t)fetch(SB_URL+'/auth/v1/logout',{method:'POST',headers:{apikey:SB_KEY,Authorization:'Bearer '+t}}).catch(()=>{});if(view==='org')view='orgz';dbLoad()}
+// ---- eventos
+let KEEP={};
+function fromDb(r){const [d,h]=tzp(r.starts_at).split('T'),k=KEEP[nid(r.id)]||{};
+ return {id:nid(r.id),dbid:r.id,ownerId:r.owner_id,owner:r.owner_id,token:'',name:r.name,place:r.place,addr:r.address||'',date:d,time:h,minAge:r.min_age||0,idReq:!!r.id_required,pub:r.visibility==='public',pubFrom:r.publish_from?tzp(r.publish_from):'',desc:r.description||'',img:r.image_path||'',cur:r.currency||'UYU',goal:r.sales_goal||0,
+ fee:{on:r.fee_on,pct:+r.fee_pct,min:+r.fee_min_uyu,payer:r.fee_payer==='organizer'?'org':'buyer',ap:'pri'},links:[],doorCode:k.doorCode,doorOn:k.doorOn,
+ tandas:(r.tandas||[]).slice().sort((a,b)=>a.position-b.position).map(t=>({dbid:t.id,n:t.name,price:+t.price,cap:t.capacity,sold:t.sold,until:t.closes_at?tzp(t.closes_at):'',pub:t.is_public,pubFrom:t.public_from?tzp(t.public_from):'',lk:[]}))}}
+async function dbLoad(){DBL=true;try{
+  KEEP={};(S.events||[]).forEach(e=>{if(e.doorCode)KEEP[e.id]={doorCode:e.doorCode,doorOn:e.doorOn}});
+  const [ev,fx]=await Promise.all([sbReq('/rest/v1/events?select=*,tandas(*)&order=starts_at.asc'),sbReq('/rest/v1/fx_rates?select=*')]);
+  S.events=ev.map(fromDb);S.rates={};fx.forEach(r=>S.rates[r.currency]=+r.uyu_per_unit);
+  S.tix=(S.tix||[]).filter(x=>evOf(x.ev));S.ledger=(S.ledger||[]).filter(x=>evOf(x.ev));
+  CM=(S.events.map(e=>e.date).sort()[0]||today()).slice(0,7);CSL=-1;DBERR='';
+  if(isOrg())await Promise.all(S.events.filter(e=>isAdm()||e.ownerId===SBS.uid).map(async e=>{try{e.st=await sbReq('/rest/v1/rpc/event_stats',{method:'POST',body:{eid:e.dbid}})}catch(x){}}));
+  if(isAdm()){try{PROFS=await sbReq('/rest/v1/profiles?select=id,name,org_name,email,role&order=created_at.desc')}catch(x){PROFS=[]}}
+  save()}catch(e){DBERR=sbMsg(e)}DBL=false;render()}
+function vEvents(){if(DBERR)return `<h1>No pudimos cargar los eventos</h1><p class="lead">${esc(DBERR)}</p><button class="btn" onclick="dbLoad()">Reintentar</button>`;
+ if(!S.events.length)return `<h1 style="font-size:clamp(26px,6vw,44px)">Tu próxima entrada, en dos minutos.</h1><div class="empty" style="margin-top:18px">Todavía no hay eventos publicados. Muy pronto vas a ver acá los próximos.</div>`;
+ return vEventsOrig()}
+// ---- cuentas de organizador y admin
+const loginHtml=(t,l)=>`<h1>${t}</h1><p class="lead">${l}</p><div class="panel" style="max-width:420px"><label for="on">Nombre o productora (solo para crear la cuenta)</label><input id="on" autocomplete="organization"><label for="oz">Correo</label><input id="oz" type="email" autocomplete="email"><label for="op">Contraseña (mínimo 6 caracteres)</label><input id="op" type="password" autocomplete="current-password"><div id="am" class="msg" style="color:var(--bad)" role="alert"></div><div style="display:flex;gap:10px;margin-top:10px"><button class="btn" onclick="ozAuth('in')">Ingresar</button><button class="btn ghost" onclick="ozAuth('up')">Crear cuenta</button></div><p class="note">Las cuentas nuevas las aprueba TAG antes de poder crear eventos.</p></div>`;
+async function ozAuth(mode){const n=($('#on').value||'').trim(),m=$('#oz').value.trim().toLowerCase(),pw=$('#op').value,am=$('#am');am.style.color='var(--bad)';
+ if(!/^\S+@\S+\.\S+$/.test(m)){am.textContent='Ingresá un correo válido.';return}
+ if(mode==='up'&&pw.length<6){am.textContent='La contraseña debe tener al menos 6 caracteres.';return}
+ if(mode==='up'&&!n){am.textContent='Poné tu nombre o el de tu productora para crear la cuenta.';return}
+ am.style.color='var(--mute)';am.textContent='Un momento…';
+ try{const j=await sbAuth(mode,m,pw,n);
+  if(!j.access_token){am.style.color='var(--ok)';am.textContent='Cuenta creada. Te enviamos un correo para confirmarla: abrí el link y después ingresá.';return}
+  sbSet(j);await sbProfile();if(mode==='up'&&n){try{await sbReq('/rest/v1/profiles?id=eq.'+SBS.uid,{method:'PATCH',body:{org_name:n},prefer:'return=minimal'});SBS.name=n;sbSave()}catch(x){}}
+  await dbLoad()}catch(x){am.style.color='var(--bad)';am.textContent=sbMsg(x)}}
+function ozMsg(t){const e=$('#ozm');if(e)e.textContent=t}
+async function ozNew(){if(!isOrg())return;ozMsg('Creando…');try{const ds=tzp(Date.now()+7*864e5).slice(0,10);
+ const r=await sbReq('/rest/v1/events',{method:'POST',prefer:'return=representation',body:{owner_id:SBS.uid,name:'Nuevo evento',place:'A definir',starts_at:ds+'T22:00:00-03:00',visibility:'link'}});
+ await sbReq('/rest/v1/tandas',{method:'POST',prefer:'return=minimal',body:{event_id:r[0].id,name:'Tanda 1',price:500,capacity:100,position:0,is_public:true}});
+ await dbLoad();editEv(nid(r[0].id))}catch(x){ozMsg(sbMsg(x))}}
+const who=()=>`Sesión: ${esc(SBS.name||SBS.email)} (${esc(SBS.email)}) · <button class="btn ghost sm" onclick="sbOut()">Salir</button>`;
+function evCard(e,adm){setC(e);const c=F(e),s=e.tandas.reduce((a,t)=>a+t.sold,0),cp=e.tandas.reduce((a,t)=>a+t.cap,0),st=e.st,own=adm?(PROFS.find(p=>p.id===e.ownerId)||{}):null,base=location.href.split('#')[0];
+ return `<div class="panel" style="margin-top:14px">${e.img?`<div class="cover" style="max-width:260px;border-radius:10px;margin-bottom:10px;background-image:url('${e.img}')"></div>`:''}<b>${esc(e.name)}</b> ${ageTag(e)} <span class="mute">${e.date} · ${e.time} hs · ${e.pub?'Público':'Oculto (solo vos)'}</span>${own?`<div class="mute">Organizador: ${esc(own.org_name||own.name||'')} ${own.email?'('+esc(own.email)+')':''}</div>`:''}
+ <div class="stats" style="margin:12px 0"><div class="stat"><span class="mute">Entradas vendidas</span><b>${s}/${cp}</b></div>${st?`<div class="stat"><span class="mute">Ya entraron</span><b>${st.checked_in}</b></div><div class="stat"><span class="mute">Se lleva el evento</span><b>${money(st.net_revenue)}</b></div>`:''}</div>
+ <p class="note">Comisión de TAG: ${c.on?c.pct+'% (mínimo '+money(c.min*1/rate(e.cur||'UYU'))+' por entrada)':'sin comisión'}. La define TAG.</p>
+ ${e.pub?`<label>Link del evento</label><input readonly onclick="this.select()" value="${base}#e-${e.id}">`:'<p class="note">Para que aparezca en la cartelera pública, cambiá la visibilidad a Pública en Editar evento.</p>'}
+ <label>Código de puerta (para quien escanea)</label>${e.doorCode&&e.doorOn!==false?`<div class="panel" style="padding:12px;margin:0"><div class="dcode">${e.doorCode}</div><p class="note">El personal abre este link, escribe el código y ya puede escanear. No necesita cuenta.</p><input readonly onclick="this.select()" value="${base}#puerta" aria-label="Link para el personal de puerta"><div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"><button class="btn ghost sm" onclick="doorNew(${e.id})">Generar código nuevo</button><button class="btn ghost sm" onclick="doorOff(${e.id})">Desactivar</button></div></div>`:`<div><button class="btn ghost sm" onclick="doorNew(${e.id})">Crear código de puerta</button></div>`}
+ <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn sm" onclick="editEv(${e.id})">Editar evento y tandas</button><button class="btn ghost sm" onclick="prevTk(${e.id})">Ver entrada de ejemplo</button></div>
+ ${adm?`<div class="f2" style="margin-top:12px"><div><label>Comisión</label><select id="fo-${e.id}"><option value="1" ${c.on?'selected':''}>Se cobra</option><option value="0" ${c.on?'':'selected'}>Sin comisión</option></select></div><div><label>Porcentaje (%)</label><input id="fp-${e.id}" type="number" min="0" step="0.5" value="${c.pct}"></div><div><label>Mínimo por entrada (en pesos uruguayos)</label><input id="fm-${e.id}" type="number" min="0" value="${c.min}"></div><div><label>La paga</label><select id="fy-${e.id}"><option value="buyer" ${c.payer==='buyer'?'selected':''}>El comprador</option><option value="org" ${c.payer==='org'?'selected':''}>El organizador</option></select></div></div><button class="btn sm" style="margin-top:8px" onclick="feeSave(${e.id})">Guardar comisión</button> <span id="fm2-${e.id}" class="msg"></span>`:''}</div>`}
+function vOrgz(){
+ if(!SBS)return loginHtml('Organizadores','Para crear y administrar tus eventos necesitás una cuenta de organizador.');
+ if(!isOrg())return `<h1>Cuenta en revisión</h1><p class="lead">${who()}</p><div class="panel" style="max-width:520px"><p>Tu cuenta ya está creada. Falta que TAG la apruebe para que puedas crear eventos. Cuando la aprueben, cerrá sesión y volvé a entrar.</p><button class="btn" onclick="sbProfile().then(()=>dbLoad())">Ya me aprobaron, actualizar</button></div>`;
+ const mine=S.events.filter(e=>e.ownerId===SBS.uid);
+ return `<h1>Mis eventos</h1><p class="lead">${who()}${isAdm()?' · <button class="btn ghost sm" onclick="view=\'org\';render()">Ir al panel de Admin</button>':''}</p><button class="btn" onclick="ozNew()">+ Crear evento</button> <span id="ozm" class="msg"></span>
+ ${mine.map(e=>evCard(e,false)).join('')||'<div class="empty" style="margin-top:14px">Todavía no tenés eventos. Creá el primero.</div>'}`}
+async function feeSave(id){const e=evOf(id),m=$('#fm2-'+id);m.textContent='Guardando…';try{await sbReq('/rest/v1/rpc/admin_set_fee',{method:'POST',body:{p_event:e.dbid,p_on:$('#fo-'+id).value==='1',p_pct:+$('#fp-'+id).value||0,p_min:+$('#fm-'+id).value||0,p_payer:$('#fy-'+id).value==='org'?'organizer':'buyer'}});await dbLoad()}catch(x){const mm=$('#fm2-'+id);if(mm)mm.textContent=sbMsg(x)}}
+async function roleSet(uid,role){try{await sbReq('/rest/v1/rpc/admin_set_role',{method:'POST',body:{p_uid:uid,p_role:role}});await dbLoad()}catch(x){const m=$('#rlm');if(m)m.textContent=sbMsg(x)}}
+function vOrgX(){
+ if(!SBS)return loginHtml('Admin','Esta sección es solo para el administrador de TAG. Ingresá con tu cuenta de administrador.');
+ if(!isAdm())return `<h1>Admin</h1><p class="lead">${who()}</p><div class="empty">Esta sección es solo para el administrador de TAG.</div>`;
+ setC('UYU');const pend=PROFS.filter(p=>p.role==='buyer'),orgs=PROFS.filter(p=>p.role!=='buyer');
+ return `<h1>Admin</h1><p class="lead">${who()}</p>
+ <h2>Solicitudes de organizadores</h2><div class="panel"><span id="rlm" class="msg" style="color:var(--bad)"></span>${pend.map(p=>`<div class="li"><span><b>${esc(p.org_name||p.name||'Sin nombre')}</b><br><span class="mute">${esc(p.email||'')}</span></span><button class="btn sm" onclick="roleSet('${p.id}','organizer')">Aprobar organizador</button></div>`).join('')||'<p class="note">No hay solicitudes pendientes.</p>'}</div>
+ <h2>Organizadores y administradores</h2><div class="panel">${orgs.map(p=>`<div class="li"><span><b>${esc(p.org_name||p.name||'Sin nombre')}</b> <span class="tag">${p.role==='admin'?'Admin':'Organizador'}</span><br><span class="mute">${esc(p.email||'')}</span></span>${p.id===SBS.uid?'<span class="mute">Vos</span>':`<button class="btn ghost sm" onclick="roleSet('${p.id}','buyer')">Quitar acceso</button>`}</div>`).join('')}</div>
+ <h2>Cotización del día</h2><div class="panel"><p class="note">Pesos uruguayos por 1 unidad de cada moneda. El mínimo de comisión se convierte con esta cotización.</p><div class="f2">${Object.keys(CURS).filter(k=>k!=='UYU').map(k=>`<div><label for="rt-${k}">1 ${k} =</label><input id="rt-${k}" data-rt="${k}" type="number" step="any" min="0" value="${rate(k)}"></div>`).join('')}</div><button class="btn" style="margin-top:10px" onclick="ratesSave()">Guardar cotización</button><div id="rtm" class="msg"></div></div>
+ <h2>Todos los eventos</h2>${S.events.map(e=>evCard(e,true)).join('')||'<div class="empty">Todavía no hay eventos.</div>'}`}
+async function ratesSave(){const m=$('#rtm');m.textContent='Guardando…';try{for(const i of document.querySelectorAll('[data-rt]')){const v=+i.value;if(v>0&&v!==rate(i.dataset.rt))await sbReq('/rest/v1/fx_rates?currency=eq.'+i.dataset.rt,{method:'PATCH',prefer:'return=minimal',body:{uyu_per_unit:v,updated_at:new Date().toISOString()}})}await dbLoad();const mm=$('#rtm');if(mm)mm.textContent='Cotización guardada.'}catch(x){const mm=$('#rtm');if(mm)mm.textContent=sbMsg(x)}}
+// ---- editar y borrar eventos
+async function edSave(){edRead();const v=EV.f;if(!v.n.trim()||!v.l.trim()||!v.d||!EV.t.length||EV.t.some(t=>!String(t.n).trim()||!(t.price>=0)||!(t.cap>=Math.max(1,t.sold)))){err('Revisá nombre, lugar, fecha y cada tanda (precio y cantidad, que no sea menor a lo ya vendido).');return}
+ err('Guardando…');try{const e=evOf(EV.id);
+  await sbReq('/rest/v1/events?id=eq.'+e.dbid,{method:'PATCH',prefer:'return=minimal',body:{name:v.n.trim(),place:v.l.trim(),address:v.x.trim()||null,starts_at:v.d+'T'+(v.h||'22:00')+':00-03:00',description:v.dsc.trim()||null,image_path:v.img||null,currency:v.cu||'UYU',min_age:+v.a||0,id_required:!!v.i,visibility:v.p?'public':'link',publish_from:v.pf?toTs(v.pf):null,sales_goal:Math.max(0,+v.gl||0)||null}});
+  const ids=EV.t.filter(t=>t.dbid).map(t=>t.dbid);for(const t of e.tandas)if(t.dbid&&!ids.includes(t.dbid))await sbReq('/rest/v1/tandas?id=eq.'+t.dbid,{method:'DELETE'});
+  for(let i=0;i<EV.t.length;i++){const t=EV.t[i],b={name:String(t.n).trim(),price:+t.price,capacity:+t.cap,closes_at:toTs(t.until),position:i,is_public:t.pub!==false,public_from:t.pubFrom?toTs(t.pubFrom):null};
+   if(t.dbid)await sbReq('/rest/v1/tandas?id=eq.'+t.dbid,{method:'PATCH',prefer:'return=minimal',body:b});else await sbReq('/rest/v1/tandas',{method:'POST',prefer:'return=minimal',body:{...b,event_id:e.dbid}})}
+  await dbLoad();$('#dlg').close()}catch(x){err(sbMsg(x))}}
+async function edRm(){edRead();if(!EV.del){EV.del=true;edDraw();return}try{await sbReq('/rest/v1/events?id=eq.'+evOf(EV.id).dbid,{method:'DELETE',prefer:'return=minimal'});await dbLoad();$('#dlg').close()}catch(x){EV.del=false;edDraw();err(sbMsg(x))}}
+// ---- arranque
+(async()=>{if(SBS){try{await sbProfile();S.om=SBS.email}catch(e){if(e&&e.status===401){SBS=null;S.om='';sbSave()}}}else S.om='';await dbLoad()})();
+
+let LSY=0,WD=false;const isD=()=>/^#[el]-/.test(location.hash);addEventListener('scroll',()=>{if(!isD())LSY=scrollY},{passive:true});addEventListener('hashchange',()=>{const d=isD(),back=WD&&!d;WD=d;setTimeout(()=>scrollTo({top:back?LSY:0,behavior:back?'instant':'smooth'}),0)});
+addEventListener('hashchange',render);render();
+(function(){const R=document.documentElement,sp=document.getElementById('spl');
+ const end=()=>{R.classList.remove('spl');sp&&sp.remove()};
+ try{const br=document.querySelector('header .brand');if(!br||!sp||DOORM){end();return}
+ const sb=br.cloneNode(true);sb.id='spb';sb.removeAttribute('href');sb.removeAttribute('onclick');sb.className='brand';sp.appendChild(sb);
+ const r=br.getBoundingClientRect(),k=Math.min(2.6,innerWidth*.78/r.width);
+ Object.assign(sb.style,{left:r.left+'px',top:r.top+'px',width:r.width+'px'});
+ const tx=innerWidth/2-r.width*k/2-r.left,ty=innerHeight/2-r.height*k/2-r.top;
+ sb.style.transform=`translate(${tx}px,${ty}px) scale(${k})`;
+ requestAnimationFrame(()=>requestAnimationFrame(()=>{sb.classList.add('in');
+  setTimeout(()=>{sb.classList.add('mv');sb.style.transform='none';sp.classList.add('go');
+   setTimeout(()=>{R.classList.remove('spl');setTimeout(end,60)},820)},1300)}));
+ setTimeout(end,5000)}catch(e){end()}})();
+
+</script></body></html>
