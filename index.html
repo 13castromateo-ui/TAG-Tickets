@@ -152,6 +152,7 @@ dialog::backdrop{animation:bd .22s ease both}@keyframes bd{from{opacity:0}to{opa
 .pm{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}.pm .po{flex:1;min-width:100px;padding:11px 8px;border:2px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font-weight:600;cursor:pointer}.pm .po[aria-pressed="true"]{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc) inset}
 .btn.apay{background:#000;color:#fff;border:1px solid #fff4}
 html:not(.tgd) .btn.apay{border-color:#000}
+.pw{position:relative}.pw input{padding-right:84px}.pwb{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:none;color:var(--acc);font-weight:700;padding:8px 10px;cursor:pointer;border-radius:8px}
 footer{padding:40px 0;color:var(--mute);font-size:13px}
 </style></head>
 <body>
@@ -816,7 +817,8 @@ function vEvents(){if(DBERR)return `<h1>No pudimos cargar los eventos</h1><p cla
  if(!S.events.length)return `<h1 style="font-size:clamp(26px,6vw,44px)">Tu próxima entrada, en dos minutos.</h1><div class="empty" style="margin-top:18px">Todavía no hay eventos publicados. Muy pronto vas a ver acá los próximos.</div>`;
  return vEventsOrig()}
 // ---- cuentas de organizador y admin
-const loginHtml=(t,l)=>`<h1>${t}</h1><p class="lead">${l}</p><div class="panel" style="max-width:420px"><label for="on">Nombre o productora (solo para crear la cuenta)</label><input id="on" autocomplete="organization"><label for="oz">Correo</label><input id="oz" type="email" autocomplete="email"><label for="op">Contraseña (mínimo 6 caracteres)</label><input id="op" type="password" autocomplete="current-password"><div id="am" class="msg" style="color:var(--bad)" role="alert"></div><div style="display:flex;gap:10px;margin-top:10px"><button class="btn" onclick="ozAuth('in')">Ingresar</button><button class="btn ghost" onclick="ozAuth('up')">Crear cuenta</button></div><p class="note">Las cuentas nuevas las aprueba TAG antes de poder crear eventos.</p></div>`;
+function pwTog(b){const i=b.previousElementSibling,v=i.type==='password';i.type=v?'text':'password';b.textContent=v?'Ocultar':'Mostrar'}
+const loginHtml=(t,l)=>`<h1>${t}</h1><p class="lead">${l}</p><div class="panel" style="max-width:420px"><label for="on">Nombre o productora (solo para crear la cuenta)</label><input id="on" autocomplete="organization"><label for="oz">Correo</label><input id="oz" type="email" autocomplete="email"><label for="op">Contraseña (mínimo 6 caracteres)</label><div class="pw"><input id="op" type="password" autocomplete="current-password"><button type="button" class="pwb" onclick="pwTog(this)" aria-label="Mostrar u ocultar la contraseña">Mostrar</button></div><div id="am" class="msg" style="color:var(--bad)" role="alert"></div><div style="display:flex;gap:10px;margin-top:10px"><button class="btn" onclick="ozAuth('in')">Ingresar</button><button class="btn ghost" onclick="ozAuth('up')">Crear cuenta</button></div><p class="note">Las cuentas nuevas las aprueba TAG antes de poder crear eventos.</p></div>`;
 async function ozAuth(mode){const n=($('#on').value||'').trim(),m=$('#oz').value.trim().toLowerCase(),pw=$('#op').value,am=$('#am');am.style.color='var(--bad)';
  if(!/^\S+@\S+\.\S+$/.test(m)){am.textContent='Ingresá un correo válido.';return}
  if(mode==='up'&&pw.length<6){am.textContent='La contraseña debe tener al menos 6 caracteres.';return}
