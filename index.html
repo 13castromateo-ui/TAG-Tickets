@@ -1299,12 +1299,9 @@ async function prSet(id,j,a){const e=evOf(id);if(a==='del'){const pid=e.links[j]
 // ================= MODO DEMO DEL PANEL DE ORGANIZADOR =================
 let SBS0=null;const isDemo=()=>!!(SBS&&SBS.demo);
 function demoEv(id,name,place,days,x,tandas){const d=new Date(Date.now()+days*864e5);return {id,dbid:'demo-'+id,ownerId:'demo',owner:'demo',token:'d'+id,name,place,addr:'',date:ld(d.getTime()),time:'23:00',minAge:0,idReq:false,pub:true,pubFrom:'',desc:'',img:'',cur:'UYU',goal:0,fee:{on:true,pct:12,min:35,payer:'buyer',ap:'pri'},x,links:x.promos||[],tandas}}
-function demoPanel(){SBS0=isDemo()?SBS0:SBS;SBS={uid:'demo',role:'organizer',email:'demo@tagtickets.uy',name:'Productora demo',demo:true};S.om=SBS.email;
- const T=(n,c,p,cap,sold)=>({n,c,price:p,cap,sold,pub:true,lk:[]}),pr=[{id:'pa',name:'RRPP Ana',token:'ana12345',on:true,pct:10},{id:'pm',name:'DJ Marea',token:'marea123',on:true,pct:8}];
- S.events=S.events.filter(e=>e.ownerId!=='demo');
- S.events.push(demoEv(901,'Fiesta de Verano','Pocitos, Montevideo',21,{city:'Montevideo',type:'Fiesta',lineup:'DJ Nocturna\nMarea Sound',sched:'23:00 Puertas\n01:00 Show',cond:'Mayores de 18. Ingreso con cédula.',faq:'¿Hay guardarropa? | Sí, $100.',coupons:[{code:'VERANO10',pct:10,max:50,used:4,on:true,pr:'pa'}],promos:pr},[T('Tanda 1','General',900,150,0),T('Tanda 1','VIP',2200,40,0),T('Tanda 2','General',1100,150,0),T('Tanda 2','VIP',2600,40,0),T('Mesa x6','Mesa',9000,10,0)]));
- S.events.push(demoEv(902,'Sunset Electrónico','Punta del Este, Maldonado',45,{city:'Maldonado',type:'Fiesta',promos:[]},[T('Anticipada','General',800,300,0),T('General','General',1000,300,0)]));
- Object.assign(evOf(901),{minAge:18,goal:300});demoStats(901);view='orgz';render();scrollTo(0,0)}
+// Demo: funciona como una cuenta de organizador recién creada. Arranca sin eventos; solo ve y edita lo que crea. Nada se guarda en la base.
+function demoPanel(){SBS0=isDemo()?SBS0:SBS;SBS={uid:'demo',role:'organizer',email:'demo@tagtickets.uy',name:'Tu productora (demo)',demo:true};S.om=SBS.email;
+ S.events=S.events.filter(e=>e.ownerId!=='demo');view='orgz';render();scrollTo(0,0)}
 function demoOut(){SBS=SBS0;SBS0=null;S.om=SBS?SBS.email:'';S.events=S.events.filter(e=>e.ownerId!=='demo');dbLoad()}
 // ---- arranque
 // Los eventos de ejemplo de la primera versión (sin dbid) no se muestran mientras carga la base.
