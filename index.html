@@ -162,6 +162,13 @@ footer{padding:40px 0;color:var(--mute);font-size:13px}
 .fbar{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:8px 14px;font-weight:600;cursor:pointer}.chip[aria-pressed="true"]{background:var(--acc);color:var(--onacc);border-color:var(--acc)}
 .ckh{position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:10px;background:var(--card);margin:-22px -22px 0;padding:10px 16px 10px 22px;border-bottom:1px solid var(--line)}.ckt{flex:1;min-width:0;margin:0!important;font-size:18px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ckh .tmr{margin:0;padding:4px 10px;border-radius:99px;font-size:14px;white-space:nowrap}.fbar input{flex:1 1 220px}.fbar select{flex:0 1 180px;width:auto}
+.fsl{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:18px}.fsl::-webkit-scrollbar{display:none}
+.sl{flex:0 0 100%;scroll-snap-align:start;position:relative;aspect-ratio:16/8;max-height:440px;overflow:hidden;color:#fff;text-decoration:none;background:#111}
+.sl .fg{position:absolute;inset:0;background-size:cover;background-position:center 30%}
+.sl .cover{position:absolute;inset:0;aspect-ratio:auto}.sl .cover.ph span{display:none}
+.sl .cap{position:absolute;left:0;right:0;bottom:0;padding:40px 18px 16px;background:linear-gradient(transparent,rgba(0,0,0,.75))}
+.sl .cap b{display:block;font-size:clamp(20px,4vw,30px);line-height:1.1}
+.fdots{display:flex;justify-content:center;gap:4px;margin-top:6px}.fdots button{width:24px;height:24px;border:0;background:none;padding:0;cursor:pointer}.fdots button::after{content:'';display:block;width:8px;height:8px;margin:auto;border-radius:99px;background:var(--line);transition:width .2s}.fdots button[aria-current="true"]::after{width:20px;background:var(--ink)}
 .ftag{position:absolute;top:10px;right:10px;background:var(--ink);color:var(--bg);border-radius:99px;padding:3px 10px;font-size:12px;font-weight:700}
 .tmr{margin:10px 0 0;padding:8px 12px;border-radius:10px;background:var(--bg);font-size:14px}
 .cat{font-size:15px;margin:14px 0 2px;text-transform:uppercase;letter-spacing:.04em;color:var(--mute)}.cat:first-child{margin-top:0}
@@ -190,7 +197,7 @@ html:not(.tgd) body::after{opacity:.07}
 <a class="brand" href="#" onclick="location.hash='';view='events';CD='';render();scrollTo(0,0);return false" aria-label="TAG Tickets, inicio"><span class="logo">TAG<i></i><em>Tickets</em></span><small>Tu Acceso Garantizado</small></a>
 <button class="thb" onclick="thToggle()" aria-label="Cambiar entre modo oscuro y claro" title="Modo claro / oscuro">◐</button><nav aria-label="Secciones"><button data-v="events">Eventos</button><button data-v="tickets">Mis TAGs</button><button data-v="help">Ayuda</button><button data-v="pro">Organizadores</button><button data-v="org">Admin</button></nav></div></header>
 <main class="wrap" id="app"></main>
-<footer class="wrap"><div class="flinks"><a href="#terminos">Términos y condiciones</a><a href="#devoluciones">Devoluciones</a><a href="#privacidad">Privacidad</a><a href="#acuerdo-organizadores">Acuerdo para organizadores</a></div>TAG Tickets · Tu Acceso Garantizado · Versión de prueba. Los pagos y la verificación de edad son simulados; los datos se guardan solo en este navegador.</footer>
+<footer class="wrap"><div class="flinks"><a href="#terminos">Términos y condiciones</a><a href="#devoluciones">Devoluciones</a><a href="#privacidad">Privacidad</a><a href="#acuerdo-organizadores">Acuerdo para organizadores</a><a href="#cookies">Cookies</a><a href="#aviso-legal">Aviso legal</a></div>TAG Tickets · Tu Acceso Garantizado · Versión de prueba. Los pagos y la verificación de edad son simulados; los datos se guardan solo en este navegador.</footer>
 <dialog id="dlg"></dialog>
 <div id="prt"></div>
 <div id="spl" aria-hidden="true"></div>
@@ -281,6 +288,12 @@ function evPub(e){const [y,m,d]=e.date.split('-'),i=curT(e),t=e.tandas[i],multi=
 function gridHtml(){const l=pubEvs().filter(fOk);return l.length?l.map(evPub).join(''):'<div class="empty" style="grid-column:1/-1">No encontramos eventos con esos filtros. <button class="btn ghost sm" onclick="fClear()">Limpiar filtros</button></div>'}
 function drawGrid(){const g=$('#grid');if(g)g.innerHTML=gridHtml()}
 function fClear(){FQ=FCI=FTY=CD='';render()}
+// Destacados: presentación que pasa sola cada 5 s; se frena si el usuario la toca, pasa el mouse o pidió menos movimiento.
+const fSlide=e=>{const [y,m,d]=e.date.split('-');return `<a class="sl" href="#e-${e.id}">${e.img?`<div class="fg" style="background-image:url('${e.img}')" role="img" aria-label="Flyer de ${esc(e.name)}"></div>`:cover(e)}<div class="cap"><b>${esc(e.name)}</b>${+d} ${MES[+m-1]} · ${esc(e.place)}</div></a>`};
+let FST=0;
+const fGo=i=>{const t=$('#fsl');if(t)t.scrollTo({left:i*t.clientWidth,behavior:'smooth'})};
+function fDots(){const t=$('#fsl');if(!t)return;const i=Math.round(t.scrollLeft/t.clientWidth);document.querySelectorAll('.fdots button').forEach((b,j)=>b.setAttribute('aria-current',j===i))}
+setInterval(()=>{const t=$('#fsl');if(!t||t.children.length<2||document.hidden||t.matches(':hover')||Date.now()-FST<8e3||matchMedia('(prefers-reduced-motion: reduce)').matches)return;fGo((Math.round(t.scrollLeft/t.clientWidth)+1)%t.children.length)},5e3);
 function vEventsOrig(){if(INV)return vInv();if(HE){const e=evOf(HE);if(e)return vEvent(e)}
  const all=pubEvs(),cs=[...new Set(all.map(city).filter(Boolean))].sort(),ft=all.filter(e=>(X(e).feat||hot(e))&&e.date>=today()).sort((a,b)=>!!X(b).feat-!!X(a).feat),fil=FQ||FCI||FTY||CD;
  const chip=(on,txt,attr)=>`<button type="button" class="chip" aria-pressed="${on}" ${attr}>${txt}</button>`;
@@ -288,7 +301,7 @@ function vEventsOrig(){if(INV)return vInv();if(HE){const e=evOf(HE);if(e)return 
  <div class="fbar" role="search"><input id="q" type="search" placeholder="Buscar evento, artista o lugar" aria-label="Buscar eventos" value="${esc(FQ)}" oninput="FQ=this.value;drawGrid()">${cs.length>1?`<select aria-label="Ciudad" onchange="FCI=this.value;render()"><option value="">Todas las ciudades</option>${cs.map(c=>`<option ${FCI===c?'selected':''}>${esc(c)}</option>`).join('')}</select>`:''}</div>
  <div class="chips" role="group" aria-label="Tipo de evento">${chip(!FTY,'Todos','onclick="FTY=\'\';render()"')}${TYPES.map(t=>chip(FTY===t,t==='Otro'?'Otros':t,`onclick="FTY='${t}';render()"`)).join('')}</div>
  ${cal()}
- ${ft.length&&!fil?`<h2>Destacados</h2><div class="grid">${ft.map(evPub).join('')}</div>`:''}
+ ${ft.length&&!fil?`<h2>Destacados</h2><div class="fsl" id="fsl" aria-roledescription="carrusel" onscroll="fDots()" onpointerdown="FST=Date.now()">${ft.map(fSlide).join('')}</div>${ft.length>1?`<div class="fdots">${ft.map((e,i)=>`<button type="button" aria-label="Ver destacado ${i+1}: ${esc(e.name)}" aria-current="${!i}" onclick="FST=Date.now();fGo(${i})"></button>`).join('')}</div>`:''}`:''}
  <h2>${fil?'Resultados':'Próximos eventos'}</h2><div class="grid" id="grid">${gridHtml()}</div>`;
 }
 // ---- checkout de un evento: varias tandas y categorías en una compra, cupón y temporizador de reserva
@@ -452,13 +465,13 @@ function tkPdf(id){const x=S.tix.find(t=>t.id===id),e=evOf(x.ev),t=e.tandas[x.t]
  print()}
 function openTr(id){T=id;const x=S.tix.find(t=>t.id===id),e=evOf(x.ev);
  $('#dlg').innerHTML=`<div class="dlg"><h3>Transferir entrada</h3><p class="note">Se emite un QR nuevo a nombre de quien la recibe y el tuyo deja de funcionar. Es gratis y mantiene su tanda original.</p>
- <label for="tn">Nombre de quien la recibe</label><input id="tn"><label for="te">Correo</label><input id="te" type="email"><label for="td-d">Fecha de nacimiento${e.minAge?' (evento +'+e.minAge+')':''}</label>${dobHtml('td')}
+ <label for="tn">Nombre de quien la recibe</label><input id="tn"><label for="te">Correo</label><input id="te" type="email">${e.minAge?`<label for="td-d">Fecha de nacimiento (evento +${e.minAge})</label>${dobHtml('td')}`:''}
  <div id="err" class="msg" style="color:var(--bad)"></div><div style="display:flex;gap:10px;margin-top:10px"><button class="btn ghost" onclick="$('#dlg').close()">Cancelar</button><button class="btn" style="flex:1" onclick="doTr()">Transferir</button></div></div>`;
  $('#dlg').showModal()}
 function doTr(){
- const x=S.tix.find(t=>t.id===T),e=evOf(x.ev),n=$('#tn').value.trim(),m=$('#te').value.trim(),d=$('#td').value;
+ const x=S.tix.find(t=>t.id===T),e=evOf(x.ev),n=$('#tn').value.trim(),m=$('#te').value.trim(),d=e.minAge?$('#td').value:'';
  if(!n||!/^\S+@\S+\.\S+$/.test(m)){err('Completá nombre y correo de quien la recibe.');return}
- const a=chkAge(e,d);if(a){err(a.replace('podés comprar ni recibir','puede recibir'));return}
+ const a=e.minAge?chkAge(e,d):'';if(a){err(a.replace('podés comprar ni recibir','puede recibir'));return}
  if(!isDemo()){err('Transfiriendo…');rpc('tag_transfer',{p_code:x.id,p_name:n,p_email:m,p_dob:d||null}).then(()=>{$('#dlg').close();dbLoad()}).catch(z=>err(sbMsg(z)));return}
  x.owner={name:n,email:m,dob:d};x.id=mk();x.listed=false;delete x.ask;save();$('#dlg').close();render();
 }
@@ -1180,8 +1193,8 @@ function vPro(){
  <div id="lm" class="msg" role="alert"></div><button class="btn" style="margin-top:10px">Enviar solicitud</button></form>`}
 // ================= TEXTOS LEGALES =================
 // Completá estos datos antes de publicar. Los textos son un borrador: los tiene que revisar un abogado.
-const LEGAL={org:'TAG Tickets',rut:'',dom:'Montevideo, Uruguay',mail:'',fecha:'8 de noviembre de 2026'};
-const LGH={'#terminos':'terms','#devoluciones':'refund','#privacidad':'privacy','#acuerdo-organizadores':'orgterms'};
+const LEGAL={org:'TAG Tickets',razon:'',rut:'',dom:'Montevideo, Uruguay',mail:'',fecha:'10 de noviembre de 2026'};
+const LGH={'#terminos':'terms','#devoluciones':'refund','#privacidad':'privacy','#acuerdo-organizadores':'orgterms','#cookies':'cookies','#aviso-legal':'notice'};
 const lgCt=()=>LEGAL.mail?`escribiendo a <b>${LEGAL.mail}</b> o desde la sección Ayuda de esta web`:'desde el formulario de la sección Ayuda de esta web';
 const lgWho=()=>`${LEGAL.org}${LEGAL.rut?', RUT '+LEGAL.rut:''}, con domicilio en ${LEGAL.dom}`;
 const tycHtml=(id,on,txt)=>`<label class="chk" style="margin-top:12px;align-items:flex-start"><input type="checkbox" id="${id}" ${on?'checked':''} style="margin-top:4px"${id==='tyc'?' onchange="B.tyc=this.checked"':''}> <span>${txt}</span></label>`;
@@ -1211,13 +1224,24 @@ privacy:['Política de privacidad',()=>`
 <p>En TAG cuidamos tus datos personales según la Ley 18.331 de Protección de Datos Personales y su reglamentación. Esta política explica qué datos usamos, para qué y cuáles son tus derechos.</p>
 <h2>Responsable</h2><p>El responsable de la base de datos es ${lgWho()}. El organizador de cada evento recibe los datos de las personas que asisten a su evento y es responsable del uso que haga de ellos.</p>
 <h2>Qué datos usamos</h2><ul><li>Nombre, correo y fecha de nacimiento, que nos das al comprar o reclamar una entrada.</li><li>Los datos de tus compras y entradas, y el registro de ingreso al evento (día y hora en que se escaneó tu QR).</li><li>Tu documento, solo si el evento pide verificar tu identidad.</li><li>Lo que nos escribís en los formularios de Ayuda o de Organizadores.</li></ul><p>Los datos de tu tarjeta los procesa directamente la empresa de pagos. TAG no guarda el número completo de tu tarjeta.</p>
-<h2>Para qué los usamos</h2><ul><li>Emitir y enviarte tus entradas.</li><li>Controlar el ingreso y la edad mínima del evento.</li><li>Atender tus consultas y reclamos, y hacer devoluciones.</li><li>Prevenir fraudes y cumplir obligaciones legales e impositivas.</li><li>Enviarte novedades, solo si nos das tu consentimiento. Te podés dar de baja cuando quieras.</li></ul>
-<h2>Con quién los compartimos</h2><ul><li>Con el organizador del evento al que vas: nombre, correo, tipo de entrada e ingreso.</li><li>Con proveedores que necesitamos para funcionar: la empresa de pagos, el alojamiento de la web y la base de datos. Algunos de estos servidores están fuera de Uruguay; trabajamos con proveedores que ofrecen niveles de protección adecuados.</li><li>Con las autoridades, cuando la ley lo exija.</li></ul><p>No vendemos tus datos.</p>
+<h2>Para qué los usamos</h2><ul><li>Emitir y enviarte tus entradas.</li><li>Controlar el ingreso y la edad mínima del evento.</li><li>Atender tus consultas y reclamos, y hacer devoluciones.</li><li>Prevenir fraudes y cumplir obligaciones legales e impositivas.</li><li>Enviarte novedades o publicidad, <b>solo si marcaste la casilla para recibirlas</b> (nunca viene marcada). Cada envío trae cómo darte de baja, y podés oponerte en cualquier momento.</li></ul>
+<h2>Con quién los compartimos</h2><ul><li>Con el organizador del evento al que vas: nombre, correo, tipo de entrada e ingreso.</li><li>Con los proveedores que necesitamos para funcionar, que solo usan los datos para darnos su servicio:<ul><li><b>Supabase</b>: base de datos y cuentas de usuario.</li><li><b>Netlify</b>: alojamiento de la web.</li><li><b>Mercado Pago</b> u otra empresa de pagos: cobro de las entradas.</li><li>Un servicio de envío de correos: para mandarte tus entradas.</li><li><b>Google</b> (Google Fonts y Google Maps) y <b>YouTube</b>: reciben tu dirección IP cuando la web carga las fuentes, un mapa o un video.</li></ul>Algunos de estos servidores están fuera de Uruguay, por ejemplo en Estados Unidos. Al aceptar esta política consentís esa transferencia internacional, necesaria para darte el servicio.</li><li>Con las autoridades, cuando la ley lo exija.</li></ul><p>No vendemos tus datos.</p>
 <h2>Cuánto tiempo los guardamos</h2><p>Mientras sean necesarios para las finalidades de arriba y durante los plazos que exijan las normas legales e impositivas. Después los eliminamos o los anonimizamos.</p>
-<h2>Tus derechos</h2><p>Podés pedir acceso a tus datos y su rectificación, actualización, inclusión o supresión ${lgCt()}. Te respondemos dentro de los plazos que fija la Ley 18.331. Si no quedás conforme, podés presentar una denuncia ante la Unidad Reguladora y de Control de Datos Personales (URCDP).</p>
-<h2>Tu navegador</h2><p>Esta web guarda en tu navegador tus preferencias (por ejemplo, el modo oscuro) y tus datos de compra para mostrarte Mis TAGs. No usamos cookies de publicidad. Las fuentes de letra se cargan desde Google Fonts, y algunos eventos muestran mapas de Google Maps o videos de YouTube: esos servicios pueden recibir tu dirección IP.</p>
+<h2>Tus derechos</h2><p>Podés pedir <b>acceso</b> a tus datos y su <b>rectificación, actualización, inclusión o supresión</b> ${lgCt()} (en Ayuda, elegí el motivo "Mis datos personales"). Es gratis. Te respondemos dentro de los plazos que fija la Ley 18.331. Si no quedás conforme, podés presentar una denuncia ante la Unidad Reguladora y de Control de Datos Personales (URCDP).</p>
+<h2>Tu navegador</h2><p>Esta web guarda en tu navegador solo lo necesario para funcionar. No usamos cookies de publicidad ni de análisis. El detalle está en la <a href="#cookies">Política de cookies</a>.</p>
 <h2>Menores de edad</h2><p>Si sos menor de edad, usá TAG con autorización de tu madre, padre o tutor.</p>
 <h2>Cambios</h2><p>Si cambiamos esta política, publicamos la nueva versión acá con su fecha.</p>`],
+cookies:['Política de cookies',()=>`
+<p>Las cookies y el almacenamiento local son pequeños datos que una web guarda en tu navegador. Esta página explica cuáles usa TAG.</p>
+<h2>Lo que guardamos</h2><p>Solo usamos almacenamiento <b>necesario</b> para que la web funcione. Por eso no te pedimos que lo aceptes: sin esto no podrías comprar ni ver tus entradas.</p><ul><li><b>Tu sesión</b>: para que no tengas que ingresar cada vez.</li><li><b>Tus compras y entradas</b>: para mostrarte Mis TAGs y tus datos en la próxima compra.</li><li><b>Tus preferencias</b>: por ejemplo, el modo oscuro.</li><li><b>Control de puerta</b>: el código del evento, la identificación del celular y los ingresos guardados para trabajar sin señal (solo en los celulares del personal).</li></ul>
+<h2>Lo que no usamos</h2><p>No usamos cookies de publicidad, de análisis ni de seguimiento. Si algún día las agregamos, te vamos a preguntar antes, con la opción de aceptarlas o rechazarlas, y la web va a funcionar igual si las rechazás.</p>
+<h2>Servicios de terceros</h2><p>Las fuentes de letra se cargan desde Google Fonts. Algunos eventos muestran un mapa de Google Maps o un video de YouTube (en su modo de privacidad mejorada). Esos servicios reciben tu dirección IP y pueden aplicar sus propias políticas.</p>
+<h2>Cómo borrarlo</h2><p>Podés borrar estos datos cuando quieras desde la configuración de tu navegador, en "Borrar datos de navegación" o "Datos de sitios". Si lo hacés, se cierra tu sesión.</p>`],
+notice:['Aviso legal',()=>`
+<p>Datos del titular de esta web.</p>
+<ul><li><b>Titular:</b> ${LEGAL.razon||LEGAL.org}</li><li><b>Nombre comercial:</b> ${LEGAL.org}</li><li><b>RUT:</b> ${LEGAL.rut||'en trámite'}</li><li><b>Domicilio:</b> ${LEGAL.dom}</li><li><b>Contacto:</b> ${LEGAL.mail||'formulario de la sección Ayuda'}</li></ul>
+<h2>Actividad</h2><p>TAG vende entradas por cuenta y orden de los organizadores de cada evento, las emite y ofrece control de acceso digital. El organizador es el responsable del evento.</p>
+<h2>Condiciones</h2><p>El uso de la web y la compra de entradas se rigen por los <a href="#terminos">Términos y condiciones</a>, la <a href="#devoluciones">Política de devoluciones</a>, la <a href="#privacidad">Política de privacidad</a> y la <a href="#cookies">Política de cookies</a>. Rigen las leyes de la República Oriental del Uruguay, incluidas la Ley 17.250 de Relaciones de Consumo y la Ley 18.331 de Protección de Datos Personales.</p>`],
 orgterms:['Acuerdo para organizadores',()=>`
 <p>Este acuerdo rige la relación entre ${lgWho()} ("TAG") y cada persona o empresa que publica eventos en la plataforma ("el organizador"). Se acepta al crear la cuenta de organizador.</p>
 <h2>1. La cuenta</h2><p>TAG aprueba las cuentas antes de que puedan crear eventos. El organizador da datos verdaderos y es responsable de quienes usan su cuenta y sus códigos, incluido el código de puerta.</p>
@@ -1242,7 +1266,7 @@ function vHelp(){
  <h2>Hacer una consulta o reclamo</h2><form class="panel" style="max-width:560px" onsubmit="supSend();return false" novalidate><div class="f2">
  <div><label for="h1">Nombre</label><input id="h1" autocomplete="name"></div><div><label for="h2">Correo</label><input id="h2" type="email" autocomplete="email"></div>
  <div><label for="h3">Código de la entrada (opcional)</label><input id="h3" placeholder="EP-XXXXXX" autocapitalize="characters"></div>
- <div><label for="h4">Motivo</label><select id="h4"><option>No recibí mi entrada</option><option>Problema con el QR</option><option>Transferencia</option><option>Devolución</option><option>Cobro o pago</option><option>Otro</option></select></div></div>
+ <div><label for="h4">Motivo</label><select id="h4"><option>No recibí mi entrada</option><option>Problema con el QR</option><option>Transferencia</option><option>Devolución</option><option>Cobro o pago</option><option>Mis datos personales (ver, corregir o borrar)</option><option>Otro</option></select></div></div>
  <label for="h5">Contanos qué pasó</label><textarea id="h5" rows="4" maxlength="4000"></textarea>${consent('h6')}
  <div id="hm" class="msg" role="alert"></div><button class="btn" style="margin-top:10px">Enviar</button></form>`}
 async function formSend(table,body,msgId,okTxt){const m=$('#'+msgId);m.style.color='var(--mute)';m.textContent='Enviando…';
