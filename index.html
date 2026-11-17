@@ -14,6 +14,10 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 "Bricolage Grotesque",system-ui,sans-serif}
 button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+::selection{background:var(--acc);color:#fff}
+html{accent-color:var(--acc);caret-color:var(--acc)}
+a{text-underline-offset:.18em}
+.stat b,.sum,.n,.row b,.dcode{font-variant-numeric:tabular-nums}
 .wrap{max-width:1000px;margin:0 auto;padding:0 18px}
 header{border-bottom:1px solid var(--line);background:var(--card)}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 0}
@@ -115,7 +119,10 @@ a{color:var(--acc)}
 nav{overflow-x:auto;white-space:nowrap;max-width:100%;scrollbar-width:none}nav::-webkit-scrollbar{display:none}
 nav button{white-space:nowrap;padding:8px 12px}
 @media(max-width:700px){nav{order:3;flex:1 1 100%}}
-.thb{order:2;margin-left:auto;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:18px;line-height:1;cursor:pointer;padding:0}
+@media(max-width:420px){nav{gap:2px;justify-content:space-between}nav button{padding:8px 9px;font-size:14px}}
+.thb{order:2;margin-left:auto;flex:none;width:40px;height:40px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;padding:0}
+.thb svg{width:18px;height:18px}
+.thb:hover{border-color:var(--ink)}
 nav{order:3}
 .evc{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .16s ease,box-shadow .16s ease}
 .evc:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(10,14,30,.14)}
@@ -124,7 +131,7 @@ nav{order:3}
 .cover{aspect-ratio:16/9;background-size:cover;background-position:center;background-color:var(--line)}
 .cover.ph{display:flex;align-items:flex-end;padding:14px;background-image:linear-gradient(135deg,#1C1C1C,#CC5500);color:#fff}
 .cover.ph span{font-weight:800;font-size:22px;line-height:1.1;letter-spacing:-.03em;text-shadow:0 1px 8px rgba(0,0,0,.25)}
-.cover.big{aspect-ratio:16/8;max-height:380px;border-radius:18px}
+.cover.big{width:100%;aspect-ratio:auto;height:clamp(200px,40vw,420px);border-radius:18px}
 .cw .dchip{border:0;position:absolute;top:10px;left:10px;background:var(--hi);color:#111;border-radius:12px;padding:6px 10px;text-align:center;line-height:1;box-shadow:0 2px 8px rgba(0,0,0,.2)}
 .cw .dchip b{display:block;font-size:22px;font-weight:800}.cw .dchip span{font-size:11px;font-weight:700;text-transform:uppercase}
 .info{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin:16px 0}
@@ -157,7 +164,7 @@ dialog::backdrop{animation:bd .22s ease both}@keyframes bd{from{opacity:0}to{opa
 html:not(.tgd) .btn.apay{border-color:#000}
 .pw{position:relative}.pw input{padding-right:84px}.pwb{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:none;color:var(--acc);font-weight:700;padding:8px 10px;cursor:pointer;border-radius:8px}
 footer{padding:40px 0;color:var(--mute);font-size:13px}
-.flinks{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:10px}.flinks a{color:var(--ink)}
+.flinks{display:flex;flex-wrap:wrap;gap:0 18px;margin-bottom:6px}.flinks a{color:var(--ink);display:inline-block;padding:5px 0}
 .legal{max-width:720px}.legal h2{font-size:19px;margin:26px 0 6px}.legal li{margin:4px 0}.legal a,.chk a{color:var(--acc)}
 .fbar{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:8px 14px;font-weight:600;cursor:pointer}.chip[aria-pressed="true"]{background:var(--acc);color:var(--onacc);border-color:var(--acc)}
@@ -191,13 +198,68 @@ html:not(.tgd) body::after{opacity:.07}
 .li.off s{text-decoration-thickness:2px}
 .dob{display:grid;grid-template-columns:1fr 1.6fr 1.2fr;gap:8px}
 @media print{body>*{display:none!important}body>#prt{display:block!important;color:#000;background:#fff}#prt .ptk{max-width:420px;margin:0 auto;text-align:center;font-family:system-ui,sans-serif}#prt svg{width:240px;height:240px}}
-</style></head>
+/* ===== Capa de movimiento (Lenis + revelados). Todo se apaga con "reducir movimiento". ===== */
+html.lenis,html.lenis body{height:auto}.lenis:not(.lenis-autoToggle).lenis-stopped{overflow:clip}.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+:root{--ease-out:cubic-bezier(.16,1,.3,1)}
+/* Titular cinético: cada palabra entra desenfocada y sube, una vez por visita */
+.kin{font-size:clamp(34px,5.6vw,64px);line-height:.98;letter-spacing:-.045em;max-width:16ch;margin:18px 0 12px;text-wrap:balance}
+.kin .w{display:inline-block;white-space:pre}
+.kin.go .w{animation:wIn .9s var(--ease-out) both;animation-delay:calc(var(--i)*55ms)}
+@keyframes wIn{from{opacity:0;filter:blur(12px);transform:translateY(.32em)}}
+.kin .tg{color:var(--acc)}
+.kin .dot{display:inline-block;width:.2em;height:.2em;border-radius:50%;background:var(--acc);margin-left:.04em;vertical-align:.08em}
+.kin.go .dot{animation:dIn .7s var(--ease-out) both;animation-delay:calc(var(--n)*55ms + .15s)}
+@keyframes dIn{from{transform:scale(0)}60%{transform:scale(1.35)}}
+/* Cinta de próximos eventos: se mueve sola y se inclina con la velocidad del scroll */
+.tick{overflow:hidden;margin:4px -18px 22px;padding:10px 0;border-block:1px solid var(--line);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.tick>div{display:flex;width:max-content;animation:tk 38s linear infinite;transform:skewX(var(--sk,0deg))}
+.tick:hover>div{animation-play-state:paused}
+.tick a{display:inline-flex;align-items:center;gap:12px;padding:0 22px;font-weight:700;font-size:clamp(17px,2.4vw,22px);letter-spacing:-.02em;color:var(--ink);text-decoration:none;white-space:nowrap}
+.tick a:hover{color:var(--acc)}
+.tick a i{width:9px;height:9px;border-radius:50%;background:var(--acc);flex:none}
+.tick a span{font-weight:500;color:var(--mute);font-size:.8em}
+@keyframes tk{to{transform:translateX(-50%) skewX(var(--sk,0deg))}}
+/* Tarjetas: luz que sigue al puntero (solo con mouse) */
+.evc{position:relative;isolation:isolate}
+.evc::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;opacity:0;transition:opacity .3s var(--ease-out);background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--acc) 18%,transparent),transparent 70%)}
+@media(hover:hover){.evc:hover::after{opacity:1}}
+/* Revelado al hacer scroll: arranca casi visible, nunca oculto sin JS */
+.rv{opacity:.001;transform:translateY(22px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
+.rv.in{opacity:1;transform:none}
+/* Organizadores: titular grande, funciones en filas, planes con Pro destacado */
+.ohero h1{font-size:clamp(40px,8vw,92px);line-height:.96;letter-spacing:-.045em;max-width:12ch;margin:26px 0 14px}
+.ohero .lead{font-size:clamp(17px,2vw,20px)}
+.osplit{display:grid;gap:8px 48px;grid-template-columns:minmax(0,1fr);margin-top:56px}
+@media(min-width:860px){.osplit{grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr)}.osplit .ostick{position:sticky;top:96px;align-self:start}}
+.osplit h2{font-size:clamp(28px,4vw,44px);line-height:1;letter-spacing:-.035em;margin:0 0 10px}
+.frows{list-style:none;margin:0;padding:0}
+.frows li{display:grid;grid-template-columns:minmax(0,13ch) minmax(0,1fr);gap:4px 24px;padding:20px 0;border-top:1px solid var(--line)}
+.frows li:last-child{border-bottom:1px solid var(--line)}
+.frows b{font-size:18px;letter-spacing:-.02em;line-height:1.2}
+.frows p{margin:0;color:var(--mute)}
+@media(max-width:560px){.frows li{grid-template-columns:minmax(0,1fr)}}
+.plans{display:grid;gap:22px 14px;padding-top:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));align-items:stretch}
+.plan{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:6px}
+.plan h3{margin:0;font-size:20px;letter-spacing:-.02em}
+.plan .pr{font-size:44px;font-weight:800;letter-spacing:-.04em;line-height:1;margin:6px 0 2px;font-variant-numeric:tabular-nums}
+.plan .pr small{font-size:15px;font-weight:600;color:var(--mute);letter-spacing:0}
+.plan ul{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:7px}
+.plan li{display:flex;gap:10px;font-size:15px}
+.plan li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--acc);margin-top:.6em}
+.plan.hl{border:2px solid var(--acc);box-shadow:0 18px 40px -18px color-mix(in srgb,var(--acc) 55%,transparent)}
+.plan .tagp{position:absolute;top:-12px;left:20px;background:var(--acc);color:#fff;border-radius:99px;padding:3px 10px;font-size:12px;font-weight:700}
+.plan.dim{opacity:.72}
+.oh2{font-size:clamp(28px,4vw,44px);line-height:1;letter-spacing:-.035em;margin:72px 0 18px}
+.btn{transition:transform .16s var(--ease-out),background-color .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease}
+.btn:active{transform:scale(.97)}
+@media(prefers-reduced-motion:reduce){.kin.go .w,.kin.go .dot{animation:none}.tick>div{animation:none;transform:none}.tick{overflow-x:auto}.rv{opacity:1;transform:none;transition:none}.evc::after{display:none}}
+</style><script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script></head>
 <body>
 <header><div class="wrap bar">
 <a class="brand" href="#" onclick="location.hash='';view='events';CD='';render();scrollTo(0,0);return false" aria-label="TAG Tickets, inicio"><span class="logo">TAG<i></i><em>Tickets</em></span><small>Tu Acceso Garantizado</small></a>
-<button class="thb" onclick="thToggle()" aria-label="Cambiar entre modo oscuro y claro" title="Modo claro / oscuro">◐</button><nav aria-label="Secciones"><button data-v="events">Eventos</button><button data-v="tickets">Mis TAGs</button><button data-v="help">Ayuda</button><button data-v="pro">Organizadores</button><button data-v="org">Admin</button></nav></div></header>
+<button class="thb" onclick="thToggle()" aria-label="Cambiar entre modo oscuro y claro" title="Modo claro / oscuro"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button><nav aria-label="Secciones"><button data-v="events">Eventos</button><button data-v="tickets">Mis TAGs</button><button data-v="help">Ayuda</button><button data-v="pro">Organizadores</button><button data-v="org">Admin</button></nav></div></header>
 <main class="wrap" id="app"></main>
-<footer class="wrap"><div class="flinks"><a href="#terminos">Términos y condiciones</a><a href="#devoluciones">Devoluciones</a><a href="#privacidad">Privacidad</a><a href="#acuerdo-organizadores">Acuerdo para organizadores</a><a href="#cookies">Cookies</a><a href="#aviso-legal">Aviso legal</a></div>TAG Tickets · Tu Acceso Garantizado · Versión de prueba. Los pagos y la verificación de edad son simulados; los datos se guardan solo en este navegador.</footer>
+<footer class="wrap"><div class="flinks"><a href="#terminos">Términos y condiciones</a><a href="#devoluciones">Devoluciones</a><a href="#privacidad">Privacidad</a><a href="#acuerdo-organizadores">Acuerdo para organizadores</a><a href="#cookies">Cookies</a><a href="#aviso-legal">Aviso legal</a></div>TAG Tickets · Tu Acceso Garantizado</footer>
 <dialog id="dlg"></dialog>
 <div id="prt"></div>
 <div id="spl" aria-hidden="true"></div>
@@ -310,7 +372,7 @@ setInterval(()=>{const t=$('#fsl');if(!t||t.children.length<2||document.hidden||
 function vEventsOrig(){if(INV)return vInv();if(HE){const e=evOf(HE);if(e)return vEvent(e)}
  const all=pubEvs(),cs=[...new Set(all.map(city).filter(Boolean))].sort(),ft=all.filter(e=>(X(e).feat||hot(e))&&e.date>=today()).sort((a,b)=>!!X(b).feat-!!X(a).feat),fil=FQ||FCI||FTY||CD;
  const chip=(on,txt,attr)=>`<button type="button" class="chip" aria-pressed="${on}" ${attr}>${txt}</button>`;
- return `<h1 style="font-size:clamp(26px,6vw,44px);margin:6px 0 6px;max-width:none">En tu próximo evento, conTAG con nosotros.</h1><p class="lead" style="margin-bottom:16px">Fiestas, conciertos, festivales y más, desde tu celular.</p>
+ return `${kin('En tu próximo evento, conTAG con nosotros.')}<p class="lead" style="margin-bottom:16px">Fiestas, conciertos, festivales y más, desde tu celular.</p>${fil?'':tickHtml()}
  <div class="fbar" role="search"><input id="q" type="search" placeholder="Buscar evento, artista o lugar" aria-label="Buscar eventos" value="${esc(FQ)}" oninput="FQ=this.value;drawGrid()">${cs.length>1?`<select aria-label="Ciudad" onchange="FCI=this.value;render()"><option value="">Todas las ciudades</option>${cs.map(c=>`<option ${FCI===c?'selected':''}>${esc(c)}</option>`).join('')}</select>`:''}</div>
  <div class="chips" role="group" aria-label="Tipo de evento">${chip(!FTY,'Todos','onclick="FTY=\'\';render()"')}${TYPES.map(t=>chip(FTY===t,t==='Otro'?'Otros':t,`onclick="FTY='${t}';render()"`)).join('')}</div>
  ${cal()}
@@ -1045,7 +1107,7 @@ async function tixLoad(){S.tix=[];S.ledger=[];S.scans=[];if(!SBS)return;const or
  dc.forEach(d=>{const e=S.events.find(x=>x.dbid===d.event_id);if(e){e.doorCode=d.code;e.doorOn=true}})}
 const rpc=(f,body)=>sbReq('/rest/v1/rpc/'+f,{method:'POST',body});
 function vEvents(){if(DBERR)return `<h1>No pudimos cargar los eventos</h1><p class="lead">${esc(DBERR)}</p><button class="btn" onclick="dbLoad()">Reintentar</button>`;
- if(!S.events.length)return `<h1 style="font-size:clamp(26px,6vw,44px)">En tu próximo evento, conTAG con nosotros.</h1><div class="empty" style="margin-top:18px">Todavía no hay eventos publicados. Muy pronto vas a ver acá los próximos.</div>`;
+ if(!S.events.length)return `${kin('En tu próximo evento, conTAG con nosotros.')}<p class="lead">Fiestas, conciertos, festivales y más, desde tu celular.</p><div class="empty" style="margin-top:18px">Todavía no hay eventos publicados. Muy pronto vas a ver acá los próximos.<p style="margin:14px 0 0"><button class="btn ghost sm" onclick="view='pro';render();scrollTo(0,0)">¿Organizás eventos? Publicá el tuyo</button></p></div>`;
  return vEventsOrig()}
 // ---- cuentas de organizador y admin
 function pwTog(b){const i=b.previousElementSibling,v=i.type==='password';i.type=v?'text':'password';b.textContent=v?'Ocultar':'Mostrar'}
@@ -1191,38 +1253,47 @@ const ILL={
 'Equipos de escaneo':'<rect x="20" y="4" width="24" height="40" rx="4"/><path d="M29 40h6"/><rect class="a" x="25" y="11" width="14" height="14" rx="1"/><path class="a" d="M29 15h2v2M35 21h-2"/>',
 'Capacitación':'<rect x="10" y="6" width="44" height="28" rx="2"/><path d="M24 44l8-10 8 10"/><path class="a" d="M16 26l8-8 6 5 10-9"/>',
 'Asistencia el día del evento':'<path d="M14 30v-6a18 18 0 0 1 36 0v6"/><rect class="a" x="10" y="28" width="8" height="12" rx="3"/><rect class="a" x="46" y="28" width="8" height="12" rx="3"/><path d="M50 40c0 4-4 6-10 6h-4"/>'};
+// Titular partido en palabras; anima solo la primera vez que se ve en la visita.
+let KIN=0;
+function kin(txt,cls){const go=!KIN++;let i=0;const ws=txt.split(' ').map(w=>w==='conTAG'?`<span class="w" style="--i:${i++}">con<span class="tg">TAG</span></span>`:`<span class="w" style="--i:${i++}">${w}</span>`);
+ const last=ws.pop().replace(/\.<\/span>$/,`<span class="dot" style="--n:${i}" aria-hidden="true"></span></span>`);ws.push(last);return `<h1 class="kin ${cls||''} ${go?'go':''}" aria-label="${txt}">${ws.map(w=>w.replace('class="w"','class="w" aria-hidden="true"')).join(' ')}</h1>`}
+// Cinta con los próximos eventos reales (no se muestra si hay menos de 2)
+function tickHtml(){const l=pubEvs().filter(e=>e.date>=today()).slice(0,8);if(l.length<2)return '';const MS=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+ const it=l.map(e=>{const [y,m,d]=e.date.split('-');return `<a href="#e-${e.id}" tabindex="-1"><i></i>${esc(e.name)} <span>${+d} ${MS[+m-1]}${city(e)?' · '+esc(city(e)):''}</span></a>`}).join('');return `<div class="tick" aria-hidden="true"><div>${it}${it}</div></div>`}
 const card=(t,p,s)=>`<div class="panel">${ILL[t]?`<svg class="ill" viewBox="0 0 64 48" aria-hidden="true">${ILL[t]}</svg>`:''}<h3>${t}${s?'<span class="soon">Próximamente</span>':''}</h3><p>${p}</p></div>`;
 const consent=id=>`<label class="chk" style="margin-top:12px"><input type="checkbox" id="${id}"> Acepto que TAG use estos datos solo para responder mi consulta (Ley 18.331 de Protección de Datos Personales). <a href="#privacidad" target="_blank">Política de privacidad</a>.</label>`;
 function vPro(){
  const go=(isOrg()?'':`<button class="btn ghost" onclick="demoPanel()">Probar el panel sin cuenta</button> `)+(isOrg()?`<button class="btn" onclick="view='orgz';render();scrollTo(0,0)">Ir a mi panel</button>`:`<button class="btn" onclick="view='orgz';render();scrollTo(0,0)">Crear cuenta o ingresar</button>`);
- return `<div class="hero2"><h1 style="max-width:18ch">Todo lo que tu evento necesita.</h1><p class="lead">Vos lo creás, TAG lo hace posible: venta de entradas, control de puerta y estadísticas, todo en un solo lugar.</p>
- <div style="display:flex;gap:10px;flex-wrap:wrap">${go}<a class="btn ghost" href="#info" onclick="document.getElementById('info').scrollIntoView();return false" style="text-decoration:none">Solicitar información</a></div></div>
- <h2>Funcionalidades</h2><div class="feats">
- ${card('Página propia por evento','Fotos, video, line-up, horarios, mapa, condiciones de ingreso y preguntas frecuentes.')}
- ${card('Tandas y categorías','Anticipadas, generales, VIP, mesas y links de amigos. Cada categoría con sus tandas, precios, cupos y fechas.')}
- ${card('Cupones e invitados','Códigos de descuento con límite de usos, cortesías y listas de invitados con QR propio.')}
- ${card('Promotores','Un link o código por promotor, artista o influencer, con ranking de ventas y comisión por venta.')}
- ${card('Control de acceso','QR único por entrada, detección de duplicados, entradas anuladas y modo sin conexión.')}
- ${card('Edad e identidad','Eventos +18 o +21 con validación de edad y verificación de cédula por un proveedor externo.')}
- ${card('Estadísticas','Ventas por tanda y por promotor, ingresos por hora, anticipadas contra último momento.')}
- ${card('Duplicar eventos','Creá la próxima edición a partir de la configuración de la anterior.')}
- ${card('TAG Live','Panel en vivo con ventas, recaudación, ingresos a puerta y ocupación del lugar.',1)}</div>
- <h2>Planes</h2><div class="feats">
- ${card('Básico','<b style="font-size:22px">US$ 15</b> por mes<br>Para empezar a vender.<br><br>· Publicación de eventos con página completa (flyer, video, line-up, horarios)<br>· Categorías y tandas solo con link<br>· Venta de entradas<br>· QR y control de acceso<br>· Panel de ventas<br>· Reportes básicos')}
- ${card('Pro','<b style="font-size:22px">US$ 35</b> por mes<br>Para productoras y organizadores frecuentes.<br><br>· Todo lo de Básico<br>· Promotores y links personalizados<br>· Cupones y promociones<br>· Invitaciones y cortesías<br>· Estadísticas avanzadas<br>· Puerta sin señal y celulares ilimitados')}
- ${card('Premium','Para grandes eventos y productoras.<br><br>· Todo lo de Pro<br>· TAG Live<br>· Seguridad avanzada<br>· Soporte prioritario<br>· Integraciones y configuraciones a medida<br>· Servicios de acceso y asistencia especializada',1)}</div>
+ const row=(t,p,x)=>`<li class="rv"><b>${t}${x?'<span class="soon">Próximamente</span>':''}</b><p>${p}</p></li>`;
+ const plan=(t,pr,who,items,o={})=>`<div class="plan rv ${o.hl?'hl':''} ${o.soon?'dim':''}">${o.hl?'<span class="tagp">El más elegido</span>':''}<h3>${t}</h3>${pr?`<div class="pr">${pr}<small> por mes</small></div>`:'<div class="pr" style="font-size:24px">Próximamente</div>'}<p class="mute" style="margin:0">${who}</p><ul>${items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`;
+ return `<section class="ohero">${kin('Todo lo que tu evento necesita.')}<p class="lead">Vos lo creás, TAG lo hace posible: venta de entradas, control de puerta y estadísticas, todo en un solo lugar.</p>
+ <div style="display:flex;gap:10px;flex-wrap:wrap">${go}<a class="btn ghost" href="#info" onclick="document.getElementById('info').scrollIntoView({behavior:'smooth'});return false" style="text-decoration:none">Solicitar información</a></div></section>
+ <section class="osplit"><div class="ostick"><h2>Funcionalidades</h2><p class="lead">Lo que necesitás antes, durante y después del evento.</p></div><ol class="frows">
+ ${row('Página propia por evento','Fotos, video, line-up, horarios, mapa, condiciones de ingreso y preguntas frecuentes.')}
+ ${row('Tandas y categorías','Anticipadas, generales, VIP, mesas y links de amigos. Cada categoría con sus tandas, precios, cupos y fechas.')}
+ ${row('Cupones e invitados','Códigos de descuento con límite de usos, cortesías y listas de invitados con QR propio.')}
+ ${row('Promotores','Un link o código por promotor, artista o influencer, con ranking de ventas y comisión por venta.')}
+ ${row('Control de acceso','QR único por entrada, detección de duplicados, entradas anuladas y modo sin conexión.')}
+ ${row('Edad e identidad','Eventos +18 o +21 con validación de edad y verificación de cédula por un proveedor externo.')}
+ ${row('Estadísticas','Ventas por tanda y por promotor, ingresos por hora, anticipadas contra último momento.')}
+ ${row('Duplicar eventos','Creá la próxima edición a partir de la configuración de la anterior.')}
+ ${row('TAG Live','Panel en vivo con ventas, recaudación, ingresos a puerta y ocupación del lugar.',1)}</ol></section>
+ <h2 class="oh2">Planes</h2><div class="plans">
+ ${plan('Básico','US$ 15','Para empezar a vender.',['Eventos con página completa (flyer, video, line-up, horarios)','Categorías y tandas solo con link','Venta de entradas','QR y control de acceso','Panel de ventas','Reportes básicos'])}
+ ${plan('Pro','US$ 35','Para productoras y organizadores frecuentes.',['Todo lo de Básico','Promotores y links personalizados','Cupones y promociones','Invitaciones y cortesías','Estadísticas avanzadas','Puerta sin señal y celulares ilimitados'],{hl:1})}
+ ${plan('Premium','','Para grandes eventos y productoras.',['Todo lo de Pro','TAG Live','Seguridad avanzada','Soporte prioritario','Integraciones y configuraciones a medida','Servicios de acceso y asistencia especializada'],{soon:1})}</div>
  <p class="note">El dinero de las entradas se acredita al organizador y TAG retiene su comisión automáticamente. Cobros en pesos uruguayos y dólares. Pedinos una propuesta para tu evento.</p>
- <h2>Servicios adicionales</h2><div class="feats">
- ${card('Personal de puerta','Personal de TAG para controlar los accesos el día del evento.')}
- ${card('Equipos de escaneo','Alquiler o provisión de dispositivos para escanear entradas.')}
- ${card('Capacitación','Entrenamos a tu equipo de puerta antes del evento.')}
- ${card('Asistencia el día del evento','Soporte técnico en vivo ante problemas con entradas o códigos QR.')}</div>
- <h2>Preguntas frecuentes</h2><div style="max-width:720px">
+ <section class="osplit"><div class="ostick"><h2>Servicios adicionales</h2><p class="lead">Para el día del evento.</p></div><ol class="frows">
+ ${row('Personal de puerta','Personal de TAG para controlar los accesos el día del evento.')}
+ ${row('Equipos de escaneo','Alquiler o provisión de dispositivos para escanear entradas.')}
+ ${row('Capacitación','Entrenamos a tu equipo de puerta antes del evento.')}
+ ${row('Asistencia el día del evento','Soporte técnico en vivo ante problemas con entradas o códigos QR.')}</ol></section>
+ <h2 class="oh2">Preguntas frecuentes</h2><div style="max-width:720px">
  <details class="faq"><summary>¿Cuándo recibo el dinero de las ventas?</summary><p>Las fechas y condiciones de liquidación se acuerdan con cada organizador. En tu panel ves lo vendido y el total ingresado.</p></details>
  <details class="faq"><summary>¿Necesito internet en la puerta?</summary><p>No es imprescindible. Antes del evento el equipo descarga la lista de entradas y puede escanear sin señal. Al volver la conexión, TAG sincroniza y avisa si una entrada pasó por dos puertas.</p></details>
  <details class="faq"><summary>¿Puedo tener varias personas administrando un evento?</summary><p>Hoy cada cuenta administra sus eventos y el personal de puerta entra con un código, sin cuenta. Los usuarios múltiples por organización con permisos están en desarrollo.</p></details>
  <details class="faq"><summary>¿Las entradas se pueden transferir?</summary><p>Vos decidís: transferibles (se emite un QR nuevo y el anterior deja de servir) o nominativas.</p></details></div>
- <h2 id="info">Solicitar información</h2><form class="panel" style="max-width:560px" onsubmit="leadSend();return false" novalidate><div class="f2">
+ <h2 class="oh2" id="info">Solicitar información</h2><form class="panel" style="max-width:560px" onsubmit="leadSend();return false" novalidate><div class="f2">
  <div><label for="l1">Nombre</label><input id="l1" autocomplete="name"></div><div><label for="l2">Productora u organización</label><input id="l2" autocomplete="organization"></div>
  <div><label for="l3">Correo</label><input id="l3" type="email" autocomplete="email"></div><div><label for="l4">Teléfono (opcional)</label><input id="l4" type="tel" autocomplete="tel"></div>
  <div style="grid-column:1/-1"><label for="l5">Tipo de evento y público esperado</label><input id="l5" placeholder="Fiesta, 800 personas"></div></div>
@@ -1371,6 +1442,21 @@ S.events=S.events.filter(e=>e.dbid&&!String(e.dbid).startsWith('demo-'));
 
 let LSY=0,WD=false;const isD=()=>/^#[el]-/.test(location.hash);addEventListener('scroll',()=>{if(!isD())LSY=scrollY},{passive:true});addEventListener('hashchange',()=>{const d=isD(),back=WD&&!d;WD=d;setTimeout(()=>scrollTo({top:back?LSY:0,behavior:back?'instant':'smooth'}),0)});
 addEventListener('hashchange',render);render();
+// Movimiento: Lenis solo con mouse/trackpad y sin "reducir movimiento"; en celular queda el scroll nativo.
+(function(){const RM=matchMedia('(prefers-reduced-motion: reduce)').matches,FINE=matchMedia('(hover:hover) and (pointer:fine)').matches;let L=null;
+ const dlg=document.getElementById('dlg');if(dlg)dlg.setAttribute('data-lenis-prevent','');
+ if(window.Lenis&&!RM&&FINE){try{L=new Lenis({autoRaf:true,anchors:true,lerp:.11});window.LENIS=L;
+  if(dlg)new MutationObserver(()=>dlg.open?L.stop():L.start()).observe(dlg,{attributes:true,attributeFilter:['open']});
+  L.on('scroll',({velocity})=>{const t=document.querySelector('.tick>div');if(t)t.style.setProperty('--sk',Math.max(-6,Math.min(6,velocity*.6)).toFixed(2)+'deg')});
+}catch(_){L=null}}
+ // revelado de filas y planes al entrar en pantalla
+ const io='IntersectionObserver' in window&&!RM?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'}):null;
+ const scan=()=>document.querySelectorAll('.rv:not(.in)').forEach(el=>io?io.observe(el):el.classList.add('in'));
+ new MutationObserver(scan).observe(document.getElementById('app'),{childList:true});scan();
+ // las áreas con scroll propio no las toca Lenis
+ const prev=()=>document.querySelectorAll('.fsl,.car,nav,.scroll').forEach(e=>e.setAttribute('data-lenis-prevent-wheel',''));new MutationObserver(prev).observe(document.getElementById('app'),{childList:true});prev();
+ if(FINE&&!RM)document.addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest('.evc');if(!c)return;const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')},{passive:true});
+})();
 (function(){const R=document.documentElement,sp=document.getElementById('spl');
  const end=()=>{R.classList.remove('spl');sp&&sp.remove()};
  try{const br=document.querySelector('header .brand');if(!br||!sp||DOORM){end();return}
