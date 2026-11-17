@@ -171,8 +171,8 @@ footer{padding:40px 0;color:var(--mute);font-size:13px}
 .ckh{position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:10px;background:var(--card);margin:-22px -22px 0;padding:10px 16px 10px 22px;border-bottom:1px solid var(--line)}.ckt{flex:1;min-width:0;margin:0!important;font-size:18px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ckh .tmr{margin:0;padding:4px 10px;border-radius:99px;font-size:14px;white-space:nowrap}.fbar input{flex:1 1 220px}.fbar select{flex:0 1 180px;width:auto}
 .fsl{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:18px}.fsl::-webkit-scrollbar{display:none}
 .sl{flex:0 0 100%;scroll-snap-align:start;position:relative;aspect-ratio:16/8;max-height:440px;overflow:hidden;color:#fff;text-decoration:none;background:#111}
-.sl .fg{position:absolute;inset:0;background-size:cover;background-position:center 30%}
-.sl .cover{position:absolute;inset:0;aspect-ratio:auto}.sl .cover.ph span{display:none}
+.sl .fg{position:absolute;inset:-9% 0;background-size:cover;background-position:center 30%}
+.sl .cover{position:absolute;inset:-9% 0;aspect-ratio:auto}.sl .cover.ph span{display:none}
 .sl .cap{position:absolute;left:0;right:0;bottom:0;padding:40px 18px 16px;background:linear-gradient(transparent,rgba(0,0,0,.75))}
 .sl .cap b{display:block;font-size:clamp(20px,4vw,30px);line-height:1.1}
 .fdots{display:flex;justify-content:center;gap:4px;margin-top:6px}.fdots button{width:24px;height:24px;border:0;background:none;padding:0;cursor:pointer}.fdots button::after{content:'';display:block;width:8px;height:8px;margin:auto;border-radius:99px;background:var(--line);transition:width .2s}.fdots button[aria-current="true"]::after{width:20px;background:var(--ink)}
@@ -253,7 +253,8 @@ html.lenis,html.lenis body{height:auto}.lenis:not(.lenis-autoToggle).lenis-stopp
 .btn{transition:transform .16s var(--ease-out),background-color .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease}
 .btn:active{transform:scale(.97)}
 @media(prefers-reduced-motion:reduce){.kin.go .w,.kin.go .dot{animation:none}.tick>div{animation:none;transform:none}.tick{overflow-x:auto}.rv{opacity:1;transform:none;transition:none}.evc::after{display:none}}
-</style><script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script></head>
+html.gs .evc{animation:none}
+</style><script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script></head>
 <body>
 <header><div class="wrap bar">
 <a class="brand" href="#" onclick="location.hash='';view='events';CD='';render();scrollTo(0,0);return false" aria-label="TAG Tickets, inicio"><span class="logo">TAG<i></i><em>Tickets</em></span><small>Tu Acceso Garantizado</small></a>
@@ -325,6 +326,7 @@ async function payBack(o){if(PGW===o)return;PGW=o;const box=m=>dlgOpen(`<div cla
   if(j&&j.status==='paid'&&j.tickets.length){let e=S.events.find(x=>x.dbid===j.event);if(!e){try{const r=await rpc('tag_event_link',{p_id:j.event});if(r&&r.id){LV.push(r);e=fromDb(r);S.events.push(e)}}catch(_){}}
    if(!e){box('¡Pago aprobado! Tus entradas ya están en Mis TAGs.');return}
    history.replaceState(null,'',location.pathname+location.search);done(j.tickets.map(k=>({id:k.c,ev:e.id,t:tIx(e,k.t),owner:{email:j.email}})),j.email);dbLoad();return}
+  if(j&&j.status==='refunded'){box('Tu pago llegó cuando ya no quedaban lugares, así que te lo devolvimos completo a tu medio de pago. Disculpá las molestias.');return}
   if(j&&['cancelled','failed'].includes(j.status)){box('El pago no se completó y la reserva se liberó. Podés volver a intentar la compra.');return}
   await new Promise(r=>setTimeout(r,2000))}
  box('Tu pago todavía está en proceso (por ejemplo, si pagás en Abitab o Redpagos). Cuando se acredite, tus entradas van a aparecer en Mis TAGs con el correo de la compra.')}
@@ -1088,7 +1090,7 @@ function fromDb(r){const [d,h]=tzp(r.starts_at).split('T'),k=KEEP[nid(r.id)]||{}
  return {id:nid(r.id),dbid:r.id,ownerId:r.owner_id,owner:r.owner_id,token:'',name:r.name,place:r.place,addr:r.address||'',date:d,time:h,minAge:r.min_age||0,idReq:!!r.id_required,pub:r.visibility==='public',pubFrom:r.publish_from?tzp(r.publish_from):'',desc:r.description||'',img:r.image_path||'',cur:r.currency||'UYU',goal:r.sales_goal||0,
  fee:{on:r.fee_on,pct:+r.fee_pct,min:+r.fee_min_uyu,payer:r.fee_payer==='organizer'?'org':'buyer',ap:'pri'},x,links:x.promos||[],doorCode:k.doorCode,doorOn:k.doorOn,
  tandas:(r.tandas||[]).slice().sort((a,b)=>a.position-b.position).map((t,i)=>({dbid:t.id,n:t.name,price:+t.price,cap:t.capacity,sold:t.sold,until:t.closes_at?tzp(t.closes_at):'',pub:t.is_public,pubFrom:t.public_from?tzp(t.public_from):'',c:(tx[i]||{}).c||'General',lk:(tx[i]||{}).lk||[],tk:(tx[i]||{}).tk||'',tr:t.transferable!==false}))}}
-async function dbLoad(){if(isDemo()){DBL=false;save();render();return}DBL=true;MPS=null;try{
+async function dbLoad(){if(isDemo()){DBL=false;save();render();return}DBL=true;MPS=null;rpc('tag_release_expired',{}).catch(()=>{});try{
   const ev=await sbReq('/rest/v1/events?select=*,tandas(*)&order=starts_at.asc');
   S.events=ev.map(fromDb);LV.forEach(r=>{if(!S.events.some(e=>e.dbid===r.id))S.events.push(fromDb(r))});
   try{await tixLoad()}catch(x){console.warn('entradas',x)}
@@ -1440,12 +1442,13 @@ function demoOut(){SBS=SBS0;SBS0=null;S.om=SBS?SBS.email:'';S.events=S.events.fi
 S.events=S.events.filter(e=>e.dbid&&!String(e.dbid).startsWith('demo-'));
 (async()=>{const ty=await sbHash();if(SBS){try{await sbProfile();S.om=SBS.email}catch(e){if(e&&e.status===401){SBS=null;S.om='';sbSave()}}}else S.om='';await dbLoad();if(ty==='recovery')pwDlg('Creá tu contraseña nueva','Escribí la contraseña nueva para tu cuenta.')})();
 
-let LSY=0,WD=false;const isD=()=>/^#[el]-/.test(location.hash);addEventListener('scroll',()=>{if(!isD())LSY=scrollY},{passive:true});addEventListener('hashchange',()=>{const d=isD(),back=WD&&!d;WD=d;setTimeout(()=>scrollTo({top:back?LSY:0,behavior:back?'instant':'smooth'}),0)});
+let LSY=0,WD=false;const isD=()=>/^#[el]-/.test(location.hash);addEventListener('scroll',()=>{if(!isD())LSY=scrollY},{passive:true});addEventListener('hashchange',()=>{const d=isD(),back=WD&&!d;WD=d;setTimeout(()=>window.LENIS?LENIS.scrollTo(back?LSY:0,{immediate:true,force:true}):scrollTo({top:back?LSY:0,behavior:back?'instant':'smooth'}),0)});
 addEventListener('hashchange',render);render();
 // Movimiento: Lenis solo con mouse/trackpad y sin "reducir movimiento"; en celular queda el scroll nativo.
 (function(){const RM=matchMedia('(prefers-reduced-motion: reduce)').matches,FINE=matchMedia('(hover:hover) and (pointer:fine)').matches;let L=null;
  const dlg=document.getElementById('dlg');if(dlg)dlg.setAttribute('data-lenis-prevent','');
- if(window.Lenis&&!RM&&FINE){try{L=new Lenis({autoRaf:true,anchors:true,lerp:.11});window.LENIS=L;
+ if(window.Lenis&&!RM&&FINE){try{const G=window.gsap&&window.ScrollTrigger;L=new Lenis({autoRaf:!G,anchors:true,lerp:.11});window.LENIS=L;
+  if(G){L.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>L.raf(t*1000));gsap.ticker.lagSmoothing(0)}
   if(dlg)new MutationObserver(()=>dlg.open?L.stop():L.start()).observe(dlg,{attributes:true,attributeFilter:['open']});
   L.on('scroll',({velocity})=>{const t=document.querySelector('.tick>div');if(t)t.style.setProperty('--sk',Math.max(-6,Math.min(6,velocity*.6)).toFixed(2)+'deg')});
 }catch(_){L=null}}
@@ -1455,6 +1458,17 @@ addEventListener('hashchange',render);render();
  new MutationObserver(scan).observe(document.getElementById('app'),{childList:true});scan();
  // las áreas con scroll propio no las toca Lenis
  const prev=()=>document.querySelectorAll('.fsl,.car,nav,.scroll').forEach(e=>e.setAttribute('data-lenis-prevent-wheel',''));new MutationObserver(prev).observe(document.getElementById('app'),{childList:true});prev();
+ // GSAP + ScrollTrigger: titular que se aleja, flyers con parallax, tarjetas que entran en tanda, flyer del evento.
+ if(window.gsap&&window.ScrollTrigger&&!RM){gsap.registerPlugin(ScrollTrigger);document.documentElement.classList.add('gs');let ctx=null,q=0;
+  const build=()=>{q=0;if(ctx)ctx.revert();ctx=gsap.context(()=>{
+   const k=document.querySelector('#app .kin');if(k)gsap.to(k,{yPercent:-18,opacity:.35,ease:'none',scrollTrigger:{trigger:k,start:'top top+=90',end:'bottom top',scrub:true}});
+   gsap.utils.toArray('#app .sl .fg,#app .sl .cover').forEach(el=>gsap.fromTo(el,{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:el.parentElement,start:'top bottom',end:'bottom top',scrub:true}}));
+   const big=document.querySelector('#app .cover.big');if(big)gsap.fromTo(big,{backgroundPositionY:'35%'},{backgroundPositionY:'65%',ease:'none',scrollTrigger:{trigger:big,start:'top top+=60',end:'bottom top',scrub:true}});
+   const cards=gsap.utils.toArray('#app .evc');if(cards.length){gsap.set(cards,{autoAlpha:0,y:28});
+    ScrollTrigger.batch(cards,{start:'top 92%',once:true,onEnter:b=>gsap.to(b,{autoAlpha:1,y:0,duration:.7,ease:'expo.out',stagger:.08,overwrite:true})})}
+  },document.getElementById('app'));ScrollTrigger.refresh()};
+  new MutationObserver(()=>{if(!q)q=requestAnimationFrame(build)}).observe(document.getElementById('app'),{childList:true});build();
+  addEventListener('load',()=>ScrollTrigger.refresh())}
  if(FINE&&!RM)document.addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest('.evc');if(!c)return;const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')},{passive:true});
 })();
 (function(){const R=document.documentElement,sp=document.getElementById('spl');
