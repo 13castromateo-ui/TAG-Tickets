@@ -5,7 +5,7 @@
 <meta name="description" content="Entradas para fiestas, conciertos y festivales en Uruguay. Comprá desde tu celular y entrá con tu QR.">
 <meta property="og:title" content="TAG Tickets – Tu Acceso Garantizado"><meta property="og:description" content="Entradas para fiestas, conciertos y festivales en Uruguay. Comprá desde tu celular y entrá con tu QR."><meta property="og:type" content="website"><meta name="theme-color" content="#1C1C1C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231C1C1C'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23CC5500'/%3E%3C/svg%3E"><script>try{document.documentElement.classList.toggle("tgd",localStorage.getItem("ep_theme")!=="light")}catch(e){document.documentElement.classList.add("tgd")}document.documentElement.classList.add("spl")</script>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Unbounded:wght@500;700;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,800;1,6..96,500&family=Antonio:wght@400;700&family=Rubik+Mono+One&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Unbounded:wght@500;700;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,800;1,6..96,500&family=Antonio:wght@400;700&family=Rubik+Mono+One&family=Permanent+Marker&family=Shrikhand&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#EEEBE7;--card:#fff;--ink:#1C1C1C;--mute:#5F5B57;--line:#D4D0CB;--acc:#CC5500;--onacc:#fff;--hi:#CC5500;--brand:#CC5500;--ok:#0f8a5f;--bad:#c4322f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html.tgd{--bg:#0B0B0C;--card:#161618;--ink:#EDE7DD;--mute:#A39C91;--line:#2C2C30;--acc:#FF5A1F;--onacc:#0B0B0C;--hi:#EDE7DD;--brand:#FF5A1F;--ok:#8EDFB3;--bad:#FF8F80;color-scheme:dark}
@@ -393,6 +393,21 @@ body[data-world="amp"]{background-image:repeating-linear-gradient(45deg,#1b1b1b 
 .wh.festival .fl{position:absolute;inset:0}
 .wh.festival .band{position:absolute;left:-10%;right:-10%;bottom:16%;height:70px;transform:rotate(-6deg);background:repeating-linear-gradient(90deg,#F5D547 0 3px,#f0c62a 3px 6px);box-shadow:0 18px 30px -10px #0008;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .wh.festival .band span{font:900 20px Unbounded;color:#0F3B2F;white-space:nowrap;letter-spacing:-.02em}
+/* Sunset: cielo de atardecer, sol que baja detrás del flyer, mar en franjas */
+body[data-world="sunset"]{--bg:#2A1220;--card:#3A1A2A;--ink:#FFF3E6;--mute:#F2C9B4;--line:#5A2A3E;--acc:#FF8A3D;--onacc:#2A1220;--hi:#FFB347;background-image:linear-gradient(#FF9A4A 0,#FF5E5B 240px,#9B3468 520px,#2A1220 820px);background-repeat:no-repeat}
+.wh.sunset{height:min(118vw,540px);overflow:hidden;border-radius:18px}
+.wh.sunset .sun{position:absolute;left:50%;top:44%;width:min(90vw,420px);aspect-ratio:1;transform:translate(-50%,-30%);border-radius:50%;background:radial-gradient(circle,#FFE29A 0 45%,#FFB347 60%,#FF8A3D 70%,transparent 71%);animation:sunset 14s ease-in-out infinite alternate}
+@keyframes sunset{to{transform:translate(-50%,-14%)}}
+.wh.sunset .sea{position:absolute;left:0;right:0;bottom:0;height:34%;background:repeating-linear-gradient(#2A1220 0 6px,#FF8A3D55 6px 8px),linear-gradient(#7A2E6E,#2A1220);background-blend-mode:screen;z-index:1}
+.wh.sunset .fl{position:absolute;left:18%;right:18%;top:10%;bottom:16%;border:8px solid #FFF3E6;border-bottom-width:34px;box-shadow:0 20px 40px #0007;transform:rotate(-2deg);z-index:2}
+body[data-world="sunset"] .wt{font-family:Shrikhand,Unbounded,serif;font-weight:400;letter-spacing:0;color:#FFF3E6;text-shadow:0 3px 0 #9B3468}
+.sunl{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.sunl span{background:#FFF3E6;color:#2A1220;border-radius:99px;padding:8px 14px;font:700 14px Archivo}
+.evc.w-sunset .cw{overflow:hidden}.evc.w-sunset .cw:after{content:"";position:absolute;left:50%;bottom:-60px;width:150px;height:150px;margin-left:-75px;border-radius:50%;background:radial-gradient(circle,#FFE29A 0 40%,#FF8A3D 65%,transparent 66%);opacity:.9;pointer-events:none}
+.wk-sunset{background:linear-gradient(#FF9A4A,#FF5E5B 45%,#9B3468);color:#FFF3E6}
+.wk-sunset .wdeco{background:radial-gradient(circle at 96% -4%,#FFE29A 0 14%,#FFB347 18%,transparent 18.5%)}
+.wk-sunset .wtop b{font-family:Shrikhand,Unbounded,serif;font-weight:400;letter-spacing:0;text-transform:none}
+.wk-sunset .wst{color:#FFF3E6}.wk-sunset .wst.ok{color:#FFF3E6}
+@media(prefers-reduced-motion:reduce){.wh.sunset .sun{animation:none}}
 /* Base */
 .wh.base .fl{aspect-ratio:16/9;border-radius:16px}
 /* Tarjetas de la cartelera: cada una anticipa su mundo */
@@ -493,7 +508,7 @@ const cover=(e,c='')=>e.img?`<div class="cover ${c}" style="background-image:url
 function thToggle(){const d=document.documentElement,n=d.classList.toggle("tgd");try{localStorage.setItem("ep_theme",n?"dark":"light")}catch(e){}}
 // ---- descubrir: buscador, filtros y destacados
 let FQ='',FCI='',FTY='';
-const TYPES=['Fiesta','Electrónica','Concierto','Festival','Teatro','Comedia','Deporte','Conferencia','Otro'];
+const TYPES=['Fiesta','Sunset','Electrónica','Concierto','Festival','Teatro','Comedia','Deporte','Conferencia','Otro'];
 // Ciudad detectada del lugar y la dirección (ciudades de Uruguay y barrios de Montevideo).
 const UYC=['Montevideo','Ciudad de la Costa','Las Piedras','Pando','Atlántida','Canelones','Punta del Este','La Barra','José Ignacio','Piriápolis','Maldonado','Colonia del Sacramento','Colonia','Salto','Paysandú','Rivera','Tacuarembó','Melo','Mercedes','Minas','Florida','Durazno','Treinta y Tres','Rocha','La Paloma','Punta del Diablo','San José','Trinidad','Artigas','Fray Bentos'];
 const MVD=['pocitos','carrasco','punta carretas','ciudad vieja','cordon','parque rodo','malvin','buceo','prado','punta gorda','la blanqueada','tres cruces','palermo','barrio sur','aguada','sayago','cerro','parque batlle','punta brava'];
@@ -507,7 +522,7 @@ const hot=e=>{if(curT(e)<0)return false;const cap=e.tandas.reduce((a,t)=>a+t.cap
 const pubEvs=()=>S.events.filter(e=>e.pub!==false&&isLive(e)).sort((a,b)=>a.date.localeCompare(b.date));
 const fOk=e=>{const q=FQ.trim().toLowerCase(),x=X(e);return (!CD||e.date===CD)&&(!FCI||city(e)===FCI)&&(!FTY||x.type===FTY)&&(!q||[e.name,e.place,e.addr,x.lineup,x.type,city(e)].join(' ').toLowerCase().includes(q))};
 // Mundos: cada tipo de evento tiene su ambiente (página, tarjeta de cartelera); la base de TAG (barra, compra) no cambia.
-const WORLD=e=>{const x=X(e)||{},t=nrm(x.type||'');return t==='fiesta'?'pase':t==='electronica'?(x.wv==='laser'?'laser':'vinilo'):t==='comedia'?'comedia':t==='teatro'?'teatro':t==='concierto'?'amp':t==='festival'?'festival':'base'};
+const WORLD=e=>{const x=X(e)||{},t=nrm(x.type||'');return t==='sunset'?'sunset':t==='fiesta'?'pase':t==='electronica'?(x.wv==='laser'?'laser':'vinilo'):t==='comedia'?'comedia':t==='teatro'?'teatro':t==='concierto'?'amp':t==='festival'?'festival':'base'};
 const flyerBox=(e,c)=>e.img?`<div class="fl ${c||''}" style="background-image:url('${e.img}')" role="img" aria-label="Flyer de ${esc(e.name)}"></div>`:`<div class="fl ph ${c||''}" style="--h:${(e.id*67)%360}"><span>${esc(e.name)}</span></div>`;
 function worldHero(e){const w=WORLD(e),[y,m,d]=e.date.split('-'),x=X(e),i=curT(e),t=i>=0?e.tandas[i]:null,cats=[...new Set(e.tandas.filter(tvis).map(catOf))],lu=(x.lineup||'').split('\n').map(z=>z.trim()).filter(Boolean);
  const meta=`${esc(e.place)} · ${+d} ${MES[+m-1]} · ${e.time} hs${e.minAge?' · +'+e.minAge:''}`,back='<p class="wback"><a href="#" onclick="location.hash=\'\';return false">← Todos los eventos</a></p>',H=c=>`<h1 class="wt ${c||''}">${esc(e.name)}</h1><p class="wm">${meta}</p>`;
@@ -518,6 +533,7 @@ function worldHero(e){const w=WORLD(e),[y,m,d]=e.date.split('-'),x=X(e),i=curT(e
  if(w==='comedia')return back+`<div class="wh comedia"><i class="tape" aria-hidden="true"></i>${flyerBox(e)}</div>${H('sign')}${lu.length?`<div class="setl" aria-label="Line-up">${lu.map((a,k)=>`<div>${k+1}. ${esc(a)}</div>`).join('')}</div>`:''}`;
  if(w==='teatro')return back+`<div class="wh teatro"><i class="val" aria-hidden="true"></i><i class="cur l" aria-hidden="true"></i><i class="cur r" aria-hidden="true"></i>${flyerBox(e)}</div>${H()}`;
  if(w==='amp')return back+`<div class="wh amp">${flyerBox(e)}</div><div class="amppanel">${H()}${cats.length?`<div class="knobs">${cats.map(c=>`<div class="kn ${t&&catOf(t)===c?'on':''}"><i aria-hidden="true"></i><span>${esc(c)}</span><b>${price(c)}</b></div>`).join('')}</div>`:''}</div>`;
+ if(w==='sunset')return back+`<div class="wh sunset"><i class="sun" aria-hidden="true"></i><i class="sea" aria-hidden="true"></i>${flyerBox(e)}</div>${H()}${lu.length?`<div class="sunl" aria-label="Line-up">${lu.map(a=>`<span>${esc(a)}</span>`).join('')}</div>`:''}`;
  if(w==='festival')return back+`<div class="wh festival">${flyerBox(e)}<div class="band" aria-hidden="true"><span>${esc(e.name)} · ${esc(e.place)}</span></div></div>${H()}`;
  return back+`<div class="wh base">${flyerBox(e)}</div>${H()}`}
 function evPub(e){const [y,m,d]=e.date.split('-'),i=curT(e),t=e.tandas[i],multi=curTs(e).length>1,nx=i<0||multi?null:nxt(e,i);
@@ -857,7 +873,7 @@ function vEvent(e){setC(e);if(!isLive(e)&&!viaLink)return `<p><a href="#" onclic
  <div class="info"><div><small>Fecha y hora</small><b>${d} de ${MN[+m-1]} de ${y}</b><span class="mute">${e.time} hs</span></div><div><small>Lugar</small><b>${esc(e.place)}</b><span class="mute">${e.addr?esc(e.addr)+' · ':''}<a href="https://www.google.com/maps/search/?api=1&query=${q}" target="_blank" rel="noopener">Cómo llegar</a></span></div></div>
  <div>${ageTag(e)}${x.type?`<span class="tag">${esc(x.type)}</span>`:''}${e.idReq?'<span class="tag">Pide verificación de identidad</span>':''}${x.nomin?'<span class="tag">Entradas nominativas: no se transfieren</span>':''}</div>
  ${e.desc?`<h2>Sobre el evento</h2><p style="white-space:pre-line;max-width:60ch">${esc(e.desc)}</p>`:''}
- ${lu.length&&!['vinilo','laser','comedia'].includes(WORLD(e))?`<h2>Line-up</h2><div>${lu.map(a=>`<span class="tag" style="font-size:14px;padding:4px 12px;margin-bottom:6px">${esc(a)}</span>`).join('')}</div>`:''}
+ ${lu.length&&!['vinilo','laser','comedia','sunset'].includes(WORLD(e))?`<h2>Line-up</h2><div>${lu.map(a=>`<span class="tag" style="font-size:14px;padding:4px 12px;margin-bottom:6px">${esc(a)}</span>`).join('')}</div>`:''}
  ${x.sched?`<h2>Horarios y programación</h2><p style="white-space:pre-line;max-width:60ch">${esc(x.sched)}</p>`:''}
  ${yt?`<h2>Video</h2><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/${yt[1]}" title="Video de ${esc(e.name)}" allow="encrypted-media; picture-in-picture" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>`:/^https:\/\//.test(x.video||'')?`<p><a href="${esc(x.video)}" target="_blank" rel="noopener">Ver video del evento</a></p>`:''}
  <h2>Entradas</h2><div class="panel">${tOrd(e).map(k=>{const t=e.tandas[k];return `<div class="li${st(t,k)==='En venta'?'':' off'}"><span>${cats.length>1?`<b>${esc(catOf(t))}</b> · ${esc(t.n)}`:`<b>${esc(t.n)}</b>`}${t.until?' · hasta el '+fu(t.until):''}</span><span>${st(t,k)==='Agotada'?'<s>'+money(t.price)+'</s>':money(t.price)} <span class="tag ${st(t,k)==='En venta'?'ok':''}">${st(t,k)}</span>${tv(t)==='link'&&!(t.pubFrom&&Date.now()>=new Date(t.pubFrom).getTime())?'<span class="tag">Solo por link</span>':''}</span></div>`}).join('')}
