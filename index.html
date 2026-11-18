@@ -5,13 +5,14 @@
 <meta name="description" content="Entradas para fiestas, conciertos y festivales en Uruguay. Comprá desde tu celular y entrá con tu QR.">
 <meta property="og:title" content="TAG Tickets – Tu Acceso Garantizado"><meta property="og:description" content="Entradas para fiestas, conciertos y festivales en Uruguay. Comprá desde tu celular y entrá con tu QR."><meta property="og:type" content="website"><meta name="theme-color" content="#1C1C1C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231C1C1C'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23CC5500'/%3E%3C/svg%3E"><script>try{document.documentElement.classList.toggle("tgd",localStorage.getItem("ep_theme")!=="light")}catch(e){document.documentElement.classList.add("tgd")}document.documentElement.classList.add("spl")</script>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Unbounded:wght@500;700;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,800;1,6..96,500&family=Antonio:wght@400;700&family=Rubik+Mono+One&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#EEEBE7;--card:#fff;--ink:#1C1C1C;--mute:#5F5B57;--line:#D4D0CB;--acc:#CC5500;--onacc:#fff;--hi:#CC5500;--brand:#CC5500;--ok:#0f8a5f;--bad:#c4322f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-html.tgd{--bg:#1C1C1C;--card:#262626;--ink:#D4D0CB;--mute:#9E9A95;--line:#383634;--acc:#CC5500;--onacc:#fff;--hi:#D4D0CB;--ok:#8EDFB3;--bad:#FF8F80;color-scheme:dark}
+html.tgd{--bg:#0B0B0C;--card:#161618;--ink:#EDE7DD;--mute:#A39C91;--line:#2C2C30;--acc:#FF5A1F;--onacc:#0B0B0C;--hi:#EDE7DD;--brand:#FF5A1F;--ok:#8EDFB3;--bad:#FF8F80;color-scheme:dark}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 "Bricolage Grotesque",system-ui,sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 Archivo,system-ui,sans-serif;transition:background-color .4s ease}
+h1,h2,.logo{font-family:Unbounded,Archivo,system-ui,sans-serif}h1{letter-spacing:-.045em}h2{letter-spacing:-.03em}
 button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 ::selection{background:var(--acc);color:#fff}
@@ -254,6 +255,156 @@ html.lenis,html.lenis body{height:auto}.lenis:not(.lenis-autoToggle).lenis-stopp
 .btn:active{transform:scale(.97)}
 @media(prefers-reduced-motion:reduce){.kin.go .w,.kin.go .dot{animation:none}.tick>div{animation:none;transform:none}.tick{overflow-x:auto}.rv{opacity:1;transform:none;transition:none}.evc::after{display:none}}
 html.gs .evc{animation:none}
+
+/* ===== Entradas de Mis TAGs: el objeto de cada mundo ===== */
+.tkw{max-width:440px;margin:0 0 26px}
+.wtk{position:relative;border-radius:20px;padding:20px;display:grid;grid-template-columns:1fr auto;gap:14px 16px;align-items:start;overflow:hidden;box-shadow:0 20px 40px -18px #000;background:#151515;color:#F4F2EE}
+.wtk .wtop{grid-column:1/-1;position:relative;z-index:1}
+.wtk .wtop small{display:block;font:600 12px Archivo;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
+.wtk .wtop b{display:block;font:900 clamp(34px,10vw,48px)/.95 Unbounded;letter-spacing:-.05em;text-transform:uppercase;overflow-wrap:anywhere}
+.wtk .wqr{grid-column:1/-1;justify-self:center;background:#fff;border-radius:14px;padding:12px;position:relative;z-index:1}
+.wtk .wqr svg{display:block;width:min(56vw,210px);height:auto;aspect-ratio:1;background:#fff}
+.wtk .winfo{grid-column:1/-1;position:relative;z-index:1}
+.wtk .winfo h3{margin:0 0 4px;font:700 19px/1.15 Unbounded;letter-spacing:-.02em}
+.wtk .winfo p{margin:2px 0;font-size:14px;opacity:.9}
+.wtk .wcode{font:700 15px Archivo;letter-spacing:.12em;margin-top:6px!important}
+.wtk .wst{position:absolute;right:16px;top:18px;z-index:2;border:3px solid currentColor;border-radius:8px;padding:3px 10px;font:800 13px Archivo;letter-spacing:.14em;text-transform:uppercase;transform:rotate(6deg);color:#FF8F80}
+.wtk .wst.ok{color:#8EDFB3}
+.wtk.off .wqr{opacity:.35}
+.wtk .wdeco{position:absolute;inset:0;pointer-events:none;z-index:0}
+/* Fiesta: credencial holográfica */
+.wk-pase{padding-top:36px}
+.wk-pase .wdeco{background:conic-gradient(from 210deg at 70% 30%,#ff7a3d40,#ffd35c33,#6ef0c333,#7aa8ff33,#ff7a3d40);mix-blend-mode:screen}
+.wk-pase:before{content:"";position:absolute;left:50%;top:12px;width:48px;height:11px;margin-left:-24px;border-radius:6px;background:var(--bg);z-index:2}
+.wk-pase .wtop b{font-size:clamp(44px,13vw,64px)}
+/* Electrónica: vinilo / láser */
+.wk-vinilo{background:#101013}
+.wk-vinilo .wdeco{background:radial-gradient(circle at 115% 18%,#FF5A1F 0 9%,#0D0D0F 9.5% 10.5%,transparent 11%),repeating-radial-gradient(circle at 115% 18%,#1b1b1f 0 2px,#111 2px 4px);mask-image:radial-gradient(circle at 115% 18%,#000 38%,transparent 38.5%)}
+.wk-vinilo .wtop small{color:#FF5A1F;opacity:1}
+.wk-laser{background:#030306;color:#F2F7F4}
+.wk-laser .wdeco{background:linear-gradient(118deg,transparent 46%,#7CFFB288 46.6%,transparent 47.4%),linear-gradient(64deg,transparent 60%,#FF5A1F77 60.6%,transparent 61.4%)}
+.wk-laser .wtop b{color:#7CFFB2}
+/* Comedia: entrada de papel pegada a la pared */
+.wk-comedia{background:#fffdf6;color:#1a1a1a;transform:rotate(-1deg);border-radius:6px}
+.wk-comedia:before{content:"";position:absolute;left:50%;top:-6px;width:100px;height:24px;margin-left:-50px;background:#f3e3a0cc;transform:rotate(-3deg);z-index:2}
+.wk-comedia .wtop b{font-family:'Rubik Mono One',Unbounded,sans-serif;letter-spacing:0;font-size:clamp(26px,8vw,36px)}
+.wk-comedia .winfo h3{font-family:'Permanent Marker',cursive;font-weight:400;font-size:24px}
+.wk-comedia .wst{color:#c4322f}.wk-comedia .wst.ok{color:#0f8a5f}
+/* Teatro: entrada clásica con borde dorado */
+.wk-teatro{background:#F4E7C8;color:#3a0b10;border:3px solid #C9A24A;border-radius:10px}
+.wk-teatro .wdeco{inset:6px;border:1px solid #C9A24A;border-radius:6px}
+.wk-teatro .wtop b,.wk-teatro .winfo h3{font-family:'Bodoni Moda',serif;letter-spacing:-.01em;text-transform:none}
+.wk-teatro .wtop small{color:#8a6a2a;opacity:1}
+.wk-teatro .wst{color:#9a1d2a}.wk-teatro .wst.ok{color:#0f6b4a}
+/* Rock: frente de amplificador */
+.wk-amp{background:#d8c79e;color:#1a1410;border:3px solid #8a7444}
+.wk-amp .wdeco{background:repeating-linear-gradient(45deg,#00000010 0 2px,transparent 2px 6px)}
+.wk-amp .wtop b,.wk-amp .winfo h3{font-family:Antonio,sans-serif;letter-spacing:.01em}
+.wk-amp .wqr{box-shadow:0 0 0 5px #C9A24A}
+.wk-amp .wst{color:#b0261f}.wk-amp .wst.ok{color:#0f6b4a}
+/* Festival: pulsera de tela */
+.wk-festival{background:repeating-linear-gradient(90deg,#F5D547 0 3px,#f0c62a 3px 6px);color:#0F3B2F;border-radius:14px}
+.wk-festival .wdeco{background:repeating-linear-gradient(-45deg,transparent 0 6px,#0000000d 6px 8px)}
+.wk-festival .wst{color:#9a1d2a}.wk-festival .wst.ok{color:#0F3B2F}
+/* Base */
+.wk-base{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+/* Paneles (organizador, admin, estadísticas, puerta): trabajo, no vidriera. Títulos compactos y fondo quieto. */
+body:is([data-view="orgz"],[data-view="org"],[data-view="stats"],[data-view="door"])::before{display:none}
+body:is([data-view="orgz"],[data-view="org"],[data-view="stats"],[data-view="door"]) #app h1{font-size:clamp(28px,5vw,40px)}
+body:is([data-view="orgz"],[data-view="org"],[data-view="stats"],[data-view="door"]) #app h2,#dlg h2,#dlg h3{font-family:Archivo,system-ui,sans-serif;font-weight:800;letter-spacing:-.01em}
+/* ===== Mundos por tipo de evento ===== */
+body[data-world]::before{display:none}
+body[data-world="pase"]{--bg:#09090A;--card:#161616;--ink:#F4F2EE;--mute:#A9A6A0;--line:#2B2B2B;--acc:#FF5A1F;--onacc:#0B0B0C;--hi:#F4F2EE}
+body[data-world="vinilo"]{--bg:#0D0D0F;--card:#17171A;--ink:#F2F2F2;--mute:#A8A8AE;--line:#2A2A2E;--acc:#FF5A1F;--onacc:#0B0B0C;--hi:#F2F2F2}
+body[data-world="laser"]{--bg:#030306;--card:#101016;--ink:#F2F7F4;--mute:#9FB3A8;--line:#1E2A24;--acc:#7CFFB2;--onacc:#030306;--hi:#7CFFB2}
+body[data-world="comedia"]{--bg:#2B150F;--card:#3A1E15;--ink:#FBF3E2;--mute:#D9C3A6;--line:#5A3324;--acc:#F5E6C4;--onacc:#1A1A1A;--hi:#F5E6C4}
+body[data-world="teatro"]{--bg:#120707;--card:#1E0C0C;--ink:#F4E7C8;--mute:#CDB98F;--line:#3A1A16;--acc:#C9A24A;--onacc:#2A0A0E;--hi:#C9A24A}
+body[data-world="amp"]{--bg:#141414;--card:#1E1C19;--ink:#F3EAD7;--mute:#BCAF95;--line:#35302A;--acc:#D2322A;--onacc:#fff;--hi:#F3EAD7}
+body[data-world="festival"]{--bg:#0F3B2F;--card:#14493A;--ink:#FFFFFF;--mute:#CFE6DC;--line:#2A5E4E;--acc:#F5D547;--onacc:#0F3B2F;--hi:#F5D547}
+body[data-world="base"]{--onacc:#0B0B0C}
+.wback{margin:4px 0 12px}.wback a{color:var(--mute)}
+.wt{max-width:none;margin:18px 0 4px;font-size:clamp(34px,7vw,64px);line-height:.95}
+.wm{color:var(--mute);margin:0 0 16px}
+.fl{background-size:cover;background-position:center;background-color:var(--card)}
+.fl.ph{display:flex;align-items:flex-end;padding:16px;background-image:linear-gradient(135deg,#1C1C1C,hsl(var(--h) 70% 38%));color:#fff}
+.fl.ph span{font:900 clamp(24px,5vw,40px)/.95 Unbounded;letter-spacing:-.04em}
+.wh{position:relative;margin:0 auto}
+/* Fiesta: credencial ALL ACCESS */
+.wh.pase{max-width:420px;padding-top:70px}
+.wh.pase .lan{position:absolute;left:50%;top:-20px;width:34px;height:120px;margin-left:-17px;background:repeating-linear-gradient(90deg,#FF5A1F 0 6px,#c43d0c 6px 8px);z-index:0}
+.wh.pase .pass{position:relative;background:#151515;border-radius:20px;padding:34px 14px 16px;transform:rotate(-2deg);box-shadow:0 30px 60px -12px #000;overflow:hidden;color:#fff;animation:passIn .9s var(--ease-out) both}
+@keyframes passIn{from{transform:translateY(-40px) rotate(-8deg);opacity:0}}
+.wh.pase .ph2{position:absolute;left:50%;top:12px;width:48px;height:11px;margin-left:-24px;border-radius:6px;background:var(--bg)}
+.wh.pase .fl{aspect-ratio:4/3;border-radius:12px}
+.wh.pase .holo{position:absolute;inset:0;background:conic-gradient(from 210deg at 70% 30%,#ff7a3d40,#ffd35c33,#6ef0c333,#7aa8ff33,#ff7a3d40);mix-blend-mode:screen;pointer-events:none}
+.wh.pase .pin{margin-top:16px}.wh.pase .pin small{display:block;font:600 12px Archivo;letter-spacing:.2em;text-transform:uppercase;opacity:.85}
+.wh.pase .pin b{display:block;font:900 clamp(44px,12vw,64px)/.9 Unbounded;letter-spacing:-.05em;text-transform:uppercase;overflow-wrap:anywhere}
+.wh.pase .pev{margin-top:10px}.wh.pase .pev span{display:block;font:700 18px/1.15 Unbounded}.wh.pase .pev small{display:block;color:#d6d3cd;margin-top:4px;font-size:14px}
+.wh.pase .ptabs{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap}
+.wh.pase .ptabs span{flex:1 1 30%;text-align:center;border:1.5px solid #ffffff66;border-radius:10px;padding:8px 4px;font:700 12px Unbounded;text-transform:uppercase}
+.wh.pase .ptabs span small{display:block;font:600 12px Archivo;text-transform:none;margin-top:2px;opacity:.85}
+.wh.pase .ptabs span.on{background:#fff;color:#0B0B0C;border-color:#fff}
+body[data-world="pase"] .wt{display:none}
+/* Electrónica: vinilo */
+.wh.vinilo{max-width:520px;height:min(78vw,360px);margin-top:6px}
+.wh.vinilo .sleeve{position:absolute;left:0;top:0;width:min(70vw,330px);aspect-ratio:1;border-radius:6px;box-shadow:14px 14px 34px #000c;z-index:2}
+.wh.vinilo .rec{position:absolute;left:min(32vw,150px);top:3%;width:min(66vw,320px);aspect-ratio:1;border-radius:50%;background:repeating-radial-gradient(circle,#111 0 2px,#1f1f22 2px 4px);box-shadow:0 18px 40px #000;animation:spin 6s linear infinite}
+.wh.vinilo .rec:after{content:"";position:absolute;left:50%;top:50%;width:32%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#0D0D0F 0 6%,var(--acc) 7%)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.side{list-style:none;margin:0 0 18px;padding:0;max-width:560px}
+.side li{display:grid;grid-template-columns:40px 1fr;padding:11px 0;border-top:1px solid var(--line);font:500 15px Unbounded}.side li b{color:var(--acc)}
+/* Electrónica: láser */
+.wh.laser{height:min(110vw,520px);overflow:hidden;border-radius:18px;margin-top:6px}
+.wh.laser .fl{position:absolute;inset:0}
+.wh.laser:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,var(--bg))}
+.wh.laser .bm{position:absolute;left:50%;top:-10%;width:3px;height:140%;background:linear-gradient(#7CFFB2,transparent 80%);transform-origin:50% 0;opacity:.8;z-index:1;mix-blend-mode:screen;animation:beam 5s ease-in-out infinite alternate}
+.wh.laser .b1{--a:24deg}.wh.laser .b2{--a:-20deg;animation-delay:-2s}.wh.laser .b3{--a:6deg;background:linear-gradient(#FF5A1F,transparent 80%);animation-delay:-3.5s}
+@keyframes beam{from{transform:rotate(calc(var(--a) - 12deg))}to{transform:rotate(calc(var(--a) + 12deg))}}
+.lzl{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.lzl span{border:1px solid #7CFFB266;border-radius:10px;padding:8px 12px;font:500 14px Unbounded}
+/* Comedia */
+.wh.comedia{max-width:360px;padding-top:14px}
+.wh.comedia .fl{aspect-ratio:4/5;border:7px solid #fffdf6;transform:rotate(1.5deg);box-shadow:0 14px 30px #000a}
+.wh.comedia .tape{position:absolute;left:50%;top:2px;width:100px;height:26px;margin-left:-50px;background:#f3e3a0cc;transform:rotate(-4deg);z-index:2}
+body[data-world="comedia"]{background-image:linear-gradient(#2a120c 2px,transparent 2px),linear-gradient(90deg,#2a120c 2px,transparent 2px),linear-gradient(90deg,#2a120c 2px,transparent 2px);background-size:56px 26px,56px 52px,56px 52px;background-position:0 0,0 0,28px 26px}
+.wt.sign{background:#1a1a1a;color:#F5E6C4;font-family:'Rubik Mono One',Unbounded,sans-serif;font-size:clamp(22px,6vw,40px);padding:14px;border-radius:8px;text-align:center;letter-spacing:0}
+.setl{background:#fffdf6;color:#1a1a1a;border-radius:4px;padding:12px 16px;transform:rotate(-1deg);font:400 19px 'Permanent Marker',cursive;box-shadow:0 8px 16px #0006;margin:0 0 20px;max-width:520px}
+/* Teatro */
+.wh.teatro{height:min(118vw,540px);overflow:hidden;border-radius:6px}
+.wh.teatro .val{position:absolute;left:0;right:0;top:0;height:46px;background:repeating-linear-gradient(90deg,#9a1d2a 0 20px,#6a101a 20px 40px);border-bottom:3px solid #C9A24A;z-index:3}
+.wh.teatro .cur{position:absolute;top:0;height:100%;width:52%;background:repeating-linear-gradient(90deg,#8a1622 0 14px,#5a0c15 14px 28px);z-index:2;transition:transform 1.4s var(--ease-out)}
+.wh.teatro .cur.l{left:0;transform:translateX(-62%);border-radius:0 0 80% 0}.wh.teatro .cur.r{right:0;transform:translateX(62%);border-radius:0 0 0 80%}
+.wh.teatro .cur.l{animation:curL 1.8s var(--ease-out) .25s both}.wh.teatro .cur.r{animation:curR 1.8s var(--ease-out) .25s both}
+@keyframes curL{from{transform:translateX(0)}}@keyframes curR{from{transform:translateX(0)}}
+.wh.teatro .fl{position:absolute;left:22%;right:22%;top:70px;bottom:24px;border:3px solid #C9A24A;box-shadow:0 14px 30px #000}
+body[data-world="teatro"] .wt{font-family:'Bodoni Moda',serif;font-weight:500;letter-spacing:-.01em;text-align:center}
+body[data-world="teatro"] .wm{text-align:center;color:#C9A24A}
+/* Rock / concierto: amplificador */
+body[data-world="amp"]{background-image:repeating-linear-gradient(45deg,#1b1b1b 0 2px,#141414 2px 6px)}
+.wh.amp .fl{aspect-ratio:16/10;border-radius:10px;border:5px solid #C9A24A}
+.amppanel{background:#d8c79e;color:#1a1410;border-radius:8px;padding:16px;border:2px solid #8a7444;margin:12px 0 22px}
+.amppanel .wt{font-family:Antonio,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.01em;margin:0}.amppanel .wm{color:#3b2f20;margin:4px 0 0}
+.knobs{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:10px;margin-top:14px}
+.kn{text-align:center;font:700 13px Antonio,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.kn i{display:block;width:52px;height:52px;margin:0 auto 6px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#3b3b3b,#0e0e0e);position:relative;transform:rotate(-120deg);transition:transform .9s var(--ease-out)}
+.kn i:after{content:"";position:absolute;left:50%;top:5px;width:3px;height:15px;margin-left:-1.5px;background:#F3EAD7}
+.kn.on i{transform:rotate(120deg);box-shadow:0 0 0 3px #D2322A}.kn b{display:block;font:700 19px Antonio,sans-serif}
+/* Festival */
+.wh.festival{height:min(100vw,460px);overflow:hidden;border-radius:16px}
+.wh.festival .fl{position:absolute;inset:0}
+.wh.festival .band{position:absolute;left:-10%;right:-10%;bottom:16%;height:70px;transform:rotate(-6deg);background:repeating-linear-gradient(90deg,#F5D547 0 3px,#f0c62a 3px 6px);box-shadow:0 18px 30px -10px #0008;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.wh.festival .band span{font:900 20px Unbounded;color:#0F3B2F;white-space:nowrap;letter-spacing:-.02em}
+/* Base */
+.wh.base .fl{aspect-ratio:16/9;border-radius:16px}
+/* Tarjetas de la cartelera: cada una anticipa su mundo */
+.evc.w-pase .cw:before{content:"";position:absolute;left:50%;top:0;width:22px;height:30px;margin-left:-11px;background:repeating-linear-gradient(90deg,#FF5A1F 0 4px,#c43d0c 4px 6px);z-index:2}
+.evc.w-vinilo .cw{overflow:hidden}.evc.w-vinilo .cw:after{content:"";position:absolute;right:-30px;top:50%;width:120px;height:120px;margin-top:-60px;border-radius:50%;background:repeating-radial-gradient(circle,#111 0 2px,#1f1f22 2px 4px);box-shadow:inset 0 0 0 44px #FF5A1F00;z-index:0}
+.evc.w-vinilo .cover{position:relative;z-index:1;width:78%}
+.evc.w-laser .cw:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 48%,#7CFFB2aa 49%,transparent 51%),linear-gradient(70deg,transparent 58%,#FF5A1F99 59%,transparent 61%);pointer-events:none}
+.evc.w-teatro .cw:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#8a1622 0 9%,transparent 9% 91%,#8a1622 91%);pointer-events:none}
+.evc.w-amp .cover{box-shadow:inset 0 0 0 4px #C9A24A}
+.evc.w-festival .cw:after{content:"";position:absolute;left:-10%;right:-10%;bottom:18%;height:20px;transform:rotate(-6deg);background:#F5D547;pointer-events:none}
+.evc.w-comedia .cover{outline:5px solid #fffdf6;outline-offset:-5px}
+@media(prefers-reduced-motion:reduce){.wh.vinilo .rec,.wh.laser .bm,.wh.pase .pass,.wh.teatro .cur{animation:none}.wh.teatro .cur,.kn i{transition:none}}
 </style><script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script></head>
 <body>
 <header><div class="wrap bar">
@@ -331,7 +482,7 @@ async function payBack(o){if(PGW===o)return;PGW=o;const box=m=>dlgOpen(`<div cla
   await new Promise(r=>setTimeout(r,2000))}
  box('Tu pago todavía está en proceso (por ejemplo, si pagás en Abitab o Redpagos). Cuando se acredite, tus entradas van a aparecer en Mis TAGs con el correo de la compra.')}
 let HE=0,viaLink=false,LKID='',TKID='';function rh(){const h=location.hash,m=h.match(/^#e-(\d+)$/),l=h.match(/^#l-(\d+)-([a-z0-9]+)$/);viaLink=false;LKID='';TKID='';HE=0;INV=null;{const pm=h.match(/^#pago-([0-9a-f-]{36})$/);if(pm&&!isDemo())setTimeout(()=>payBack(pm[1]))}{const mm=h.match(/^#mp-(ok|error)$/);if(mm){view='orgz';MPMSG=mm[1];history.replaceState(null,'',location.pathname+location.search)}}{const vm=h.match(/^#v-([0-9a-f-]{36})$/);if(vm){const e=S.events.find(x=>x.dbid===vm[1]);if(e)HE=e.id;else if(!DBL&&!isDemo())lvLoad(vm[1])}}{const tm=h.match(/^#t-(\d+)-([a-z0-9]+)$/),e=tm&&evOf(+tm[1]);if(e&&e.tandas.some(t=>t.tk===tm[2])){HE=e.id;viaLink=true;TKID=tm[2]}}{const iv=h.match(/^#i-(\d+)-([a-z0-9]+)$/);if(iv){const e=evOf(+iv[1]),v=e&&(X(e).invs||[]).find(x=>x.token===iv[2]);if(v){INV={e,v};HE=e.id}}}if(m){HE=+m[1];const _e=evOf(HE);if(_e&&SBS&&(_e.ownerId===SBS.uid||SBS.role==='admin'))viaLink=true}else if(l){const e=evOf(+l[1]);if(e){const k=(e.links||[]).find(x=>x.on!==false&&x.token===l[2]);if(e.token===l[2]||k){HE=e.id;viaLink=true;if(k)LKID=k.id}}}}
-function render(){rh();if(LGH[location.hash])view=LGH[location.hash];expO();DOORM=location.hash==='#puerta';if(DOORM)view='door';else if(view==='door'&&!DR.org)view='events';{const nv=document.querySelector('nav'),ft=document.querySelector('footer');if(nv)nv.style.display=DOORM?'none':'';if(ft)ft.style.display=DOORM?'none':''}{const nb=document.querySelector('[data-v="tickets"]');if(nb)nb.textContent='Mis TAGs'+(pend()?' ('+pend()+')':'')}{const na=document.querySelector('[data-v="org"]');if(na)na.hidden=!(SBS&&SBS.role==='admin')}document.querySelectorAll('[data-v="org"],[data-v="orgz"],[data-v="pro"]').forEach(b=>b.style.display=(HE||(b.dataset.v==='org'&&!isAdm()))?'none':'');if((HE||(view==='org'&&!isAdm()&&!SBS))&&(view==='org'||view==='orgz'))view=HE?'events':view;
+function render(){rh();document.body.removeAttribute('data-world');document.body.dataset.view=view;if(LGH[location.hash])view=LGH[location.hash];expO();DOORM=location.hash==='#puerta';if(DOORM)view='door';else if(view==='door'&&!DR.org)view='events';{const nv=document.querySelector('nav'),ft=document.querySelector('footer');if(nv)nv.style.display=DOORM?'none':'';if(ft)ft.style.display=DOORM?'none':''}{const nb=document.querySelector('[data-v="tickets"]');if(nb)nb.textContent='Mis TAGs'+(pend()?' ('+pend()+')':'')}{const na=document.querySelector('[data-v="org"]');if(na)na.hidden=!(SBS&&SBS.role==='admin')}document.querySelectorAll('[data-v="org"],[data-v="orgz"],[data-v="pro"]').forEach(b=>b.style.display=(HE||(b.dataset.v==='org'&&!isAdm()))?'none':'');if((HE||(view==='org'&&!isAdm()&&!SBS))&&(view==='org'||view==='orgz'))view=HE?'events':view;
  document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-current',b.dataset.v===view||(b.dataset.v==='pro'&&view==='orgz')));
  $('#app').innerHTML=DBL?'<div class="empty" style="margin-top:24px">Cargando…</div>':view==='events'?vEvents():view==='tickets'?vTickets()+(RESALE?offHtml():''):view==='resale'?vResale():view==='stats'?vStats():view==='door'?vDoor():view==='orgz'?vOrgz():view==='pro'?vPro():view==='help'?vHelp():LG[view]?vLegal(view):vOrgX();if(view!=='door'||!doorAuth())camStop();else{const v=$('#cv');if(v&&CAM.stream&&v.srcObject!==CAM.stream){v.srcObject=CAM.stream;v.play().catch(()=>{})}}{const c=$('#car');if(c){if(CSL<0){const f=c.querySelector('.has');CSL=f?Math.max(0,f.offsetLeft-70):0}c.scrollLeft=CSL}}{const ap=$('#app');ap.classList.remove('in');void ap.offsetWidth;ap.classList.add('in')}
 }
@@ -342,7 +493,7 @@ const cover=(e,c='')=>e.img?`<div class="cover ${c}" style="background-image:url
 function thToggle(){const d=document.documentElement,n=d.classList.toggle("tgd");try{localStorage.setItem("ep_theme",n?"dark":"light")}catch(e){}}
 // ---- descubrir: buscador, filtros y destacados
 let FQ='',FCI='',FTY='';
-const TYPES=['Fiesta','Concierto','Festival','Teatro','Deporte','Conferencia','Otro'];
+const TYPES=['Fiesta','Electrónica','Concierto','Festival','Teatro','Comedia','Deporte','Conferencia','Otro'];
 // Ciudad detectada del lugar y la dirección (ciudades de Uruguay y barrios de Montevideo).
 const UYC=['Montevideo','Ciudad de la Costa','Las Piedras','Pando','Atlántida','Canelones','Punta del Este','La Barra','José Ignacio','Piriápolis','Maldonado','Colonia del Sacramento','Colonia','Salto','Paysandú','Rivera','Tacuarembó','Melo','Mercedes','Minas','Florida','Durazno','Treinta y Tres','Rocha','La Paloma','Punta del Diablo','San José','Trinidad','Artigas','Fray Bentos'];
 const MVD=['pocitos','carrasco','punta carretas','ciudad vieja','cordon','parque rodo','malvin','buceo','prado','punta gorda','la blanqueada','tres cruces','palermo','barrio sur','aguada','sayago','cerro','parque batlle','punta brava'];
@@ -355,9 +506,23 @@ const city=e=>(X(e).city||detCity(e.place,e.addr)||(e.place||'').split(',').slic
 const hot=e=>{if(curT(e)<0)return false;const cap=e.tandas.reduce((a,t)=>a+t.cap,0),sold=e.tandas.reduce((a,t)=>a+t.sold,0),q48=S.ledger.filter(l=>l.ev===e.id&&l.k==='primary'&&Date.now()-(l.ts||0)<1728e5).reduce((a,l)=>a+(l.q||0),0);return cap>0&&(sold/cap>=.6||q48>=Math.max(10,cap*.05))};
 const pubEvs=()=>S.events.filter(e=>e.pub!==false&&isLive(e)).sort((a,b)=>a.date.localeCompare(b.date));
 const fOk=e=>{const q=FQ.trim().toLowerCase(),x=X(e);return (!CD||e.date===CD)&&(!FCI||city(e)===FCI)&&(!FTY||x.type===FTY)&&(!q||[e.name,e.place,e.addr,x.lineup,x.type,city(e)].join(' ').toLowerCase().includes(q))};
+// Mundos: cada tipo de evento tiene su ambiente (página, tarjeta de cartelera); la base de TAG (barra, compra) no cambia.
+const WORLD=e=>{const x=X(e)||{},t=nrm(x.type||'');return t==='fiesta'?'pase':t==='electronica'?(x.wv==='laser'?'laser':'vinilo'):t==='comedia'?'comedia':t==='teatro'?'teatro':t==='concierto'?'amp':t==='festival'?'festival':'base'};
+const flyerBox=(e,c)=>e.img?`<div class="fl ${c||''}" style="background-image:url('${e.img}')" role="img" aria-label="Flyer de ${esc(e.name)}"></div>`:`<div class="fl ph ${c||''}" style="--h:${(e.id*67)%360}"><span>${esc(e.name)}</span></div>`;
+function worldHero(e){const w=WORLD(e),[y,m,d]=e.date.split('-'),x=X(e),i=curT(e),t=i>=0?e.tandas[i]:null,cats=[...new Set(e.tandas.filter(tvis).map(catOf))],lu=(x.lineup||'').split('\n').map(z=>z.trim()).filter(Boolean);
+ const meta=`${esc(e.place)} · ${+d} ${MES[+m-1]} · ${e.time} hs${e.minAge?' · +'+e.minAge:''}`,back='<p class="wback"><a href="#" onclick="location.hash=\'\';return false">← Todos los eventos</a></p>',H=c=>`<h1 class="wt ${c||''}">${esc(e.name)}</h1><p class="wm">${meta}</p>`;
+ const price=c=>{const z=e.tandas.find(q=>catOf(q)===c&&tvis(q)&&curTs(e).includes(e.tandas.indexOf(q)))||e.tandas.find(q=>catOf(q)===c&&tvis(q));return z?money(z.price):''};
+ if(w==='pase')return back+`<div class="wh pase"><i class="lan" aria-hidden="true"></i><div class="pass"><i class="ph2" aria-hidden="true"></i>${flyerBox(e)}<i class="holo" aria-hidden="true"></i><div class="pin"><small>Acceso</small><b>${esc(t?catOf(t):(cats[0]||'General'))}</b></div><div class="pev"><span>${esc(e.name)}</span><small>${meta}</small></div>${cats.length>1?`<div class="ptabs" aria-label="Tipos de entrada">${cats.map(c=>`<span ${t&&catOf(t)===c?'class="on"':''}>${esc(c)}<small>${price(c)}</small></span>`).join('')}</div>`:''}</div></div>`;
+ if(w==='vinilo')return back+`<div class="wh vinilo"><i class="rec" aria-hidden="true"></i>${flyerBox(e,'sleeve')}</div>${H()}${lu.length?`<ol class="side" aria-label="Line-up">${lu.map((a,k)=>`<li><b>A${k+1}</b><span>${esc(a)}</span></li>`).join('')}</ol>`:''}`;
+ if(w==='laser')return back+`<div class="wh laser">${flyerBox(e)}<i class="bm b1" aria-hidden="true"></i><i class="bm b2" aria-hidden="true"></i><i class="bm b3" aria-hidden="true"></i></div>${H()}${lu.length?`<div class="lzl" aria-label="Line-up">${lu.map(a=>`<span>${esc(a)}</span>`).join('')}</div>`:''}`;
+ if(w==='comedia')return back+`<div class="wh comedia"><i class="tape" aria-hidden="true"></i>${flyerBox(e)}</div>${H('sign')}${lu.length?`<div class="setl" aria-label="Line-up">${lu.map((a,k)=>`<div>${k+1}. ${esc(a)}</div>`).join('')}</div>`:''}`;
+ if(w==='teatro')return back+`<div class="wh teatro"><i class="val" aria-hidden="true"></i><i class="cur l" aria-hidden="true"></i><i class="cur r" aria-hidden="true"></i>${flyerBox(e)}</div>${H()}`;
+ if(w==='amp')return back+`<div class="wh amp">${flyerBox(e)}</div><div class="amppanel">${H()}${cats.length?`<div class="knobs">${cats.map(c=>`<div class="kn ${t&&catOf(t)===c?'on':''}"><i aria-hidden="true"></i><span>${esc(c)}</span><b>${price(c)}</b></div>`).join('')}</div>`:''}</div>`;
+ if(w==='festival')return back+`<div class="wh festival">${flyerBox(e)}<div class="band" aria-hidden="true"><span>${esc(e.name)} · ${esc(e.place)}</span></div></div>${H()}`;
+ return back+`<div class="wh base">${flyerBox(e)}</div>${H()}`}
 function evPub(e){const [y,m,d]=e.date.split('-'),i=curT(e),t=e.tandas[i],multi=curTs(e).length>1,nx=i<0||multi?null:nxt(e,i);
  const vt=e.tandas.filter(tvis),tot=vt.reduce((a,t)=>a+t.cap,0),sold=vt.reduce((a,t)=>a+t.sold,0),x=X(e);
- return `${setC(e)}<article class="evc" data-id="${e.id}"><div class="cw">${cover(e)}<div class="dchip"><b>${d}</b><span>${MES[+m-1]}</span></div>${x.feat?'<span class="ftag">Destacado</span>':hot(e)?'<span class="ftag">En tendencia</span>':''}</div>
+ return `${setC(e)}<article class="evc w-${WORLD(e)}" data-id="${e.id}"><div class="cw">${cover(e)}<div class="dchip"><b>${d}</b><span>${MES[+m-1]}</span></div>${x.feat?'<span class="ftag">Destacado</span>':hot(e)?'<span class="ftag">En tendencia</span>':''}</div>
  <div class="evb"><h3><a href="#e-${e.id}" style="color:inherit;text-decoration:none">${esc(e.name)}</a></h3><span class="mute">${esc(e.place)} · ${e.time} hs</span><div>${ageTag(e)}${x.type?`<span class="tag">${esc(x.type)}</span>`:''}</div>
  <span class="mute">${i<0?(tot-sold<1?'Agotado':'Venta cerrada'):(multi?curTs(e).map(j=>esc(catOf(e.tandas[j]))).join(' · '):esc(t.n)+(t.until?' · hasta el '+fu(t.until):'')+(nx?' · después '+money(nx.price):''))+(tot-sold<=15?' · ¡últimas '+(tot-sold)+'!':'')}</span>
  <div class="row"><b>${i<0?(tot-sold<1?'Agotado':'Cerrado'):(multi?'Desde ':'')+money(t.price)}</b><span>
@@ -533,10 +698,13 @@ function vTickets(){
  const mine=S.tix.filter(x=>me&&x.owner.email.toLowerCase()===me&&evOf(x.ev)&&!tkGone(evOf(x.ev))).reverse(),hist=S.ledger.filter(l=>me&&l.em===me&&evOf(l.ev)).reverse();
  return `<h1>Mis TAGs</h1><p class="lead">Mostrá tu QR en la puerta. Si no podés ir, transferilo desde acá.</p>
  ${acct()}`+
- (mine.length?mine.map(x=>{const e=evOf(x.ev),t=e.tandas[x.t]||{},nom=X(e).nomin,ok=!x.used&&!x.listed&&!x.blk;setC(e);return `<div class="tk">${qr(x.id)}<div><h3 style="margin:0">${esc(e.name)}</h3>
- <div class="mute">${esc(catOf(t))} · ${esc(t.n||'')} · ${e.date} ${e.time} hs · ${esc(e.place)} · a nombre de ${esc(x.owner.name)}</div>
- <div style="margin:6px 0">${ageTag(e)}${nom?'<span class="tag">Nominativa</span>':''}${x.g?'<span class="tag">Cortesía</span>':''}<span class="tag ${ok?'ok':''}">${x.blk?'Anulada por el organizador':x.used?'Ya ingresó':x.listed?'En reventa por '+money(x.ask):'Válida'}</span><span class="tag">${x.id}</span></div>
- ${x.blk?'':`<button class="btn ghost sm" onclick="tkPdf('${x.id}')">Descargar PDF</button> `}${x.used||x.blk?'':`${nom||x.g||t.tr===false?'<span class="tag">No transferible</span> ':`<button class="btn ghost sm" onclick="openTr('${x.id}')">Transferir</button> `}${RESALE?(x.listed?`<button class="btn ghost sm" onclick="unlist('${x.id}')">Quitar de reventa</button>`:`<button class="btn ghost sm" onclick="openSell('${x.id}')">Revender</button>`):''}`}</div></div>`}).join(''):
+ (mine.length?mine.map(x=>{const e=evOf(x.ev),t=e.tandas[x.t]||{},nom=X(e).nomin,ok=!x.used&&!x.listed&&!x.blk,w=WORLD(e),[yy,mm,dd]=e.date.split('-');setC(e);return `<div class="tkw"><article class="wtk wk-${w}${ok?'':' off'}"><i class="wdeco" aria-hidden="true"></i>
+ <div class="wtop"><small>${w==='pase'?'Acceso':w==='teatro'?'Localidad':w==='festival'?'Pulsera':w==='vinilo'?'Lado A':'Entrada'}</small><b>${esc(catOf(t))}</b></div>
+ <div class="wqr">${qr(x.id)}</div>
+ <div class="winfo"><h3>${esc(e.name)}</h3><p>${+dd} ${MES[+mm-1]} · ${e.time} hs · ${esc(e.place)}</p><p>A nombre de <b>${esc(x.owner.name)}</b>${t.n&&t.n!==catOf(t)?' · '+esc(t.n):''}</p><p class="wcode">${x.id}</p></div>
+ <span class="wst ${ok?'ok':''}">${x.blk?'Anulada':x.used?'Ya ingresó':x.listed?'En reventa':'Válida'}</span></article>
+ <div style="margin:10px 0 6px">${ageTag(e)}${nom?'<span class="tag">Nominativa</span>':''}${x.g?'<span class="tag">Cortesía</span>':''}${x.listed?'<span class="tag">En reventa por '+money(x.ask)+'</span>':''}</div>
+ ${x.blk?'':`<button class="btn ghost sm" onclick="tkPdf('${x.id}')">Descargar PDF</button> `}${x.used||x.blk?'':`${nom||x.g||t.tr===false?'<span class="tag">No transferible</span> ':`<button class="btn ghost sm" onclick="openTr('${x.id}')">Transferir</button> `}${RESALE?(x.listed?`<button class="btn ghost sm" onclick="unlist('${x.id}')">Quitar de reventa</button>`:`<button class="btn ghost sm" onclick="openSell('${x.id}')">Revender</button>`):''}`}</div>`}).join(''):
  `<div class="empty">Todavía no tenés TAGs en esta cuenta. Acá aparecen las entradas compradas con este mismo correo.</div>`)+
  (hist.length?`<h2>Historial de compras</h2><div class="panel scroll"><table><thead><tr><th>Fecha</th><th>Evento</th><th class="n">Entradas</th><th class="n">Total</th></tr></thead><tbody>${hist.map(l=>{const e=evOf(l.ev);setC(l.cur||e.cur);return `<tr><td>${fx(l.ts)}</td><td>${esc(e.name)}${l.k==='resale'?' (reventa)':''}${l.cp?' · cupón '+esc(l.cp):''}</td><td class="n">${l.q||1}</td><td class="n">${money(l.total)}</td></tr>`}).join('')}</tbody></table></div>`:'');
 }
@@ -684,11 +852,12 @@ function vEvent(e){setC(e);if(!isLive(e)&&!viaLink)return `<p><a href="#" onclic
  const st=(t,k)=>tSt(e,k);
  const lns=s=>(s||'').split('\n').map(z=>z.trim()).filter(Boolean),lu=lns(x.lineup),yt=(x.video||'').match(/(?:youtu\.be\/|[?&]v=|shorts\/|embed\/)([\w-]{11})/),q=encodeURIComponent(e.place+' '+(e.addr||''));
  const faq=lns(x.faq).map(z=>{const [p,...r]=z.split('|');return `<details class="faq"><summary>${esc(p.trim())}</summary><p>${esc(r.join('|').trim())}</p></details>`}).join('');
- return `<p style="margin-bottom:10px"><a href="#" onclick="location.hash='';return false">← Todos los eventos</a></p>${cover(e,'big')}<h1 style="max-width:none;margin-top:18px">${esc(e.name)}</h1>
+ document.body.dataset.world=WORLD(e);
+ return `${worldHero(e)}
  <div class="info"><div><small>Fecha y hora</small><b>${d} de ${MN[+m-1]} de ${y}</b><span class="mute">${e.time} hs</span></div><div><small>Lugar</small><b>${esc(e.place)}</b><span class="mute">${e.addr?esc(e.addr)+' · ':''}<a href="https://www.google.com/maps/search/?api=1&query=${q}" target="_blank" rel="noopener">Cómo llegar</a></span></div></div>
  <div>${ageTag(e)}${x.type?`<span class="tag">${esc(x.type)}</span>`:''}${e.idReq?'<span class="tag">Pide verificación de identidad</span>':''}${x.nomin?'<span class="tag">Entradas nominativas: no se transfieren</span>':''}</div>
  ${e.desc?`<h2>Sobre el evento</h2><p style="white-space:pre-line;max-width:60ch">${esc(e.desc)}</p>`:''}
- ${lu.length?`<h2>Line-up</h2><div>${lu.map(a=>`<span class="tag" style="font-size:14px;padding:4px 12px;margin-bottom:6px">${esc(a)}</span>`).join('')}</div>`:''}
+ ${lu.length&&!['vinilo','laser','comedia'].includes(WORLD(e))?`<h2>Line-up</h2><div>${lu.map(a=>`<span class="tag" style="font-size:14px;padding:4px 12px;margin-bottom:6px">${esc(a)}</span>`).join('')}</div>`:''}
  ${x.sched?`<h2>Horarios y programación</h2><p style="white-space:pre-line;max-width:60ch">${esc(x.sched)}</p>`:''}
  ${yt?`<h2>Video</h2><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/${yt[1]}" title="Video de ${esc(e.name)}" allow="encrypted-media; picture-in-picture" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>`:/^https:\/\//.test(x.video||'')?`<p><a href="${esc(x.video)}" target="_blank" rel="noopener">Ver video del evento</a></p>`:''}
  <h2>Entradas</h2><div class="panel">${tOrd(e).map(k=>{const t=e.tandas[k];return `<div class="li${st(t,k)==='En venta'?'':' off'}"><span>${cats.length>1?`<b>${esc(catOf(t))}</b> · ${esc(t.n)}`:`<b>${esc(t.n)}</b>`}${t.until?' · hasta el '+fu(t.until):''}</span><span>${st(t,k)==='Agotada'?'<s>'+money(t.price)+'</s>':money(t.price)} <span class="tag ${st(t,k)==='En venta'?'ok':''}">${st(t,k)}</span>${tv(t)==='link'&&!(t.pubFrom&&Date.now()>=new Date(t.pubFrom).getTime())?'<span class="tag">Solo por link</span>':''}</span></div>`}).join('')}
@@ -774,7 +943,7 @@ function demoTix(){let u=usr();if(!u){u=S.users.find(x=>x.email==='demo@easypass
  save();render()}
 let EV=null;
 function editEv(id){const e=evOf(id);EV={id,t:JSON.parse(JSON.stringify(e.tandas)),L:JSON.parse(JSON.stringify(e.links||[])),admin:view==='org',del:false};edDraw()}
-function edDraw(){const e=evOf(EV.id),xe=X(e),base=location.href.split('#')[0],v=EV.f||(EV.f={n:e.name,l:e.place,x:e.addr||'',d:e.date,h:e.time,a:e.minAge,i:e.idReq?1:0,p:e.pub===false?0:1,pf:e.pubFrom||'',o:e.owner||'',dsc:e.desc||'',gl:e.goal||'',img:e.img||'',cu:e.cur||'UYU',ci:xe.city||'',ty:xe.type||'',ft:xe.feat?1:0,vd:xe.video||'',lu:xe.lineup||'',sc:xe.sched||'',fq:xe.faq||'',co:xe.cond||'',nm:xe.nomin?1:0});
+function edDraw(){const e=evOf(EV.id),xe=X(e),base=location.href.split('#')[0],v=EV.f||(EV.f={n:e.name,l:e.place,x:e.addr||'',d:e.date,h:e.time,a:e.minAge,i:e.idReq?1:0,p:e.pub===false?0:1,pf:e.pubFrom||'',o:e.owner||'',dsc:e.desc||'',gl:e.goal||'',img:e.img||'',cu:e.cur||'UYU',ci:xe.city||'',ty:xe.type||'',wv:xe.wv||'vinilo',ft:xe.feat?1:0,vd:xe.video||'',lu:xe.lineup||'',sc:xe.sched||'',fq:xe.faq||'',co:xe.cond||'',nm:xe.nomin?1:0});
  $('#dlg').innerHTML=`<div class="dlg"><div class="ckh"><h3 class="ckt">Editar evento</h3><button type="button" class="x" onclick="$('#dlg').close()" aria-label="Cerrar">×</button></div><div class="f2" style="margin-top:12px">
  <div><label for="x1">Nombre</label><input id="x1" value="${v.n==='Nuevo evento'?'':esc(v.n)}" placeholder="Nombre del evento"></div><div><label for="x2">Lugar</label><input id="x2" value="${v.l==='A definir'?'':esc(v.l)}" placeholder="Ej: Pocitos, Montevideo" oninput="cityHint()"></div><div><label for="x3">Dirección</label><input id="x3" value="${esc(v.x)}" oninput="cityHint()"></div>
  <div><label for="x4">Fecha</label><input id="x4" type="date" value="${v.d}"></div><div><label for="x5">Hora</label><input id="x5" type="time" value="${v.h}"></div>
@@ -784,7 +953,7 @@ function edDraw(){const e=evOf(EV.id),xe=X(e),base=location.href.split('#')[0],v
  <div><label for="x9">Solo por link hasta (después entra a la cartelera pública)</label><input id="x9" type="datetime-local" value="${v.pf}"></div><div><label for="x14">Moneda de los precios</label><select id="x14" ${EV.t.some(t=>t.sold)?'disabled':''}>${Object.entries(CURS).map(([k,v])=>`<option value="${k}" ${EV.f.cu===k?'selected':''}>${k} · ${v.n}</option>`).join('')}</select>${EV.t.some(t=>t.sold)?'<p class="note">No se puede cambiar: ya hay entradas vendidas.</p>':''}</div><div><label for="x12">Meta de ventas (entradas)</label><input id="x12" type="number" min="0" placeholder="Ej: 500" value="${v.gl||''}"></div></div>
  <label for="x13">Foto o flyer del evento</label><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">${v.img?`<div class="cover" style="width:120px;border-radius:10px;background-image:url('${v.img}')"></div>`:''}<input id="x13" type="file" accept="image/*" onchange="evImg(this)" style="flex:1;min-width:180px">${v.img?`<button type="button" class="btn ghost sm" onclick="edRead();EV.f.img='';edDraw()">Quitar</button>`:''}</div>
  <label for="x11">Descripción del evento</label><textarea id="x11" rows="4" placeholder="De qué se trata, dress code, información útil…">${esc(v.dsc)}</textarea>
- <div class="f2"><div><label>Ciudad (se detecta sola)</label><p id="y1c" class="note" style="margin:10px 0 0">${detCity(v.l,v.x)||'Escribí el lugar o la dirección'}</p></div><div><label for="y2">Tipo de evento</label><select id="y2"><option value="">Sin definir</option>${TYPES.map(t=>`<option ${v.ty===t?'selected':''}>${t}</option>`).join('')}</select></div>
+ <div class="f2"><div><label>Ciudad (se detecta sola)</label><p id="y1c" class="note" style="margin:10px 0 0">${detCity(v.l,v.x)||'Escribí el lugar o la dirección'}</p></div><div><label for="y2">Tipo de evento</label><select id="y2" onchange="edRead();edDraw()"><option value="">Sin definir</option>${TYPES.map(t=>`<option ${v.ty===t?'selected':''}>${t}</option>`).join('')}</select>${v.ty==='Electrónica'?`<label for="y2w">Estilo de la página</label><select id="y2w"><option value="vinilo" ${v.wv!=='laser'?'selected':''}>Vinilo (el flyer es la tapa del disco)</option><option value="laser" ${v.wv==='laser'?'selected':''}>Láser (el flyer con rayos de luz)</option></select>`:''}</div>
  <div><label for="y9">Entradas</label><select id="y9"><option value="0">Transferibles</option><option value="1" ${v.nm?'selected':''}>Nominativas (no se transfieren)</option></select></div>
  <div><label for="y4">Video (link de YouTube)</label><input id="y4" type="url" value="${esc(v.vd)}" placeholder="https://youtu.be/…"></div></div>
  
@@ -802,7 +971,7 @@ function edDraw(){const e=evOf(EV.id),xe=X(e),base=location.href.split('#')[0],v
 let NFI='';function imgRs(f,cb){const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,1000/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);cb(c.toDataURL('image/jpeg',.78))};im.src=r.result};r.readAsDataURL(f)}
 function nfImg(inp){if(!inp.files[0])return;imgRs(inp.files[0],u=>{NFI=u;$('#efp').style.backgroundImage="url('"+u+"')";$('#efp').hidden=false})}
 function evImg(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,1000/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);edRead();EV.f.img=c.toDataURL('image/jpeg',.78);edDraw()};im.src=r.result};r.readAsDataURL(f)}
-function edRead(){const g=i=>$('#'+i).value;Object.assign(EV.f,{n:g('x1'),l:g('x2'),x:g('x3'),d:g('x4'),h:g('x5'),a:+g('x6'),i:g('x7')==='1'?1:0,p:g('x8')==='1'?1:0,pf:g('x9'),o:$('#x10')?g('x10').trim():EV.f.o,dsc:g('x11'),gl:g('x12'),cu:g('x14'),ty:g('y2'),ft:$('#y3')?($('#y3').checked?1:0):EV.f.ft,vd:g('y4'),lu:g('y5'),sc:g('y6'),fq:g('y7'),co:g('y8'),nm:g('y9')==='1'?1:0});
+function edRead(){const g=i=>$('#'+i).value;Object.assign(EV.f,{n:g('x1'),l:g('x2'),x:g('x3'),d:g('x4'),h:g('x5'),a:+g('x6'),i:g('x7')==='1'?1:0,p:g('x8')==='1'?1:0,pf:g('x9'),o:$('#x10')?g('x10').trim():EV.f.o,dsc:g('x11'),gl:g('x12'),cu:g('x14'),ty:g('y2'),wv:$('#y2w')?g('y2w'):EV.f.wv,ft:$('#y3')?($('#y3').checked?1:0):EV.f.ft,vd:g('y4'),lu:g('y5'),sc:g('y6'),fq:g('y7'),co:g('y8'),nm:g('y9')==='1'?1:0});
  EV.t.forEach(t=>t.lk=[]);document.querySelectorAll('#dlg [data-i]').forEach(el=>{const t=EV.t[+el.dataset.i],k=el.dataset.k;if(k==='pub')t.pub=el.checked;else if(k==='tkon')t.tk=el.checked?(t.tk||tok8()):'';else if(k==='tr')t.tr=el.checked;else if(k==='cs'){if(el.value!=='__o')t.c=el.value}else if(k==='c'){if(el.previousElementSibling.value==='__o')t.c=el.value.trim()||'Otro'}else if(k==='lk'){if(el.checked)t.lk.push(el.dataset.l)}else t[k]=(k==='price'||k==='cap')?+el.value:el.value});EV.L.forEach((l,j)=>{const n=document.querySelector('[data-ln="'+j+'"]'),a=document.querySelector('[data-la="'+j+'"]');if(n)l.name=n.value;if(a)l.on=a.checked;const p=document.querySelector('[data-lp="'+j+'"]');if(p)l.pct=Math.max(0,Math.min(100,+p.value||0))})}
 function edAdd(){edRead();EV.t.push({n:'Tanda '+(EV.t.length+1),price:0,cap:100,sold:0,until:''});edDraw()}
 function edDel(i){edRead();EV.t.splice(i,1);edDraw()}
@@ -1175,7 +1344,7 @@ function vByCur(){const by={};S.ledger.forEach(l=>{if(!l.total&&!l.fee)return;co
 async function edSave(){edRead();const v=EV.f;if(!v.n.trim()||!v.l.trim()||!v.d||!EV.t.length||EV.t.some(t=>!String(t.n).trim()||!(t.price>=0)||!(t.cap>=Math.max(1,t.sold)))){err('Revisá nombre, lugar, fecha y cada tanda (precio y cantidad, que no sea menor a lo ya vendido).');return}
  err('Guardando…');try{const e=evOf(EV.id);
   // shortcut: "destacado" viaja en extra y el dueño del evento podría escribirlo por API; antes de cobrarlo, moverlo a una columna que solo edite el admin.
-  const x={...X(e),city:detCity(v.l,v.x),type:v.ty,feat:!!v.ft,video:v.vd.trim(),lineup:v.lu.trim(),sched:v.sc.trim(),faq:v.fq.trim(),cond:v.co.trim(),nomin:!!v.nm,promos:EV.L,tx:EV.t.map(t=>({c:catOf(t),lk:t.lk||[],tk:t.tk||''}))};xl(e.dbid,x);
+  const x={...X(e),city:detCity(v.l,v.x),type:v.ty,wv:v.wv||'vinilo',feat:!!v.ft,video:v.vd.trim(),lineup:v.lu.trim(),sched:v.sc.trim(),faq:v.fq.trim(),cond:v.co.trim(),nomin:!!v.nm,promos:EV.L,tx:EV.t.map(t=>({c:catOf(t),lk:t.lk||[],tk:t.tk||''}))};xl(e.dbid,x);
   if(isDemo()){Object.assign(e,{name:v.n.trim(),place:v.l.trim(),addr:v.x.trim(),date:v.d,time:v.h||'22:00',minAge:+v.a||0,idReq:!!v.i,pub:!!v.p,pubFrom:v.pf,desc:v.dsc.trim(),img:v.img||'',cur:v.cu||'UYU',goal:Math.max(0,+v.gl||0),x,links:EV.L,tandas:EV.t});save();$('#dlg').close();render();return}
   await sbX('/rest/v1/events?id=eq.'+e.dbid,'PATCH',{name:v.n.trim(),place:v.l.trim(),address:v.x.trim()||null,starts_at:v.d+'T'+(v.h||'22:00')+':00-03:00',description:v.dsc.trim()||null,image_path:v.img||null,currency:v.cu||'UYU',min_age:+v.a||0,id_required:!!v.i,visibility:v.p?'public':'link',publish_from:v.pf?toTs(v.pf):null,sales_goal:Math.max(0,+v.gl||0)||null,extra:x});
   const ids=EV.t.filter(t=>t.dbid).map(t=>t.dbid);for(const t of e.tandas)if(t.dbid&&!ids.includes(t.dbid))await sbReq('/rest/v1/tandas?id=eq.'+t.dbid,{method:'DELETE'});
