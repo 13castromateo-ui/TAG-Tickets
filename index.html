@@ -9,7 +9,7 @@
 <style>
 :root{--bg:#EEEBE7;--card:#fff;--ink:#1C1C1C;--mute:#5F5B57;--line:#D4D0CB;--acc:#CC5500;--onacc:#fff;--hi:#CC5500;--brand:#CC5500;--ok:#0f8a5f;--bad:#c4322f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html.tgd{--bg:#0B0B0C;--card:#161618;--ink:#EDE7DD;--mute:#A39C91;--line:#2C2C30;--acc:#FF5A1F;--onacc:#0B0B0C;--hi:#EDE7DD;--brand:#FF5A1F;--ok:#8EDFB3;--bad:#FF8F80;color-scheme:dark}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 120px)}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 Archivo,system-ui,sans-serif;transition:background-color .4s ease}
 h1,h2,.logo{font-family:Unbounded,Archivo,system-ui,sans-serif}h1{letter-spacing:-.045em}h2{letter-spacing:-.03em}
@@ -20,7 +20,7 @@ html{accent-color:var(--acc);caret-color:var(--acc)}
 a{text-underline-offset:.18em}
 .stat b,.sum,.n,.row b,.dcode{font-variant-numeric:tabular-nums}
 .wrap{max-width:1000px;margin:0 auto;padding:0 18px}
-header{border-bottom:1px solid var(--line);background:var(--card)}
+header{border-bottom:1px solid var(--line);background:var(--card);position:sticky;top:env(safe-area-inset-top,0px);z-index:50}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 0}
 .logo{font-weight:800;font-size:26px;letter-spacing:-.03em}
 .logo i{display:inline-block;flex:none;aspect-ratio:1;width:14px;height:14px;background:var(--brand);border-radius:50%;margin-left:4px}
